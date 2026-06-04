@@ -42,7 +42,13 @@ Output directory:
 
 ## URLs esperadas
 
-Landing estatica provisoria:
+Landing estatica publicada no Cloudflare Pages:
+
+```txt
+https://imovel-explicado-contratos.pages.dev/
+```
+
+Landing estatica provisoria anterior no GitHub Pages:
 
 ```txt
 https://massaprod.github.io/imovel-explicado-compliance/
@@ -56,6 +62,15 @@ https://imovel-explicado-contratos.onrender.com
 
 Depois que Cloudflare Pages publicar, usar a URL `*.pages.dev` como URL principal dos anuncios ate termos dominio proprio.
 
+## Status em 2026-06-04
+
+- Cloudflare Pages conectado ao GitHub `massaprod/imovel-explicado-compliance`.
+- Projeto publicado como `imovel-explicado-contratos`.
+- URL principal provisoria: `https://imovel-explicado-contratos.pages.dev/`.
+- Landing validada com HTTP 200.
+- CTAs da landing apontam para `https://imovel-explicado-contratos.onrender.com/triagem`.
+- Pagina de exclusao de dados validada em `https://imovel-explicado-contratos.pages.dev/exclusao-dados`.
+
 ## Depois do deploy
 
 Atualizar estes locais para apontar para a URL Cloudflare:
@@ -65,6 +80,6 @@ Atualizar estes locais para apontar para a URL Cloudflare:
 - URL de site no Meta Developers, se a landing principal mudar.
 - `APP_PUBLIC_URL` e `VITE_PUBLIC_APP_URL` somente se o backend tambem passar a responder pelo dominio definitivo. Enquanto a API continuar no Render, nao trocar essas variaveis sem revisar rotas e webhook.
 
-## Observacao
+## Observacao historica
 
 Em 2026-06-04, o login social GitHub no Cloudflare falhou com mensagem de identidade divergente. A migracao depende de login manual na conta correta da Cloudflare ou cadastro por outro metodo.
