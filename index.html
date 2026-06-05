@@ -11,6 +11,26 @@
     <title>Imovel Explicado Contratos</title>
     <link rel="preconnect" href="https://imovel-explicado-contratos.onrender.com" />
     <link rel="dns-prefetch" href="https://imovel-explicado-contratos.onrender.com" />
+    <script>
+      !(function (f, b, e, v, n, t, s) {
+        if (f.fbq) return;
+        n = f.fbq = function () {
+          n.callMethod ? n.callMethod.apply(n, arguments) : n.queue.push(arguments);
+        };
+        if (!f._fbq) f._fbq = n;
+        n.push = n;
+        n.loaded = true;
+        n.version = "2.0";
+        n.queue = [];
+        t = b.createElement(e);
+        t.async = true;
+        t.src = v;
+        s = b.getElementsByTagName(e)[0];
+        s.parentNode.insertBefore(t, s);
+      })(window, document, "script", "https://connect.facebook.net/en_US/fbevents.js");
+      fbq("init", "998092116298334");
+      fbq("track", "PageView");
+    </script>
     <style>
       :root {
         color-scheme: light;
@@ -347,6 +367,15 @@
     </style>
   </head>
   <body>
+    <noscript>
+      <img
+        height="1"
+        width="1"
+        style="display: none"
+        src="https://www.facebook.com/tr?id=998092116298334&ev=PageView&noscript=1"
+        alt=""
+      />
+    </noscript>
     <nav class="topbar" aria-label="Navegacao principal">
       <a class="brand" href="#topo" aria-label="Inicio">
         <span class="brand-mark">IE</span>
@@ -355,7 +384,7 @@
       <div class="nav-links">
         <a href="#como-funciona">Como funciona</a>
         <a href="#recebe">O que recebe</a>
-        <a class="nav-cta" href="https://imovel-explicado-contratos.onrender.com/triagem">Iniciar triagem</a>
+        <a class="nav-cta js-triage-link" href="https://imovel-explicado-contratos.onrender.com/triagem">Iniciar triagem</a>
       </div>
     </nav>
 
@@ -367,7 +396,7 @@
           Envie seu caso, responda uma triagem objetiva e receba uma an&aacute;lise clara dos principais pontos de aten&ccedil;&atilde;o em at&eacute; 24 horas ap&oacute;s o envio completo das informa&ccedil;&otilde;es, documentos e confirma&ccedil;&atilde;o do pagamento.
         </p>
         <div class="hero-actions">
-          <a class="button button-primary" href="https://imovel-explicado-contratos.onrender.com/triagem">Quero analisar meu caso</a>
+          <a class="button button-primary js-triage-link" href="https://imovel-explicado-contratos.onrender.com/triagem">Quero analisar meu caso</a>
           <a class="button button-secondary" href="#como-funciona">Ver como funciona</a>
         </div>
         <ul class="trust-list" aria-label="Pontos de confianca">
@@ -457,7 +486,7 @@
       <p>
         A triagem leva poucos minutos. O Render pode levar alguns segundos para abrir na primeira visita, mas esta p&aacute;gina j&aacute; prepara o sistema em segundo plano.
       </p>
-      <a class="button button-primary" href="https://imovel-explicado-contratos.onrender.com/triagem">Iniciar triagem agora</a>
+      <a class="button button-primary js-triage-link" href="https://imovel-explicado-contratos.onrender.com/triagem">Iniciar triagem agora</a>
       <p class="fine-print">
         Servi&ccedil;o de organiza&ccedil;&atilde;o, leitura e diagn&oacute;stico preliminar de contratos e documentos imobili&aacute;rios. N&atilde;o substitui provid&ecirc;ncias espec&iacute;ficas que exijam profissional habilitado, quando aplic&aacute;vel.
       </p>
@@ -466,6 +495,34 @@
     <script>
       (() => {
         const renderBase = "https://imovel-explicado-contratos.onrender.com";
+        const landingParams = new URLSearchParams(window.location.search);
+        const defaultParams = {
+          utm_source: "meta",
+          utm_medium: "paid_social",
+          utm_campaign: "fim_de_semana_validacao",
+        };
+
+        document.querySelectorAll(".js-triage-link").forEach((link) => {
+          const url = new URL(link.href);
+          Object.entries(defaultParams).forEach(([key, value]) => {
+            if (!landingParams.has(key) && !url.searchParams.has(key)) {
+              url.searchParams.set(key, value);
+            }
+          });
+          landingParams.forEach((value, key) => {
+            if (!url.searchParams.has(key)) {
+              url.searchParams.set(key, value);
+            }
+          });
+          link.href = url.toString();
+          link.addEventListener("click", () => {
+            if (window.fbq) {
+              fbq("track", "Lead", { source: "cloudflare_landing_cta" });
+              fbq("trackCustom", "StartTriageClick", { destination: "render_triagem" });
+            }
+          });
+        });
+
         fetch(`${renderBase}/api/health`, {
           mode: "no-cors",
           cache: "no-store",
