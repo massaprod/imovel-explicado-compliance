@@ -484,7 +484,7 @@
     <section id="recebe" class="section footer-cta">
       <h2>Antes de assinar ou negociar, entenda onde est&aacute; pisando.</h2>
       <p>
-        A triagem leva poucos minutos. O Render pode levar alguns segundos para abrir na primeira visita, mas esta p&aacute;gina j&aacute; prepara o sistema em segundo plano.
+        A triagem leva poucos minutos. Voc&ecirc; informa a situa&ccedil;&atilde;o, escolhe o tipo de apoio e recebe o pr&oacute;ximo passo com clareza.
       </p>
       <a class="button button-primary js-triage-link" href="https://imovel-explicado-contratos.onrender.com/triagem">Iniciar triagem agora</a>
       <p class="fine-print">
@@ -525,7 +525,13 @@
           utmContent: landingParams.get("utm_content") || undefined,
           utmTerm: landingParams.get("utm_term") || undefined,
         });
-        const trackInternal = (eventName, metadata = {}) => {
+        const trackingVersion = "cloudflare_landing_20260607";
+        const renderWarmup = fetch(`${renderBase}/api/health`, {
+          mode: "no-cors",
+          cache: "no-store",
+          keepalive: true,
+        }).catch(() => {});
+        const trackInternal = (eventName, metadata = {}, options = {}) => {
           const body = JSON.stringify({
             visitorId,
             sessionId,
@@ -533,19 +539,23 @@
             path: window.location.pathname || "/",
             referrer: document.referrer,
             ...currentAttribution(),
-            metadata,
+            metadata: {
+              ...metadata,
+              trackingVersion,
+            },
           });
-          if (navigator.sendBeacon) {
-            const queued = navigator.sendBeacon(analyticsEndpoint, new Blob([body], { type: "application/json" }));
-            if (queued) return;
-          }
-          fetch(analyticsEndpoint, {
+          const sendWithFetch = () => fetch(analyticsEndpoint, {
             method: "POST",
             mode: "cors",
             headers: { "Content-Type": "application/json" },
             body,
             keepalive: true,
           }).catch(() => {});
+          if (options.preferBeacon && navigator.sendBeacon) {
+            const queued = navigator.sendBeacon(analyticsEndpoint, new Blob([body], { type: "application/json" }));
+            if (queued) return Promise.resolve();
+          }
+          return sendWithFetch();
         };
         const updateScroll = () => {
           const scrollTop = window.scrollY || document.documentElement.scrollTop || 0;
@@ -562,11 +572,16 @@
           trackInternal("page_time", {
             durationMs: Date.now() - startedAt,
             maxScrollPercent,
-          });
+          }, { preferBeacon: true });
         };
 
         updateScroll();
-        trackInternal("page_view", { source: "cloudflare_landing" });
+        Promise.race([
+          renderWarmup,
+          new Promise((resolve) => setTimeout(resolve, 700)),
+        ]).finally(() => {
+          trackInternal("page_view", { source: "cloudflare_landing" });
+        });
         window.addEventListener("scroll", updateScroll, { passive: true });
         window.addEventListener("pagehide", flushPageTime);
         document.addEventListener("visibilitychange", () => {
@@ -588,21 +603,27 @@
             }
           });
           link.href = url.toString();
-          link.addEventListener("click", () => {
-            trackInternal("start_triage_click", { source: "cloudflare_landing_cta" });
-            flushPageTime();
+          link.addEventListener("click", (event) => {
+            event.preventDefault();
+            const destination = link.href;
+            const tracking = Promise.allSettled([
+              trackInternal("start_triage_click", { source: "cloudflare_landing_cta" }),
+              trackInternal("page_time", {
+                durationMs: Date.now() - startedAt,
+                maxScrollPercent,
+              }, { preferBeacon: true }),
+            ]);
             if (window.fbq) {
-              fbq("track", "Lead", { source: "cloudflare_landing_cta" });
               fbq("trackCustom", "StartTriageClick", { destination: "render_triagem" });
             }
+            Promise.race([
+              tracking,
+              new Promise((resolve) => setTimeout(resolve, 220)),
+            ]).finally(() => {
+              window.location.href = destination;
+            });
           });
         });
-
-        fetch(`${renderBase}/api/health`, {
-          mode: "no-cors",
-          cache: "no-store",
-          keepalive: true
-        }).catch(() => {});
       })();
     </script>
   </body>
