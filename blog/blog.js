@@ -1,8 +1,30 @@
 (() => {
   const renderBase = "https://imovel-explicado-contratos.onrender.com";
   const analyticsEndpoint = `${renderBase}/api/analytics/event`;
+  const metaPixelId = "1277173217718163";
   const params = new URLSearchParams(window.location.search);
   const slug = document.body.dataset.slug || "blog";
+
+  const initMetaPixel = () => {
+    if (!metaPixelId || window.fbq) return;
+    window.fbq = function () {
+      window.fbq.callMethod
+        ? window.fbq.callMethod.apply(window.fbq, arguments)
+        : window.fbq.queue.push(arguments);
+    };
+    if (!window._fbq) window._fbq = window.fbq;
+    window.fbq.push = window.fbq;
+    window.fbq.loaded = true;
+    window.fbq.version = "2.0";
+    window.fbq.queue = [];
+    const script = document.createElement("script");
+    script.async = true;
+    script.src = "https://connect.facebook.net/en_US/fbevents.js";
+    const firstScript = document.getElementsByTagName("script")[0];
+    firstScript.parentNode.insertBefore(script, firstScript);
+    window.fbq("init", metaPixelId);
+    window.fbq("track", "PageView");
+  };
 
   const getId = (key) => {
     const storage = key === "visitorSessionId" ? window.sessionStorage : window.localStorage;
@@ -84,10 +106,14 @@
     link.addEventListener("click", () => {
       updateScroll();
       track("blog_cta_click", { slug, maxScrollPercent }, false);
+      if (window.fbq) {
+        window.fbq("trackCustom", "BlogTriageClick", { slug, maxScrollPercent });
+      }
       flushPageTime();
     });
   });
 
+  initMetaPixel();
   updateScroll();
   window.addEventListener("scroll", updateScroll, { passive: true });
   window.addEventListener("pagehide", flushPageTime);
