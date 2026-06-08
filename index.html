@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta
       name="description"
-      content="Analise clara de contrato e documentos imobiliarios em ate 24 horas apos envio completo das informacoes."
+      content="Antes de assinar, pagar sinal ou negociar um imovel, entenda os principais pontos de atencao do contrato ou documento."
     />
     <meta name="theme-color" content="#101820" />
     <title>Imovel Explicado Contratos</title>
@@ -384,25 +384,26 @@
       <div class="nav-links">
         <a href="#como-funciona">Como funciona</a>
         <a href="#recebe">O que recebe</a>
-        <a class="nav-cta js-triage-link" href="https://imovel-explicado-contratos.onrender.com/triagem">Iniciar triagem</a>
+        <a href="/blog/">Conte&uacute;dos</a>
+        <a class="nav-cta js-triage-link" href="https://imovel-explicado-contratos.onrender.com/triagem">Ver riscos do meu caso</a>
       </div>
     </nav>
 
     <main id="topo" class="hero">
       <section>
-        <p class="eyebrow">Analise antes de assinar</p>
-        <h1>Entenda os riscos do contrato ou documento do im&oacute;vel antes de avan&ccedil;ar.</h1>
+        <p class="eyebrow">Para quem vai assinar, pagar ou negociar</p>
+        <h1>Antes de avan&ccedil;ar no im&oacute;vel, veja se o documento deixa algum risco escondido.</h1>
         <p class="subheadline">
-          Envie seu caso, responda uma triagem objetiva e receba uma an&aacute;lise clara dos principais pontos de aten&ccedil;&atilde;o em at&eacute; 24 horas ap&oacute;s o envio completo das informa&ccedil;&otilde;es, documentos e confirma&ccedil;&atilde;o do pagamento.
+          Responda uma triagem curta, envie seu contrato, proposta ou cobran&ccedil;a e receba uma leitura clara dos principais pontos de aten&ccedil;&atilde;o em at&eacute; 24 horas ap&oacute;s dados completos e pagamento confirmado.
         </p>
         <div class="hero-actions">
-          <a class="button button-primary js-triage-link" href="https://imovel-explicado-contratos.onrender.com/triagem">Quero analisar meu caso</a>
-          <a class="button button-secondary" href="#como-funciona">Ver como funciona</a>
+          <a class="button button-primary js-triage-link" href="https://imovel-explicado-contratos.onrender.com/triagem">Ver riscos antes de assinar</a>
+          <a class="button button-secondary" href="/blog/">Ler dicas primeiro</a>
         </div>
         <ul class="trust-list" aria-label="Pontos de confianca">
           <li>Atendimento humano e organizado</li>
           <li>Pagamento com confer&ecirc;ncia manual</li>
-          <li>Confidencialidade e linguagem clara</li>
+          <li>Planos a partir de R$ 97</li>
         </ul>
       </section>
 
@@ -484,9 +485,9 @@
     <section id="recebe" class="section footer-cta">
       <h2>Antes de assinar ou negociar, entenda onde est&aacute; pisando.</h2>
       <p>
-        A triagem leva poucos minutos. Voc&ecirc; informa a situa&ccedil;&atilde;o, escolhe o tipo de apoio e recebe o pr&oacute;ximo passo com clareza.
+        A triagem leva poucos minutos. Voc&ecirc; informa o contexto, escolhe o tipo de apoio e s&oacute; segue para o pagamento depois de conferir o plano escolhido.
       </p>
-      <a class="button button-primary js-triage-link" href="https://imovel-explicado-contratos.onrender.com/triagem">Iniciar triagem agora</a>
+      <a class="button button-primary js-triage-link" href="https://imovel-explicado-contratos.onrender.com/triagem">Enviar contrato para triagem</a>
       <p class="fine-print">
         Servi&ccedil;o de organiza&ccedil;&atilde;o, leitura e diagn&oacute;stico preliminar de contratos e documentos imobili&aacute;rios. N&atilde;o substitui provid&ecirc;ncias espec&iacute;ficas que exijam profissional habilitado, quando aplic&aacute;vel.
       </p>
@@ -498,9 +499,9 @@
         const landingParams = new URLSearchParams(window.location.search);
         const analyticsEndpoint = `${renderBase}/api/analytics/event`;
         const defaultParams = {
-          utm_source: "meta",
-          utm_medium: "paid_social",
-          utm_campaign: "fim_de_semana_validacao",
+          utm_source: "site",
+          utm_medium: "organic",
+          utm_campaign: "contratos_domain",
         };
         const getId = (key) => {
           const existing = window.localStorage.getItem(key) || window.sessionStorage.getItem(key);
