@@ -17,6 +17,8 @@
 
   const visitorId = getId("visitorId");
   const sessionId = getId("visitorSessionId");
+  const startedAt = Date.now();
+  let maxScrollPercent = 0;
   const attribution = {
     utmSource: params.get("utm_source") || "blog",
     utmMedium: params.get("utm_medium") || "owned",
@@ -25,7 +27,17 @@
     utmTerm: params.get("utm_term") || undefined,
   };
 
-  const track = (eventName, metadata = {}) => {
+  const updateScroll = () => {
+    const scrollTop = window.scrollY || document.documentElement.scrollTop || 0;
+    const viewportHeight = window.innerHeight || document.documentElement.clientHeight || 0;
+    const documentHeight = Math.max(document.body.scrollHeight, document.documentElement.scrollHeight);
+    const percent = documentHeight <= viewportHeight
+      ? 100
+      : Math.round(((scrollTop + viewportHeight) / documentHeight) * 100);
+    maxScrollPercent = Math.max(maxScrollPercent, Math.min(percent, 100));
+  };
+
+  const track = (eventName, metadata = {}, preferBeacon = true) => {
     const body = JSON.stringify({
       visitorId,
       sessionId,
@@ -33,10 +45,13 @@
       path: window.location.pathname || "/blog/",
       referrer: document.referrer,
       ...attribution,
-      metadata,
+      metadata: {
+        ...metadata,
+        trackingVersion: "cloudflare_blog_20260608",
+      },
     });
 
-    if (navigator.sendBeacon) {
+    if (preferBeacon && navigator.sendBeacon) {
       const queued = navigator.sendBeacon(analyticsEndpoint, new Blob([body], { type: "application/json" }));
       if (queued) return;
     }
@@ -50,6 +65,13 @@
     }).catch(() => {});
   };
 
+  const flushPageTime = () => {
+    updateScroll();
+    const durationMs = Date.now() - startedAt;
+    if (durationMs < 1000) return;
+    track("blog_page_time", { slug, durationMs, maxScrollPercent });
+  };
+
   document.querySelectorAll(".js-triage-link").forEach((link) => {
     const url = new URL(link.href);
     url.searchParams.set("vxid", visitorId);
@@ -59,8 +81,18 @@
     url.searchParams.set("utm_campaign", attribution.utmCampaign);
     url.searchParams.set("utm_content", attribution.utmContent);
     link.href = url.toString();
-    link.addEventListener("click", () => track("blog_cta_click", { slug }));
+    link.addEventListener("click", () => {
+      updateScroll();
+      track("blog_cta_click", { slug, maxScrollPercent }, false);
+      flushPageTime();
+    });
   });
 
+  updateScroll();
+  window.addEventListener("scroll", updateScroll, { passive: true });
+  window.addEventListener("pagehide", flushPageTime);
+  document.addEventListener("visibilitychange", () => {
+    if (document.visibilityState === "hidden") flushPageTime();
+  });
   track("blog_page_view", { slug });
 })();
