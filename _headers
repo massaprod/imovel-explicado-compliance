@@ -7,5 +7,14 @@
 /index.html
   Cache-Control: public, max-age=300, must-revalidate
 
+/contratos.html
+  Cache-Control: public, max-age=300, must-revalidate
+
+/blog/*
+  Cache-Control: public, max-age=300, must-revalidate
+
+/assets/*
+  Cache-Control: public, max-age=31536000, immutable
+
 /exclusao-dados.html
   Cache-Control: public, max-age=300, must-revalidate

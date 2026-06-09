@@ -113,6 +113,23 @@
     });
   });
 
+  document.querySelectorAll(".js-whatsapp-link").forEach((link) => {
+    const url = new URL(link.href);
+    url.searchParams.set(
+      "text",
+      "Ola, Luis. Vim pelo Imovel Explicado e queria tirar uma duvida sobre contrato ou documento imobiliario."
+    );
+    link.href = url.toString();
+    link.addEventListener("click", () => {
+      updateScroll();
+      track("blog_whatsapp_click", { slug, maxScrollPercent }, false);
+      if (window.fbq) {
+        window.fbq("trackCustom", "WhatsAppClick", { source: "blog", slug });
+      }
+      flushPageTime();
+    });
+  });
+
   initMetaPixel();
   updateScroll();
   window.addEventListener("scroll", updateScroll, { passive: true });
