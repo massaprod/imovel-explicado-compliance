@@ -178,8 +178,13 @@ h1 {
 }
 
 .human-panel span {
+  display: block;
   color: var(--muted);
   line-height: 1.45;
+}
+
+.human-panel span + span {
+  margin-top: 5px;
 }
 
 .risk-panel h2 {
@@ -336,5 +341,41 @@ h1 {
 
   .nav-links a:not(.button) {
     display: none;
+  }
+}
+
+@media (max-width: 560px) {
+  .topbar {
+    gap: 10px;
+    padding: 12px 14px;
+  }
+
+  .brand span:last-child {
+    max-width: 138px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .nav-links {
+    gap: 8px;
+  }
+
+  .nav-links .button:not(.whatsapp) {
+    display: none;
+  }
+
+  .nav-links .button {
+    min-height: 40px;
+    padding: 0 13px;
+  }
+
+  .human-panel {
+    grid-template-columns: 76px minmax(0, 1fr);
+  }
+
+  .human-panel img {
+    width: 76px;
+    height: 76px;
   }
 }
