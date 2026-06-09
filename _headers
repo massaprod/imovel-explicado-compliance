@@ -19,5 +19,11 @@
 /assets/*
   Cache-Control: public, max-age=31536000, immutable
 
+/robots.txt
+  Cache-Control: public, max-age=300, must-revalidate
+
+/sitemap.xml
+  Cache-Control: public, max-age=300, must-revalidate
+
 /exclusao-dados.html
   Cache-Control: public, max-age=300, must-revalidate

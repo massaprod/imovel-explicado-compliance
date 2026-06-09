@@ -62,6 +62,43 @@ https://imovel-explicado-contratos.onrender.com
 
 Depois que Cloudflare Pages publicar, usar a URL `*.pages.dev` como URL principal dos anuncios ate termos dominio proprio.
 
+## Dominios definitivos
+
+Status verificado em 2026-06-09:
+
+- `contratos.imovelexplicado.com.br` resolve e redireciona `/` para `/contratos`.
+- `imovelexplicado.com.br` ainda nao possui registro A/AAAA visivel.
+- `www.imovelexplicado.com.br` ainda nao existe no DNS.
+
+Estrutura recomendada:
+
+```txt
+imovelexplicado.com.br                 -> hub principal, blog e canais
+www.imovelexplicado.com.br             -> redireciona para imovelexplicado.com.br
+contratos.imovelexplicado.com.br       -> pagina de venda do produto Contratos
+```
+
+Configurar no Cloudflare Pages, projeto `imovel-explicado-contratos`, em `Custom domains`:
+
+```txt
+imovelexplicado.com.br
+www.imovelexplicado.com.br
+contratos.imovelexplicado.com.br
+```
+
+Se o Cloudflare pedir DNS manual, usar:
+
+```txt
+Tipo   Nome        Destino
+CNAME  @           imovel-explicado-contratos.pages.dev
+CNAME  www         imovel-explicado-contratos.pages.dev
+CNAME  contratos   imovel-explicado-contratos.pages.dev
+```
+
+Observacao: em zonas Cloudflare, o `@` pode aparecer como `imovelexplicado.com.br`. Manter `Proxied` ativo quando o Cloudflare recomendar.
+
+No codigo, o `www` ja esta preparado para redirecionar para o dominio raiz e `contratos.imovelexplicado.com.br/` ja redireciona para `/contratos`.
+
 ## Status em 2026-06-04
 
 - Cloudflare Pages conectado ao GitHub `massaprod/imovel-explicado-compliance`.
