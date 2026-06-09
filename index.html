@@ -346,7 +346,41 @@
         line-height: 1.55;
       }
 
+      .sticky-conversion-bar {
+        position: fixed;
+        right: 16px;
+        bottom: 16px;
+        left: 16px;
+        z-index: 20;
+        display: none;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        border: 1px solid rgba(16, 24, 32, 0.14);
+        border-radius: 8px;
+        background: rgba(251, 248, 242, 0.97);
+        box-shadow: 0 18px 50px rgba(16, 24, 32, 0.18);
+        padding: 10px 10px 10px 14px;
+      }
+
+      .sticky-conversion-bar span {
+        color: var(--ink);
+        font-size: 13px;
+        font-weight: 750;
+        line-height: 1.25;
+      }
+
+      .sticky-conversion-bar .button {
+        min-height: 40px;
+        padding: 0 14px;
+        font-size: 13px;
+      }
+
       @media (max-width: 840px) {
+        body {
+          padding-bottom: 86px;
+        }
+
         .nav-links {
           display: none;
         }
@@ -362,6 +396,10 @@
 
         .section-grid {
           grid-template-columns: 1fr;
+        }
+
+        .sticky-conversion-bar {
+          display: flex;
         }
       }
     </style>
@@ -384,8 +422,7 @@
       <div class="nav-links">
         <a href="#como-funciona">Como funciona</a>
         <a href="#recebe">O que recebe</a>
-        <a href="/blog/">Conte&uacute;dos</a>
-        <a class="nav-cta js-triage-link" href="https://imovel-explicado-contratos.onrender.com/triagem">Ver riscos do meu caso</a>
+        <a class="nav-cta js-triage-link" href="https://imovel-explicado-contratos.onrender.com/triagem">Enviar caso</a>
       </div>
     </nav>
 
@@ -492,6 +529,11 @@
         Servi&ccedil;o de organiza&ccedil;&atilde;o, leitura e diagn&oacute;stico preliminar de contratos e documentos imobili&aacute;rios. N&atilde;o substitui provid&ecirc;ncias espec&iacute;ficas que exijam profissional habilitado, quando aplic&aacute;vel.
       </p>
     </section>
+
+    <div class="sticky-conversion-bar" aria-label="Atalho para iniciar analise">
+      <span>Triagem curta. Sem pagamento nesta etapa.</span>
+      <a class="button button-primary js-triage-link" href="https://imovel-explicado-contratos.onrender.com/triagem">Enviar caso</a>
+    </div>
 
     <script>
       (() => {
