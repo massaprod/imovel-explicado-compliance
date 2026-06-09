@@ -10,6 +10,9 @@
 /contratos.html
   Cache-Control: public, max-age=300, must-revalidate
 
+/contratos
+  Cache-Control: public, max-age=300, must-revalidate
+
 /blog/*
   Cache-Control: public, max-age=300, must-revalidate
 
