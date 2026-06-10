@@ -1,209 +1,173 @@
-# Pacote de postagens - Imovel Explicado
+# Pacote de Instagram - Imovel Explicado
 
-Objetivo: atrair leads para analise contratual/documental, WhatsApp e triagem.
-Identidade: fundo claro ou preto, detalhes em dourado, verde para acao, vermelho apenas para risco. Usar cenas de contrato, chave, Pix, proposta, mesa de negociacao, documento com marcacoes e a foto de Luis quando o tema pedir autoridade humana.
+Fonte operacional completa:
 
-CTA padrao:
-- "Antes de assinar, envie para analise."
-- "Fale com Luis no WhatsApp."
-- "Comece pela triagem no link da bio."
+```txt
+C:\Users\drlui\Documents\Claude Base Massa\outputs\campanha-imovel-explicado-contratos\ROTINA_INSTAGRAM_ORGANICO_2026-06-10.md
+```
 
-Hashtags-base:
-`#imovelexplicado #contratoimobiliario #aluguel #compraevenda #documentosimobiliarios #caucao #pix #imoveis`
+## Objetivo
 
-## Post 1 - Carrossel
+Educar o publico sobre riscos praticos em contratos, documentos, Pix, caucao, proposta, recibo, aluguel, compra e venda, e levar leads para:
 
-Tema: contrato de aluguel.
+1. site/hub `imovelexplicado.com.br`;
+2. landing comercial `contratos.imovelexplicado.com.br/contratos`;
+3. WhatsApp;
+4. triagem do Imovel Explicado Contratos.
 
-Slide 1: "Vai assinar contrato de aluguel?"
-Slide 2: "Nao olhe so valor e data de entrada."
-Slide 3: "Confira multa, caucao, vistoria, reajuste e entrega das chaves."
-Slide 4: "Uma clausula mal entendida pode virar custo na saida."
-Slide 5: "Envie o contrato antes de assinar. Analise objetiva em ate 24h."
+## Link de bio recomendado agora
 
-Legenda:
-Antes de assinar aluguel, a pressa costuma esconder os pontos que geram prejuizo depois: multa, caucao, vistoria, reajuste, taxas e responsabilidade por reparos. Se voce recebeu o contrato e precisa responder rapido, envie para uma leitura objetiva antes de assumir compromisso.
+Enquanto a prioridade for venda e caixa:
 
-CTA: "Link na bio para triagem ou WhatsApp."
+```txt
+https://contratos.imovelexplicado.com.br/contratos?utm_source=instagram&utm_medium=social&utm_campaign=organic_profile&utm_content=bio
+```
 
-Direcao visual: fundo creme, contrato com marca-texto dourado, selo "antes de assinar".
+Quando o blog/hub tiver mais conteudo publicado:
 
-## Post 2 - Reels curto
+```txt
+https://imovelexplicado.com.br/?utm_source=instagram&utm_medium=social&utm_campaign=organic_profile&utm_content=bio
+```
 
-Tema: Pix de sinal.
+## Identidade visual
+
+- Fundo escuro `#101820`.
+- Documento/papel `#FFFDF8`.
+- Dourado `#C79A43` para decisao e destaque.
+- Verde `#1F8F61` para acao/WhatsApp.
+- Vermelho `#9F2D2D` apenas para risco.
+- Usar contrato, chaves, mesa, caneta, celular, checklist, prints ilustrativos e foto real de Luis.
+- Nao usar imagem gerada fingindo ser Luis.
+
+## Rotina minima semanal
+
+- Segunda: carrossel educativo.
+- Terca: Reels curto.
+- Quarta: post unico de alerta.
+- Quinta: carrossel de erro comum.
+- Sexta: post de autoridade com foto real de Luis.
+- Sabado: Reels pratico.
+- Domingo: stories de recap e enquete.
+
+## Primeira semana
+
+### Dia 1 - Pix/sinal antes do contrato
+
+Formato: carrossel.
+
+Slides:
+
+1. `Pedirem Pix de sinal nao e o problema.`
+2. `O problema e pagar sem entender o que esta por escrito.`
+3. `Confira: quem recebe, por que recebe e se o valor abate no negocio.`
+4. `Veja o que acontece se a compra, venda ou aluguel nao seguir.`
+5. `Proposta, recibo e contrato precisam contar a mesma historia.`
+6. `Antes de transferir, envie para analise.`
+
+CTA: `Triagem no link da bio.`
+
+### Dia 2 - Contrato de aluguel
+
+Formato: Reels.
 
 Roteiro:
-"Se pediram Pix de sinal para segurar o imovel, pare por 30 segundos. Voce ja sabe para quem esta pagando? Existe proposta por escrito? O recibo diz se o valor volta ou nao? O contrato bate com o combinado? Antes de transferir, confira o risco documental."
 
-Texto na tela:
-"Pix antes do contrato? Confira antes."
+```txt
+Contrato de aluguel nao e so valor do aluguel e data de entrada.
+Antes de assinar, confira multa, caucao, vistoria, reajuste, reparos e entrega das chaves.
+Esses pontos costumam parecer pequenos no inicio, mas podem virar custo quando voce precisa sair do imovel.
+```
 
-Legenda:
-Pix de sinal pode fazer sentido em algumas negociacoes, mas nao deve acontecer no escuro. Proposta, recibo, dados das partes, condicoes e contrato precisam conversar entre si.
+CTA: `Link na bio para triagem.`
 
-CTA: "Me chame no WhatsApp ou comece a triagem."
+### Dia 3 - Pressao da imobiliaria
 
-Direcao visual: Luis falando em primeiro plano + take de mao segurando celular/contrato.
+Formato: stories.
 
-## Post 3 - Carrossel
+Story 1: `A imobiliaria pediu resposta hoje?`
+Story 2: enquete `Voce sente seguranca para responder?` opcoes `Sim` / `Tenho duvida`
+Story 3: `Antes de dizer sim, confirme valor, prazo, multa, documentos e responsabilidades.`
+Story 4: `Recebeu contrato, proposta ou print? Envie para triagem.`
 
-Tema: resposta urgente da imobiliaria.
+### Dia 4 - Promessa central
 
-Slide 1: "A imobiliaria pediu resposta hoje?"
-Slide 2: "Urgencia nao e igual a clareza."
-Slide 3: "Antes de dizer sim, confirme: valor, prazo, multa, documentos e responsabilidades."
-Slide 4: "Peca por escrito o que ainda esta confuso."
-Slide 5: "Se tiver contrato, proposta ou print, envie para analise."
+Formato: post unico.
 
-Legenda:
-Quando a negociacao pressiona, o cliente tende a aceitar condicoes sem entender o impacto. A analise ajuda a organizar o que perguntar, o que conferir e qual proximo passo tomar.
+Texto:
 
-CTA: "Fale com Luis no WhatsApp."
-
-Direcao visual: baloes de WhatsApp + contrato ao fundo, contraste preto/dourado.
-
-## Post 4 - Post unico
-
-Tema: autoridade humana.
-
-Texto principal:
-"Contrato de imovel nao deve ser lido no impulso."
+```txt
+Antes de assinar ou pagar,
+entenda o risco.
+```
 
 Subtexto:
-"Leitura organizada, comunicacao clara e pontos de atencao antes de assinar, pagar sinal ou negociar."
 
-Legenda:
-O Imovel Explicado Contratos ajuda voce a entender os principais riscos praticos do documento recebido, com atendimento humano e prazo de ate 24h apos envio completo das informacoes.
+```txt
+Analise objetiva de contrato, proposta, cobranca ou documento imobiliario.
+```
 
-CTA: "Envie seu caso pelo link da bio."
+CTA: `Analisar meu documento.`
 
-Direcao visual: foto de Luis, nome abaixo e qualificacao: "Consultor juridico e imobiliario | contratos e documentacao imobiliaria".
+### Dia 5 - Autoridade humana
 
-## Post 5 - Carrossel
+Formato: post unico com foto real de Luis.
 
-Tema: documentos que nao batem.
+Texto:
 
-Slide 1: "Contrato, proposta e recibo contam a mesma historia?"
-Slide 2: "Valor diferente? Prazo diferente? Imovel descrito de outro jeito?"
-Slide 3: "Isso pode gerar discussao depois."
-Slide 4: "Antes de assinar, organize os documentos e confira as incoerencias."
-Slide 5: "O Imovel Explicado faz essa leitura objetiva."
-
-Legenda:
-Na compra, venda ou aluguel, o risco muitas vezes nao esta em uma unica clausula. Ele aparece quando documentos, conversas, proposta e recibo nao se encaixam.
-
-CTA: "Comece pela triagem."
-
-Direcao visual: tres papeis sobrepostos com linhas conectando informacoes.
-
-## Post 6 - Reels curto
-
-Tema: caucao.
-
-Roteiro:
-"Caucao nao e so entregar dinheiro e pegar de volta no fim. O contrato precisa dizer valor, forma de pagamento, quando devolve, o que pode descontar e como sera comprovado. Se isso ficou vago, vale conferir antes de assinar."
-
-Texto na tela:
-"Caucao mal explicada vira briga na saida."
-
-Legenda:
-Caucao, vistoria e entrega do imovel costumam aparecer como problema quando o contrato foi aceito com pressa.
-
-CTA: "Envie o contrato para analise."
-
-Direcao visual: chave + recibo + selo "ponto de atencao".
-
-## Post 7 - Carrossel
-
-Tema: checklist.
-
-Slide 1: "Checklist antes de assinar"
-Slide 2: "1. Quem sao as partes?"
-Slide 3: "2. Qual imovel esta sendo negociado?"
-Slide 4: "3. Como e quando o pagamento acontece?"
-Slide 5: "4. O que acontece se alguem desistir?"
-Slide 6: "5. O que falta de documento?"
-Slide 7: "Se travou em qualquer item, envie para analise."
-
-Legenda:
-Esse checklist nao substitui uma analise do caso, mas ajuda a perceber quando o documento ainda nao esta claro o suficiente para assinar ou pagar.
-
-CTA: "Link na bio: triagem do contrato."
-
-Direcao visual: quadro/checklist com fundo creme e marcacoes douradas.
-
-## Post 8 - Post unico
-
-Tema: promessa central.
-
-Texto principal:
-"Antes de assinar ou pagar, entenda o risco."
+```txt
+Contrato de imovel nao deve ser lido no impulso.
+```
 
 Subtexto:
-"Analise objetiva de contrato, proposta, cobranca ou documento imobiliario em ate 24h."
 
-Legenda:
-Recebeu um contrato de aluguel, proposta de compra, pedido de Pix, cobranca, recibo ou documento confuso? O Imovel Explicado organiza seu caso e aponta os principais pontos de atencao.
+```txt
+Leitura organizada por Luis Carlos
+Consultor juridico e imobiliario
+```
 
-CTA: "WhatsApp ou triagem no link da bio."
+CTA: `Triagem no link da bio.`
 
-Direcao visual: fundo de mesa com contrato e chave, logo no canto, botao verde "falar agora".
+### Dia 6 - Checklist antes de assinar
 
-## Post 9 - Carrossel
+Formato: carrossel.
 
-Tema: o que voce recebe.
+Slides:
 
-Slide 1: "O que voce recebe na analise?"
-Slide 2: "Principais pontos de atencao"
-Slide 3: "O que precisa ser confirmado"
-Slide 4: "Perguntas objetivas para a outra parte"
-Slide 5: "Proximo passo claro para decidir"
-Slide 6: "Comece pela triagem."
+1. `Checklist antes de assinar`
+2. `1. Quem sao as partes?`
+3. `2. Qual imovel esta sendo negociado?`
+4. `3. Como e quando o pagamento acontece?`
+5. `4. O que acontece se alguem desistir?`
+6. `5. O que falta confirmar?`
+7. `Se travou em qualquer item, envie para analise.`
 
-Legenda:
-A proposta nao e assustar o cliente, e dar clareza. Voce entende onde esta pisando antes de seguir com a negociacao.
+### Dia 7 - Recap com CTA
 
-CTA: "Enviar documento para analise."
+Formato: stories.
 
-Direcao visual: mockup de relatorio com blocos "risco", "confirmar", "proximo passo".
+Story 1: `Resumo da semana: contrato, Pix, caucao, proposta e recibo precisam estar claros.`
+Story 2: quiz `Qual ponto mais gera problema no aluguel?` opcoes `Multa`, `Caucao`, `Vistoria`, `Todos`
+Story 3: `Se voce recebeu documento essa semana, comece pela triagem.`
 
-## Post 10 - Reels curto
+## Respostas rapidas para DM
 
-Tema: para clientes mais velhos / clareza.
+### Quanto custa?
 
-Roteiro:
-"Se voce nao entendeu uma clausula, a culpa nao e sua. Muitos contratos usam linguagem que parece simples, mas esconde consequencias importantes. Antes de assinar, pagar ou entregar documentos, peca uma leitura clara dos pontos de atencao."
+```txt
+Hoje temos planos a partir de R$ 97,00 para uma leitura objetiva dos pontos de atencao do contrato ou documento.
 
-Texto na tela:
-"Contrato claro antes da decisao."
+O melhor caminho e voce comecar pela triagem, porque ela organiza o tipo de caso, prazo e documento antes de escolher o plano.
 
-Legenda:
-O cliente nao precisa virar especialista. Ele precisa entender o suficiente para nao decidir no escuro.
+Link: https://contratos.imovelexplicado.com.br/contratos?utm_source=instagram&utm_medium=dm&utm_campaign=organic_dm&utm_content=preco
+```
 
-CTA: "Fale com Luis no WhatsApp."
+### Posso mandar o contrato?
 
-Direcao visual: Luis + contrato com marcador, tipografia maior e contraste alto.
+```txt
+Pode sim. Comece pela triagem para eu entender o tipo de documento, prazo e objetivo da analise.
 
-## Post 11 - Story sequencial
+Depois voce envia o arquivo ou prints conforme o caso.
 
-Story 1: "Voce recebeu contrato ou proposta de imovel?"
-Story 2: enquete: "Esta claro?" opcoes "Sim" / "Tenho duvida"
-Story 3: "Pontos que costumam gerar risco: multa, prazo, caucao, Pix, documentos e entrega."
-Story 4: "Quer que eu leia os pontos de atencao? WhatsApp no link."
-
-## Post 12 - Story de captura
-
-Story 1: "Me mande uma palavra no WhatsApp: CONTRATO"
-Story 2: "Eu te digo o melhor caminho: triagem, analise expressa ou mensagem pronta."
-Story 3: "Atendimento humano por Luis Carlos."
-
-## Ordem recomendada para 7 dias
-
-Dia 1: Post 8 + story de captura.
-Dia 2: Post 1.
-Dia 3: Reels Post 2.
-Dia 4: Post 3.
-Dia 5: Post 4 com foto de Luis.
-Dia 6: Post 7.
-Dia 7: Post 9 + story com enquete.
+Link: https://contratos.imovelexplicado.com.br/contratos?utm_source=instagram&utm_medium=dm&utm_campaign=organic_dm&utm_content=enviar_contrato
+```
 
