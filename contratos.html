@@ -148,17 +148,38 @@
       }
 
       .hero {
+        position: relative;
+        isolation: isolate;
         display: grid;
         grid-template-columns: minmax(0, 1.05fr) minmax(320px, 0.95fr);
         gap: clamp(28px, 5vw, 72px);
         align-items: center;
         min-height: calc(100svh - 72px);
         padding: clamp(40px, 8vw, 86px) clamp(18px, 5vw, 56px);
+        overflow: hidden;
+        background:
+          linear-gradient(90deg, rgba(16, 24, 32, 0.9) 0%, rgba(16, 24, 32, 0.78) 42%, rgba(16, 24, 32, 0.38) 100%),
+          url("/assets/hero-real-estate-keys.jpg") center / cover no-repeat;
+        color: #ffffff;
+      }
+
+      .hero::after {
+        position: absolute;
+        inset: auto 0 0;
+        z-index: -1;
+        height: 34%;
+        background: linear-gradient(0deg, rgba(16, 24, 32, 0.58), rgba(16, 24, 32, 0));
+        content: "";
+      }
+
+      .hero > * {
+        position: relative;
+        z-index: 1;
       }
 
       .eyebrow {
         margin: 0 0 16px;
-        color: var(--green);
+        color: #f1c46a;
         font-size: 13px;
         font-weight: 850;
         text-transform: uppercase;
@@ -172,12 +193,35 @@
         letter-spacing: 0;
       }
 
+      .hero h1 {
+        max-width: 700px;
+        font-size: clamp(34px, 5vw, 58px);
+        line-height: 1.02;
+      }
+
       .subheadline {
         max-width: 680px;
         margin: 24px 0 0;
-        color: #364453;
+        color: rgba(255, 255, 255, 0.86);
         font-size: clamp(18px, 2vw, 22px);
         line-height: 1.48;
+      }
+
+      .decision-strip {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-top: 22px;
+      }
+
+      .decision-strip span {
+        border: 1px solid rgba(255, 255, 255, 0.28);
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.12);
+        padding: 8px 11px;
+        color: rgba(255, 255, 255, 0.9);
+        font-size: 13px;
+        font-weight: 800;
       }
 
       .hero-actions {
@@ -197,16 +241,27 @@
       }
 
       .trust-list li {
-        border-top: 1px solid var(--line);
+        border-top: 1px solid rgba(255, 255, 255, 0.24);
         padding-top: 12px;
-        color: var(--muted);
+        color: rgba(255, 255, 255, 0.78);
         font-size: 14px;
       }
 
+      .hero .button-primary {
+        background: #ffffff;
+        color: var(--ink);
+      }
+
+      .hero .button-secondary {
+        border-color: rgba(255, 255, 255, 0.34);
+        background: rgba(255, 255, 255, 0.12);
+        color: #ffffff;
+      }
+
       .analysis-board {
-        border: 1px solid var(--line);
+        border: 1px solid rgba(255, 255, 255, 0.24);
         border-radius: 8px;
-        background: var(--surface);
+        background: rgba(255, 255, 255, 0.96);
         box-shadow: 0 28px 70px rgba(16, 24, 32, 0.12);
         overflow: hidden;
       }
@@ -220,8 +275,9 @@
         border: 1px solid var(--line);
         border-radius: 8px;
         padding: 12px;
-        background: #ffffff;
+        background: rgba(255, 255, 255, 0.95);
         box-shadow: 0 16px 38px rgba(16, 24, 32, 0.1);
+        color: var(--ink);
       }
 
       .advisor-proof img {
@@ -473,6 +529,9 @@
         .hero {
           grid-template-columns: 1fr;
           min-height: auto;
+          background:
+            linear-gradient(180deg, rgba(16, 24, 32, 0.92) 0%, rgba(16, 24, 32, 0.78) 58%, rgba(16, 24, 32, 0.92) 100%),
+            url("/assets/hero-real-estate-keys.jpg") 52% center / cover no-repeat;
         }
 
         .trust-list {
@@ -520,20 +579,26 @@
 
     <main id="topo" class="hero">
       <section>
-        <p class="eyebrow">Para quem recebeu contrato, proposta, cobran&ccedil;a ou pedido de Pix</p>
-        <h1>Vai assinar, pagar sinal ou responder hoje? Envie o documento e receba uma an&aacute;lise objetiva antes de avan&ccedil;ar.</h1>
+        <p class="eyebrow">Contrato, proposta, cau&ccedil;&atilde;o ou pedido de Pix</p>
+        <h1>Antes de assinar ou pagar sinal, entenda os riscos do contrato.</h1>
         <p class="subheadline">
-          Uma triagem curta organiza o caso. Depois voc&ecirc; envia contrato, proposta, cobran&ccedil;a ou print e recebe os principais pontos de aten&ccedil;&atilde;o em at&eacute; 24 horas ap&oacute;s dados completos e pagamento confirmado.
+          Envie contrato, proposta, cobran&ccedil;a ou print da negocia&ccedil;&atilde;o e receba uma leitura clara dos principais pontos de aten&ccedil;&atilde;o em at&eacute; 24 horas ap&oacute;s dados completos e pagamento confirmado.
         </p>
+        <div class="decision-strip" aria-label="Situacoes comuns">
+          <span>Compra e venda</span>
+          <span>Aluguel</span>
+          <span>Contrato antes de assinar</span>
+          <span>Pix ou sinal</span>
+        </div>
         <div class="hero-actions">
-          <a class="button button-primary js-triage-link" href="https://imovel-explicado-contratos.onrender.com/triagem">Enviar documento para an&aacute;lise</a>
-          <a class="button button-whatsapp js-whatsapp-link" href="https://wa.me/5511964492988">Falar com Luis no WhatsApp</a>
+          <a class="button button-primary js-triage-link" href="https://imovel-explicado-contratos.onrender.com/triagem">Analisar meu documento</a>
+          <a class="button button-whatsapp js-whatsapp-link" href="https://wa.me/5511964492988">Falar no WhatsApp</a>
           <a class="button button-secondary" href="#como-funciona">Ver como funciona</a>
         </div>
         <ul class="trust-list" aria-label="Pontos de confianca">
-          <li>Atendimento humano e organizado</li>
-          <li>Planos a partir de R$ 97</li>
-          <li>WhatsApp direto para d&uacute;vidas e casos urgentes</li>
+          <li>Atendimento humano, sem resposta autom&aacute;tica gen&eacute;rica</li>
+          <li>Planos a partir de R$ 97 para casos objetivos</li>
+          <li>WhatsApp direto se voc&ecirc; precisa explicar o contexto</li>
         </ul>
       </section>
 
