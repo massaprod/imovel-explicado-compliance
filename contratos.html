@@ -224,6 +224,25 @@
         font-weight: 800;
       }
 
+      .urgency-panel {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 10px;
+        max-width: 720px;
+        margin-top: 20px;
+      }
+
+      .urgency-panel span {
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        border-radius: 8px;
+        background: rgba(16, 24, 32, 0.32);
+        padding: 12px;
+        color: rgba(255, 255, 255, 0.88);
+        font-size: 14px;
+        font-weight: 800;
+        line-height: 1.3;
+      }
+
       .hero-actions {
         display: flex;
         flex-wrap: wrap;
@@ -341,6 +360,33 @@
         display: grid;
         gap: 1px;
         background: var(--line);
+      }
+
+      .fast-risk-card {
+        display: grid;
+        gap: 12px;
+        padding: 18px;
+        border-bottom: 1px solid var(--line);
+        background: #fffdf8;
+      }
+
+      .fast-risk-card strong {
+        color: var(--red);
+        font-size: 15px;
+        text-transform: uppercase;
+      }
+
+      .fast-risk-card span {
+        color: var(--ink);
+        font-size: 17px;
+        font-weight: 900;
+        line-height: 1.25;
+      }
+
+      .fast-risk-card p {
+        margin: 0;
+        color: var(--muted);
+        line-height: 1.45;
       }
 
       .check-row {
@@ -534,7 +580,8 @@
             url("/assets/hero-real-estate-keys.jpg") 52% center / cover no-repeat;
         }
 
-        .trust-list {
+        .trust-list,
+        .urgency-panel {
           grid-template-columns: 1fr;
         }
 
@@ -579,26 +626,31 @@
 
     <main id="topo" class="hero">
       <section>
-        <p class="eyebrow">Contrato, proposta, cau&ccedil;&atilde;o ou pedido de Pix</p>
-        <h1>Antes de assinar ou pagar sinal, entenda os riscos do contrato.</h1>
+        <p class="eyebrow">Pix, sinal, contrato ou proposta de im&oacute;vel</p>
+        <h1>N&atilde;o pague sinal nem assine no escuro.</h1>
         <p class="subheadline">
-          Envie contrato, proposta, cobran&ccedil;a ou print da negocia&ccedil;&atilde;o e receba uma leitura clara dos principais pontos de aten&ccedil;&atilde;o em at&eacute; 24 horas ap&oacute;s dados completos e pagamento confirmado.
+          Envie contrato, proposta, recibo ou print da negocia&ccedil;&atilde;o e confira os principais pontos de aten&ccedil;&atilde;o antes de transferir Pix, responder sob press&atilde;o ou assumir compromisso.
         </p>
         <div class="decision-strip" aria-label="Situacoes comuns">
-          <span>Compra e venda</span>
-          <span>Aluguel</span>
-          <span>Contrato antes de assinar</span>
-          <span>Pix ou sinal</span>
+          <span>Quem recebe o Pix?</span>
+          <span>O recibo bate com o contrato?</span>
+          <span>Existe condi&ccedil;&atilde;o de devolu&ccedil;&atilde;o?</span>
+          <span>Multa, prazo e cau&ccedil;&atilde;o fazem sentido?</span>
+        </div>
+        <div class="urgency-panel" aria-label="Sinais de urgencia">
+          <span>Pediram resposta hoje?</span>
+          <span>Vai pagar sinal ou entrada?</span>
+          <span>Contrato chegou pronto para assinar?</span>
         </div>
         <div class="hero-actions">
-          <a class="button button-primary js-triage-link" href="https://imovel-explicado-contratos.onrender.com/triagem">Analisar meu documento</a>
+          <a class="button button-primary js-triage-link" href="https://imovel-explicado-contratos.onrender.com/triagem">Conferir antes de pagar</a>
           <a class="button button-whatsapp js-whatsapp-link" href="https://wa.me/5511964492988">Falar no WhatsApp</a>
           <a class="button button-secondary" href="#como-funciona">Ver como funciona</a>
         </div>
         <ul class="trust-list" aria-label="Pontos de confianca">
-          <li>Atendimento humano, sem resposta autom&aacute;tica gen&eacute;rica</li>
-          <li>Planos a partir de R$ 97 para casos objetivos</li>
-          <li>WhatsApp direto se voc&ecirc; precisa explicar o contexto</li>
+          <li>Triagem inicial sem pagamento</li>
+          <li>Atendimento humano por Luis Carlos</li>
+          <li>Planos a partir de R$ 97 se fizer sentido avan&ccedil;ar</li>
         </ul>
       </section>
 
@@ -619,6 +671,11 @@
               <span>Contrato, negocia&ccedil;&atilde;o ou documento imobili&aacute;rio</span>
             </div>
             <span class="status-pill">At&eacute; 24h</span>
+          </div>
+          <div class="fast-risk-card">
+            <strong>Antes do Pix ou assinatura</strong>
+            <span>Confira quem recebe, o que est&aacute; escrito e o que acontece se o neg&oacute;cio n&atilde;o seguir.</span>
+            <p>O objetivo &eacute; apontar riscos pr&aacute;ticos antes de voc&ecirc; se comprometer com multa, sinal, cau&ccedil;&atilde;o, prazo ou cobran&ccedil;a.</p>
           </div>
           <div class="checklist">
             <div class="check-row">
@@ -650,9 +707,9 @@
     <section class="section">
       <div class="section-grid">
         <div>
-          <h2>A d&uacute;vida aparece na hora em que algu&eacute;m pressiona voc&ecirc; a decidir.</h2>
+          <h2>Se voc&ecirc; est&aacute; prestes a pagar, assinar ou responder, este &eacute; o momento de conferir.</h2>
           <p>
-            O an&uacute;ncio trouxe voc&ecirc; at&eacute; aqui porque existe um risco pr&aacute;tico: assinar, pagar ou responder antes de entender as consequ&ecirc;ncias. A an&aacute;lise existe para transformar essa pressa em uma decis&atilde;o mais clara.
+            A maioria dos problemas aparece depois que o valor j&aacute; foi transferido ou o contrato j&aacute; foi aceito. A an&aacute;lise organiza o caso antes desse passo, para voc&ecirc; enxergar multa, prazo, cau&ccedil;&atilde;o, cobran&ccedil;a e responsabilidades com mais clareza.
           </p>
         </div>
         <div class="risk-moments">
