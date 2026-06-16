@@ -1477,98 +1477,20 @@
     </div>
 
     <script>
+      window.ImovelExplicadoConfig = {
+        page: "contrato-compra-venda-imovel",
+        defaultSource: "google",
+        defaultMedium: "cpc",
+        defaultCampaign: "gs_compra_venda_contrato_202606",
+        defaultContent: "landing_compra_venda",
+        pageViewEvent: "view_google_contract_landing",
+        metaPixelId: "998092116298334",
+        metaPixelDelay: 6500
+      };
+    </script>
+    <script src="/assets/imovel-tracking.js"></script>
+    <script>
       (() => {
-        const phone = "5511964492988";
-        const analyticsEndpoint = "https://imovel-explicado-contratos.onrender.com/api/analytics/event";
-        const params = new URLSearchParams(window.location.search);
-        const visitorId = localStorage.getItem("visitorId") || (crypto.randomUUID ? crypto.randomUUID() : `${Date.now()}-${Math.random().toString(36).slice(2)}`);
-        const sessionId = sessionStorage.getItem("visitorSessionId") || (crypto.randomUUID ? crypto.randomUUID() : `${Date.now()}-${Math.random().toString(36).slice(2)}`);
-        localStorage.setItem("visitorId", visitorId);
-        sessionStorage.setItem("visitorSessionId", sessionId);
-        const campaign = params.get("utm_campaign") || "google_compra_venda_20260616";
-        const basePayload = {
-          visitorId,
-          sessionId,
-          page: "contrato-compra-venda-imovel",
-          url: window.location.href,
-          referrer: document.referrer || undefined,
-          utmSource: params.get("utm_source") || "direct",
-          utmMedium: params.get("utm_medium") || undefined,
-          utmCampaign: campaign,
-          utmContent: params.get("utm_content") || undefined,
-          utmTerm: params.get("utm_term") || undefined
-        };
-        const fired = new Set();
-
-        const trackEvent = (eventName, metadata = {}, options = {}) => {
-          const dedupeKey = `${eventName}:${JSON.stringify(metadata)}`;
-          if (options.once && fired.has(dedupeKey)) return;
-          if (options.once) fired.add(dedupeKey);
-          const payload = {
-            ...basePayload,
-            eventName,
-            metadata: {
-              ...metadata,
-              viewport: `${window.innerWidth}x${window.innerHeight}`
-            },
-            timestamp: new Date().toISOString()
-          };
-          if (window.fbq) {
-            window.fbq("trackCustom", eventName, payload.metadata);
-          }
-          fetch(analyticsEndpoint, {
-            method: "POST",
-            mode: "cors",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(payload),
-            keepalive: true
-          }).catch(() => {});
-        };
-
-        const loadMetaPixel = () => {
-          if (window.fbq) return;
-          !(function (f, b, e, v, n, t, s) {
-            if (f.fbq) return;
-            n = f.fbq = function () { n.callMethod ? n.callMethod.apply(n, arguments) : n.queue.push(arguments); };
-            if (!f._fbq) f._fbq = n;
-            n.push = n;
-            n.loaded = true;
-            n.version = "2.0";
-            n.queue = [];
-            t = b.createElement(e);
-            t.async = true;
-            t.src = v;
-            s = b.getElementsByTagName(e)[0];
-            s.parentNode.insertBefore(t, s);
-          })(window, document, "script", "https://connect.facebook.net/en_US/fbevents.js");
-          fbq("init", "998092116298334");
-          fbq("track", "PageView");
-        };
-
-        const whatsappUrl = (message) => `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
-
-        document.querySelectorAll(".js-whatsapp").forEach((link) => {
-          const message = link.dataset.message || "Ola, Luis. Quero fazer uma triagem sobre contrato de imovel.";
-          link.href = whatsappUrl(message);
-          link.addEventListener("click", () => {
-            trackEvent(link.dataset.event || "click_whatsapp", {
-              service: link.dataset.service || undefined,
-              value: link.dataset.value ? Number(link.dataset.value) : undefined,
-              source: "google_contract_landing"
-            });
-          });
-        });
-
-        document.querySelectorAll("[data-track]").forEach((node) => {
-          node.addEventListener("click", () => trackEvent(node.dataset.track, { source: "google_contract_landing" }));
-        });
-
-        document.querySelectorAll("details").forEach((item) => {
-          item.addEventListener("toggle", () => {
-            if (item.open) trackEvent("faq_open", { question: item.querySelector("summary")?.textContent?.trim(), source: "google_contract_landing" }, { once: true });
-          });
-        });
-
         const form = document.getElementById("triagemForm");
         const success = document.getElementById("formSuccess");
         const fallbackWhatsApp = document.getElementById("fallbackWhatsApp");
@@ -1586,41 +1508,18 @@
             `Resumo: ${data.get("mensagem")}`
           ].join("\n");
 
-          trackEvent("submit_triagem_google_contract", {
+          window.ImovelExplicado.trackEvent("submit_triagem_google_contract", {
             perfil: data.get("perfil"),
             situacao: data.get("situacao"),
             urgencia: data.get("urgencia"),
-            documentos: data.get("documentos")
-          });
+            documentos: data.get("documentos"),
+            source: "google_contract_landing"
+          }, { preferBeacon: false });
           success?.classList.add("is-visible");
-          const triagemUrl = whatsappUrl(resumo);
+          const triagemUrl = window.ImovelExplicado.createWhatsAppLink(resumo, "google_contract_landing", "gs_compra_venda_contrato_202606", "triagem_compra_venda");
           if (fallbackWhatsApp) fallbackWhatsApp.href = triagemUrl;
           window.open(triagemUrl, "_blank", "noopener,noreferrer");
         });
-
-        let scroll50 = false;
-        let scroll90 = false;
-        window.addEventListener("scroll", () => {
-          const max = document.documentElement.scrollHeight - window.innerHeight;
-          if (max <= 0) return;
-          const progress = window.scrollY / max;
-          if (!scroll50 && progress >= 0.5) {
-            scroll50 = true;
-            trackEvent("scroll_50_google_contract", { source: "google_contract_landing" }, { once: true });
-          }
-          if (!scroll90 && progress >= 0.9) {
-            scroll90 = true;
-            trackEvent("scroll_90_google_contract", { source: "google_contract_landing" }, { once: true });
-          }
-        }, { passive: true });
-
-        trackEvent("view_google_contract_landing", { source: "google_contract_landing" }, { once: true });
-        const scheduleMetaPixel = () => setTimeout(loadMetaPixel, 6500);
-        if ("requestIdleCallback" in window) {
-          requestIdleCallback(scheduleMetaPixel, { timeout: 3500 });
-        } else {
-          window.addEventListener("load", scheduleMetaPixel, { once: true });
-        }
       })();
     </script>
   </body>

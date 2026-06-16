@@ -408,46 +408,18 @@
     </footer>
 
     <script>
+      window.ImovelExplicadoConfig = {
+        page: "triagem",
+        defaultSource: "site",
+        defaultMedium: "organic",
+        defaultCampaign: "triagem_imovel_explicado",
+        defaultContent: "triagem",
+        pageViewEvent: "view_triagem"
+      };
+    </script>
+    <script src="/assets/imovel-tracking.js"></script>
+    <script>
       (() => {
-        const analyticsEndpoint = "https://imovel-explicado-contratos.onrender.com/api/analytics/event";
-        const params = new URLSearchParams(window.location.search);
-        const visitorId = localStorage.getItem("visitorId") || (crypto.randomUUID ? crypto.randomUUID() : `${Date.now()}-${Math.random().toString(36).slice(2)}`);
-        const sessionId = sessionStorage.getItem("visitorSessionId") || (crypto.randomUUID ? crypto.randomUUID() : `${Date.now()}-${Math.random().toString(36).slice(2)}`);
-        localStorage.setItem("visitorId", visitorId);
-        sessionStorage.setItem("visitorSessionId", sessionId);
-        const attribution = {
-          utmSource: params.get("utm_source") || "site",
-          utmMedium: params.get("utm_medium") || "organic",
-          utmCampaign: params.get("utm_campaign") || "triagem_aluguel_direto",
-          utmContent: params.get("utm_content") || "triagem",
-          utmTerm: params.get("utm_term") || undefined,
-        };
-        const pushEvent = (name, metadata = {}) => {
-          window.dataLayer = window.dataLayer || [];
-          window.dataLayer.push({ event: name, ...metadata });
-          if (window.gtag) window.gtag("event", name, metadata);
-          if (window.fbq) window.fbq("trackCustom", name, metadata);
-          const body = JSON.stringify({
-            visitorId,
-            sessionId,
-            eventName: name,
-            path: window.location.pathname || "/triagem",
-            referrer: document.referrer,
-            ...attribution,
-            metadata: { ...metadata, trackingVersion: "triagem_site_20260615" },
-          });
-          fetch(analyticsEndpoint, { method: "POST", mode: "cors", headers: { "Content-Type": "application/json" }, body, keepalive: true }).catch(() => {});
-        };
-        const waUrl = (message) => {
-          const url = new URL("https://wa.me/5511964492988");
-          url.searchParams.set("text", message);
-          return url.toString();
-        };
-        document.querySelectorAll(".js-whatsapp-link").forEach((link) => {
-          const message = "Ola, Luis. Vim pela triagem do Imovel Explicado e quero tirar uma duvida.";
-          link.href = waUrl(message);
-          link.addEventListener("click", () => pushEvent("click_whatsapp_header", { source: "triagem_header" }));
-        });
         const form = document.getElementById("triagem-form");
         const error = document.getElementById("form-error");
         const confirmation = document.getElementById("confirmation");
@@ -459,24 +431,10 @@
           if (!form.checkValidity()) {
             error.classList.add("visible");
             form.reportValidity();
+            window.ImovelExplicado.trackEvent("triagem_validation_error", { source: "triagem_form" }, { preferBeacon: false });
             return;
           }
           const data = Object.fromEntries(new FormData(form).entries());
-          /*
-          const summary = [
-            "Ol&aacute;, Luis. Fiz a triagem do Im&oacute;vel Explicado.",
-            `Nome: ${data.nome}`,
-            `WhatsApp: ${data.whatsapp}`,
-            `Perfil: ${data.perfil}`,
-            `Situa&ccedil;&atilde;o: ${data.situacao}`,
-            `Tipo de im&oacute;vel: ${data.tipo}`,
-            `Urg&ecirc;ncia: ${data.urgencia}`,
-            `Mensagem: ${data.mensagem || "n&atilde;o informada"}`,
-            "Entendo que a triagem n&atilde;o substitui provid&ecirc;ncias espec&iacute;ficas que exijam profissional habilitado.",
-          ].join("\n");
-          summaryEl.innerHTML = summary.replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;");
-          send.href = waUrl(summary.replace(/&ccedil;/g, "ç").replace(/&atilde;/g, "ã").replace(/&eacute;/g, "é").replace(/&oacute;/g, "ó").replace(/&ecirc;/g, "ê").replace(/&iacute;/g, "í").replace(/&uacute;/g, "ú").replace(/&aacute;/g, "á"));
-          */
           const cleanSummary = [
             "Ola, Luis. Fiz a triagem do Imovel Explicado.",
             `Nome: ${data.nome}`,
@@ -489,17 +447,17 @@
             "Entendo que a triagem nao substitui providencias especificas que exijam profissional habilitado.",
           ].join("\n");
           summaryEl.textContent = cleanSummary;
-          send.href = waUrl(cleanSummary);
+          send.href = window.ImovelExplicado.createWhatsAppLink(cleanSummary, "triagem_form", "triagem_imovel_explicado", data.situacao);
           confirmation.classList.add("visible");
-          pushEvent("submit_triagem", {
+          window.ImovelExplicado.trackEvent("submit_triagem", {
             perfil: data.perfil,
             situacao: data.situacao,
             urgencia: data.urgencia,
-          });
+            tipo: data.tipo,
+          }, { preferBeacon: false });
           confirmation.scrollIntoView({ behavior: "smooth", block: "start" });
         });
-        send.addEventListener("click", () => pushEvent("click_whatsapp_hero", { source: "triagem_summary" }));
-        pushEvent("page_view", { source: "triagem" });
+        send.addEventListener("click", () => window.ImovelExplicado.trackEvent("click_whatsapp_triagem_summary", { source: "triagem_summary" }, { preferBeacon: false }));
       })();
     </script>
   </body>

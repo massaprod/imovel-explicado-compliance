@@ -105,7 +105,7 @@ No codigo, o `www` ja esta preparado para redirecionar para o dominio raiz e `co
 - Projeto publicado como `imovel-explicado-contratos`.
 - URL principal provisoria: `https://imovel-explicado-contratos.pages.dev/`.
 - Landing validada com HTTP 200.
-- CTAs da landing apontam para `https://imovel-explicado-contratos.onrender.com/triagem`.
+- CTAs publicos devem apontar para rotas do dominio principal, como `/triagem`; o dominio `onrender.com` fica reservado a endpoints tecnicos e API.
 - Pagina de exclusao de dados validada em `https://imovel-explicado-contratos.pages.dev/exclusao-dados`.
 
 ## Depois do deploy

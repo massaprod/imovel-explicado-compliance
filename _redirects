@@ -2,5 +2,11 @@ https://contratos.imovelexplicado.com.br/ /contratos 302
 /contrato-compra-venda /contrato-compra-venda-imovel 302
 /contrato-imobiliario /contrato-compra-venda-imovel 302
 /analise-contrato-imovel /contrato-compra-venda-imovel 302
+/verificacao-sinal-imovel /contrato-compra-venda-imovel#servicos 302
+/promessa-compra-venda-imovel /contrato-compra-venda-imovel#servicos 302
+/imovel-sem-escritura /contrato-compra-venda-imovel#perfil 302
+/obrigado-triagem /obrigado-triagem.html 200
+/triagem/compra-venda /triagem 302
+/triagem/sinal /triagem 302
 /triagem/aluguel-direto /triagem 302
 /triagem-aluguel-direto /triagem 302
