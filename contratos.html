@@ -919,10 +919,6 @@
             body,
             keepalive: true,
           }).catch(() => {});
-          if (options.preferBeacon && navigator.sendBeacon) {
-            const queued = navigator.sendBeacon(analyticsEndpoint, new Blob([body], { type: "application/json" }));
-            if (queued) return Promise.resolve();
-          }
           return sendWithFetch();
         };
         const updateScroll = () => {
