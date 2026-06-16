@@ -8,6 +8,8 @@ Google Search deve ser o canal principal para captar demanda fria de alta intenc
 
 Motivo: a oferta resolve uma necessidade contextual, normalmente acionada por urgencia: assinar contrato, pagar caucao, enviar sinal, negociar direto com proprietario, revisar proposta ou entender responsabilidade antes de fechar. Isso e mais proximo de busca ativa do que desejo espontaneo.
 
+Atualizacao de ICP: o inquilino nao deve ser o publico primario de aquisicao paga. O foco comercial passa a ser proprietario que quer alugar sem imobiliaria e corretor autonomo que precisa de apoio documental para fechar negocios com mais agilidade e profissionalismo.
+
 ## Onde Meta continua util
 
 - Remarketing de visitantes da landing.
@@ -20,25 +22,7 @@ Meta nao deve ser o primeiro canal a receber verba relevante enquanto o produto 
 
 ## Cliente ideal prioritario
 
-### ICP 1 - Inquilino em negociacao direta
-
-Pessoa de 25 a 55 anos, vai alugar imovel direto com proprietario ou recebeu contrato de locacao e sente inseguranca sobre caucao, multa, vistoria, prazo, reajuste, reparos e entrega das chaves.
-
-Dor principal: medo de assinar ou pagar sem entender o que esta assumindo.
-
-Busca provavel:
-
-- contrato de aluguel direto com proprietario
-- revisar contrato de aluguel
-- analisar contrato de aluguel
-- caucao aluguel contrato
-- vistoria antes de alugar imovel
-
-Oferta ideal: diagnostico rapido antes de assinar ou pagar.
-
-Pagina ideal: `/aluguel-direto`.
-
-### ICP 2 - Proprietario que vai alugar sem imobiliaria
+### ICP 1 - Proprietario que vai alugar sem imobiliaria
 
 Pessoa de 35 a 70 anos, tem um imovel e quer alugar sem intermediario. Precisa reduzir risco de inadimplencia, organizar contrato, caucao, vistoria, entrega de chaves e comprovantes.
 
@@ -55,6 +39,24 @@ Busca provavel:
 Oferta ideal: organizacao documental do aluguel direto.
 
 Pagina ideal: `/aluguel-direto`, com bloco especifico para proprietarios.
+
+### ICP 2 - Corretor autonomo
+
+Corretor ou consultor imobiliario que precisa ganhar tempo, reduzir retrabalho documental e entregar mais seguranca percebida ao cliente final.
+
+Dor principal: perder venda ou reputacao porque contrato, documentos, checklist e pendencias travam o fechamento.
+
+Busca provavel:
+
+- contrato para corretor de imoveis
+- contrato imobiliario para corretor
+- apoio documental corretor de imoveis
+- elaboracao contrato imobiliario
+- servico contrato aluguel corretor
+
+Oferta ideal: apoio documental sob demanda ou pacote recorrente para fechamento imobiliario.
+
+Pagina ideal futura: `/corretor` ou `/corretor-parceiro`.
 
 ### ICP 3 - Comprador antes de pagar sinal
 
@@ -92,7 +94,9 @@ Pagina ideal futura: `/analise-contrato-imovel`.
 
 ## Prioridade para verba curta
 
-Comecar pelo ICP 1 e ICP 2 em uma campanha unica de Search, com foco em aluguel direto.
+Comecar pelo proprietario em uma campanha unica de Search, com foco em aluguel sem imobiliaria.
+
+Corretor deve ter campanha e pagina separadas. Nao misturar corretor e proprietario no mesmo anuncio principal.
 
 Nao iniciar ainda campanha ampla de "contrato imobiliario" se o orcamento for baixo, porque atrai buscas informacionais, estudantes, modelos gratis e pessoas sem urgencia de compra.
 
@@ -240,4 +244,3 @@ Se houver R$ 300 a R$ 500:
 
 - Adicionar `proprietario_sem_imobiliaria`.
 - Testar uma segunda landing futura para compra/sinal somente se houver volume especifico.
-
