@@ -1,0 +1,33 @@
+Negative keyword,Match type,Reason
+gratis,Phrase,Evitar busca por modelo gratuito
+gratuito,Phrase,Evitar baixa intencao de compra
+modelo,Phrase,Evitar download de template
+download,Phrase,Evitar busca por arquivo
+pdf,Phrase,Evitar busca por modelo
+word,Phrase,Evitar busca por modelo editavel
+doc,Phrase,Evitar busca por arquivo editavel
+exemplo,Phrase,Evitar pesquisa informacional
+simples,Phrase,Evitar template basico
+pronto,Phrase,Evitar modelo pronto
+imprimir,Phrase,Evitar documento gratuito
+jusbrasil,Phrase,Evitar pesquisa juridica informacional
+lei,Phrase,Evitar lei seca
+jurisprudencia,Phrase,Evitar pesquisa academica/juridica
+tcc,Phrase,Evitar estudantes
+faculdade,Phrase,Evitar estudantes
+curso,Phrase,Evitar cursos
+vaga,Phrase,Evitar emprego
+emprego,Phrase,Evitar emprego
+salario,Phrase,Evitar emprego
+corretor de imoveis,Phrase,Evitar publico profissional fora da oferta atual
+creci,Phrase,Evitar busca regulatoria/profissional
+imobiliaria perto de mim,Phrase,Evitar busca por imobiliaria
+financiamento,Phrase,Evitar topico amplo fora do MVP
+caixa economica,Phrase,Evitar financiamento bancario
+segunda via,Phrase,Evitar documentos administrativos
+cartorio,Phrase,Evitar busca por servico cartorial
+registro de imoveis,Phrase,Evitar etapa cartorial
+defensoria,Phrase,Evitar busca por atendimento gratuito
+procon,Phrase,Evitar reclamacao/pos-problema
+advogado gratuito,Phrase,Evitar busca por gratuidade
+
