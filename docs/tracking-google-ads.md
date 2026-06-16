@@ -28,6 +28,20 @@ Paginas ja usando o helper compartilhado:
 /obrigado-triagem
 ```
 
+GTM instalado nas paginas criticas:
+
+```txt
+GTM-TX2GTPFL
+```
+
+Status em 2026-06-16:
+
+- GTM criado em conta separada `Imovel Explicado` / container `imovelexplicado.com.br`.
+- GTM publicado no HTML das paginas `/contrato-compra-venda-imovel`, `/triagem` e `/obrigado-triagem`.
+- Producao confirmada servindo `GTM-TX2GTPFL` nas tres paginas.
+- Google Ads impediu a criacao/edicao de conversoes com o aviso: `Sua conta foi suspensa. Por isso, nao e possivel realizar determinadas acoes.`
+- Antes de colocar verba, resolver a suspensao/verificacao da conta Google Ads e entao criar as conversoes abaixo.
+
 O helper cria:
 
 - `window.ImovelExplicado.createWhatsAppLink(message, source, campaign, service)`
@@ -167,13 +181,40 @@ No Google Ads:
 6. Se usar Google tag direta, configure eventos equivalentes pelo `gtag`.
 7. Marque como primaria apenas as conversoes que devem orientar lance.
 
+## Retomada quando a conta Google Ads for liberada
+
+1. Resolver a suspensao/verificacao no Google Ads antes de qualquer campanha.
+   - Caminho oficial: revisar o motivo na propria conta e enviar recurso se a suspensao parecer incorreta ou ja tiver sido corrigida.
+   - Referencia: https://support.google.com/google-ads/answer/9841640
+2. Criar conversao de site para `submit_triagem_google_contract`.
+   - Tipo sugerido: lead/envio de formulario.
+   - Uso: primaria.
+   - Contagem: uma.
+   - Valor inicial: sem valor ou valor fixo conservador.
+3. Criar conversao de site para `click_whatsapp_qualificado`.
+   - Tipo sugerido: contato.
+   - Uso: primaria apenas no primeiro teste de baixo volume; depois pode virar secundaria se houver muito clique sem conversa real.
+   - Contagem: uma.
+4. Criar conversao de site para `submit_triagem`.
+   - Uso: primaria ou secundaria conforme volume.
+5. No GTM, criar acionadores de Evento Personalizado com os mesmos nomes:
+   - `submit_triagem_google_contract`
+   - `submit_triagem`
+   - `click_whatsapp_qualificado`
+6. No GTM, criar tag `Vinculador de conversoes` em todas as paginas.
+7. No GTM, criar tags de conversao Google Ads usando os IDs/labels gerados nas conversoes acima.
+8. Publicar o container GTM.
+9. Testar no Preview do GTM e no Diagnostico de conversoes do Google Ads.
+
 ## Checklist antes de aumentar verba
 
-- [ ] GTM/Google tag instalado em producao.
+- [x] GTM/Google tag instalado em producao.
 - [ ] Preview do Tag Manager conectado ao dominio real.
 - [ ] `click_whatsapp_qualificado` aparece no `dataLayer`.
 - [ ] `submit_triagem_google_contract` aparece ao enviar formulario da landing.
 - [ ] `submit_triagem` aparece ao enviar `/triagem`.
+- [ ] Conta Google Ads sem suspensao/bloqueio operacional.
+- [ ] Conversoes Google Ads criadas e vinculadas ao GTM.
 - [ ] O link do WhatsApp abre com mensagem preenchida.
 - [ ] Nenhum CTA principal usa `onrender.com`.
 - [ ] Campanhas usam UTMs consistentes.
