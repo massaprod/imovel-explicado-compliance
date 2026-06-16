@@ -40,6 +40,9 @@ Status em 2026-06-16:
 - GTM publicado no HTML das paginas `/contrato-compra-venda-imovel`, `/triagem` e `/obrigado-triagem`.
 - Producao confirmada servindo `GTM-TX2GTPFL` nas tres paginas.
 - Google Ads impediu a criacao/edicao de conversoes com o aviso: `Sua conta foi suspensa. Por isso, nao e possivel realizar determinadas acoes.`
+- A pagina Politica > Conta tambem exibiu `O saldo se esgotou` e tarefas de verificacao/transparencia pendentes.
+- O Google Ads mostra a declaracao de transparencia como `Anuncios financiados por LUIS CARLOS GONCALVES DOS SANTOS`.
+- A tela passou a pedir informacoes de `agencia` / `cliente`; antes de responder, confirmar se a conta deve operar como anunciante direto ou agencia gerenciando cliente.
 - Antes de colocar verba, resolver a suspensao/verificacao da conta Google Ads e entao criar as conversoes abaixo.
 
 O helper cria:
@@ -186,6 +189,9 @@ No Google Ads:
 1. Resolver a suspensao/verificacao no Google Ads antes de qualquer campanha.
    - Caminho oficial: revisar o motivo na propria conta e enviar recurso se a suspensao parecer incorreta ou ja tiver sido corrigida.
    - Referencia: https://support.google.com/google-ads/answer/9841640
+   - Confirmar se a conta deve representar anunciante direto ou agencia. Para o MVP atual, a recomendacao e operar como anunciante direto do Imovel Explicado/Luis Carlos, evitando complexidade de agencia/cliente se nao houver necessidade.
+   - Concluir as tarefas de transparencia/verificacao antes de criar conversoes ou campanhas.
+   - Repor saldo apenas depois que a conta estiver sem bloqueios.
 2. Criar conversao de site para `submit_triagem_google_contract`.
    - Tipo sugerido: lead/envio de formulario.
    - Uso: primaria.
