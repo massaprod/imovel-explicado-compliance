@@ -60,6 +60,8 @@
   };
 
   const track = (eventName, metadata = {}, preferBeacon = true) => {
+    const endpointUrl = new URL(analyticsEndpoint, window.location.href);
+    const isCrossOrigin = endpointUrl.origin !== window.location.origin;
     const body = JSON.stringify({
       visitorId,
       sessionId,
@@ -73,7 +75,7 @@
       },
     });
 
-    if (preferBeacon && navigator.sendBeacon) {
+    if (preferBeacon && !isCrossOrigin && navigator.sendBeacon) {
       const queued = navigator.sendBeacon(analyticsEndpoint, new Blob([body], { type: "application/json" }));
       if (queued) return;
     }
@@ -81,6 +83,7 @@
     fetch(analyticsEndpoint, {
       method: "POST",
       mode: "cors",
+      credentials: "omit",
       headers: { "Content-Type": "application/json" },
       body,
       keepalive: true,

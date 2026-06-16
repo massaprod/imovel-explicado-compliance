@@ -69,6 +69,8 @@
   const sendInternalAnalytics = (eventName, metadata, preferBeacon) => {
     if (!config.analyticsEndpoint) return;
     if (config.debug && !config.sendLocalAnalytics) return;
+    const endpointUrl = new URL(config.analyticsEndpoint, window.location.href);
+    const isCrossOrigin = endpointUrl.origin !== window.location.origin;
     const payload = {
       ...getAttribution(),
       eventName,
@@ -82,13 +84,14 @@
     const body = JSON.stringify(payload);
 
     try {
-      if (preferBeacon && navigator.sendBeacon) {
+      if (preferBeacon && !isCrossOrigin && navigator.sendBeacon) {
         const ok = navigator.sendBeacon(config.analyticsEndpoint, new Blob([body], { type: "application/json" }));
         if (ok) return;
       }
       fetch(config.analyticsEndpoint, {
         method: "POST",
         mode: "cors",
+        credentials: "omit",
         headers: { "Content-Type": "application/json" },
         body,
         keepalive: true,
