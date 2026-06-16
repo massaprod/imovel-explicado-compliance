@@ -122,7 +122,7 @@ Subtexto:
 
 ```txt
 Leitura organizada por Luis Carlos
-Consultor juridico e imobiliario
+Consultor imobiliario e documental
 ```
 
 CTA: `Triagem no link da bio.`
@@ -170,4 +170,3 @@ Depois voce envia o arquivo ou prints conforme o caso.
 
 Link: https://contratos.imovelexplicado.com.br/contratos?utm_source=instagram&utm_medium=dm&utm_campaign=organic_dm&utm_content=enviar_contrato
 ```
-

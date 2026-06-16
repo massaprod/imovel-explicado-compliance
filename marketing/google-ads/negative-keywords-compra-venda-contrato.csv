@@ -1,0 +1,29 @@
+Negative keyword,Match type,Reason
+gratis,Phrase,Evitar busca por modelo gratuito
+gratuito,Phrase,Evitar baixa intencao de compra
+modelo,Phrase,Evitar download de template
+download,Phrase,Evitar busca por arquivo
+pdf,Phrase,Evitar busca por modelo
+word,Phrase,Evitar busca por modelo editavel
+doc,Phrase,Evitar busca por arquivo editavel
+exemplo,Phrase,Evitar pesquisa informacional
+simples,Phrase,Evitar template basico
+pronto,Phrase,Evitar modelo pronto
+imprimir,Phrase,Evitar documento gratuito
+cartorio,Phrase,Evitar busca por servico cartorial quando nao indicar contrato
+registro de imoveis,Phrase,Evitar etapa cartorial pura
+segunda via,Phrase,Evitar documentos administrativos
+matricula online,Phrase,Evitar busca por emissao de documento
+financiamento caixa,Phrase,Evitar pesquisa bancaria
+simulador financiamento,Phrase,Evitar busca financeira ampla
+lei,Phrase,Evitar lei seca
+jurisprudencia,Phrase,Evitar pesquisa academica
+tcc,Phrase,Evitar estudantes
+faculdade,Phrase,Evitar estudantes
+curso,Phrase,Evitar cursos
+vaga,Phrase,Evitar emprego
+emprego,Phrase,Evitar emprego
+salario,Phrase,Evitar emprego
+advogado gratuito,Phrase,Evitar busca por gratuidade
+defensoria,Phrase,Evitar atendimento gratuito
+procon,Phrase,Evitar reclamacao pos-problema
