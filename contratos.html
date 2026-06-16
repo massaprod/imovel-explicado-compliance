@@ -5,10 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta
       name="description"
-      content="Antes de assinar, pagar sinal ou negociar um imovel, entenda os principais pontos de atencao do contrato ou documento."
+      content="Recebeu contrato, proposta ou pedido de Pix? Entenda riscos praticos antes de pagar sinal, assinar ou avancar na negociacao."
     />
     <meta name="theme-color" content="#101820" />
-    <title>Imovel Explicado Contratos</title>
+    <title>Contratos, Pix e Sinal | Imovel Explicado</title>
     <link rel="canonical" href="https://contratos.imovelexplicado.com.br/contratos" />
     <link rel="preconnect" href="https://imovel-explicado-contratos.onrender.com" />
     <link rel="dns-prefetch" href="https://imovel-explicado-contratos.onrender.com" />
@@ -479,6 +479,46 @@
         gap: 12px;
       }
 
+      .offer-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 14px;
+      }
+
+      .offer-card {
+        display: flex;
+        min-height: 260px;
+        flex-direction: column;
+        justify-content: space-between;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: #ffffff;
+        color: var(--ink);
+        padding: 22px;
+        box-shadow: 0 16px 38px rgba(16, 24, 32, 0.08);
+      }
+
+      .offer-card.featured {
+        border-color: var(--gold);
+      }
+
+      .offer-card h3 {
+        margin: 0 0 10px;
+        font-size: 23px;
+        line-height: 1.08;
+      }
+
+      .offer-price {
+        margin: 0 0 12px;
+        color: var(--green);
+        font-size: 36px;
+        font-weight: 900;
+      }
+
+      .offer-card p {
+        margin-bottom: 18px;
+      }
+
       .step {
         display: grid;
         grid-template-columns: 44px minmax(0, 1fr);
@@ -589,6 +629,10 @@
           grid-template-columns: 1fr;
         }
 
+        .offer-grid {
+          grid-template-columns: 1fr;
+        }
+
         .section-grid {
           grid-template-columns: 1fr;
         }
@@ -620,14 +664,14 @@
         <a href="#recebe">O que recebe</a>
         <a href="https://www.instagram.com/imovelexplicado/">Instagram</a>
         <a class="button button-whatsapp js-whatsapp-link" href="https://wa.me/5511964492988">WhatsApp</a>
-        <a class="nav-cta js-triage-link" href="https://imovel-explicado-contratos.onrender.com/triagem">Enviar caso</a>
+        <a class="nav-cta js-triage-link" href="/triagem">Triagem</a>
       </div>
     </nav>
 
     <main id="topo" class="hero">
       <section>
-        <p class="eyebrow">Pix, sinal, contrato ou proposta de im&oacute;vel</p>
-        <h1>N&atilde;o pague sinal nem assine no escuro.</h1>
+        <p class="eyebrow">Contrato, Pix, sinal ou proposta de im&oacute;vel</p>
+        <h1>Recebeu um contrato ou vai pagar sinal? Entenda os riscos antes de avan&ccedil;ar.</h1>
         <p class="subheadline">
           Envie contrato, proposta, recibo ou print da negocia&ccedil;&atilde;o e confira os principais pontos de aten&ccedil;&atilde;o antes de transferir Pix, responder sob press&atilde;o ou assumir compromisso.
         </p>
@@ -643,14 +687,14 @@
           <span>Contrato chegou pronto para assinar?</span>
         </div>
         <div class="hero-actions">
-          <a class="button button-primary js-triage-link" href="https://imovel-explicado-contratos.onrender.com/triagem">Conferir antes de pagar</a>
+          <a class="button button-primary js-triage-link" href="/triagem">Fazer triagem antes de avan&ccedil;ar</a>
           <a class="button button-whatsapp js-whatsapp-link" href="https://wa.me/5511964492988">Falar no WhatsApp</a>
           <a class="button button-secondary" href="#como-funciona">Ver como funciona</a>
         </div>
         <ul class="trust-list" aria-label="Pontos de confianca">
           <li>Triagem inicial sem pagamento</li>
           <li>Atendimento humano por Luis Carlos</li>
-          <li>Planos a partir de R$ 97 se fizer sentido avan&ccedil;ar</li>
+          <li>Verifica&ccedil;&atilde;o a partir de R$ 197 se fizer sentido avan&ccedil;ar</li>
         </ul>
       </section>
 
@@ -762,12 +806,49 @@
       </div>
     </section>
 
+    <section id="ofertas" class="section">
+      <div class="section-grid">
+        <div>
+          <h2>Escolha uma verifica&ccedil;&atilde;o proporcional ao risco.</h2>
+          <p>
+            Esta p&aacute;gina &eacute; secund&aacute;ria. A campanha principal deve levar para aluguel direto. Use Contratos quando o cliente j&aacute; recebeu documento, proposta ou pedido de pagamento e precisa decidir antes de avan&ccedil;ar.
+          </p>
+        </div>
+        <div class="offer-grid">
+          <article class="offer-card">
+            <div>
+              <h3>Verifica&ccedil;&atilde;o antes do Pix/sinal</h3>
+              <div class="offer-price">R$197</div>
+              <p>Para conferir dados b&aacute;sicos, coer&ecirc;ncia do pagamento e pontos de aten&ccedil;&atilde;o antes de transferir valor.</p>
+            </div>
+            <a class="button button-primary js-triage-link" href="/triagem">Iniciar triagem</a>
+          </article>
+          <article class="offer-card featured">
+            <div>
+              <h3>An&aacute;lise documental objetiva</h3>
+              <div class="offer-price">R$297</div>
+              <p>Para contrato, proposta, recibo, cobran&ccedil;a ou documento que precisa de leitura mais organizada.</p>
+            </div>
+            <a class="button button-primary js-triage-link" href="/triagem">Iniciar triagem</a>
+          </article>
+          <article class="offer-card">
+            <div>
+              <h3>Caso completo</h3>
+              <div class="offer-price">Sob triagem</div>
+              <p>Para situa&ccedil;&otilde;es com mais partes, urg&ecirc;ncia, d&uacute;vida documental ou necessidade de encaminhamento espec&iacute;fico.</p>
+            </div>
+            <a class="button button-primary js-triage-link" href="/triagem">Avaliar caso</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
     <section id="recebe" class="section footer-cta">
-      <h2>Antes de assinar ou negociar, entenda onde est&aacute; pisando.</h2>
+      <h2>Antes de assinar, pagar sinal ou responder, entenda onde est&aacute; pisando.</h2>
       <p>
         A triagem leva poucos minutos. Voc&ecirc; informa o contexto, escolhe o tipo de apoio e s&oacute; segue para o pagamento depois de conferir o plano escolhido.
       </p>
-      <a class="button button-primary js-triage-link" href="https://imovel-explicado-contratos.onrender.com/triagem">Come&ccedil;ar minha an&aacute;lise</a>
+      <a class="button button-primary js-triage-link" href="/triagem">Come&ccedil;ar minha an&aacute;lise</a>
       <p class="fine-print">
         Servi&ccedil;o de organiza&ccedil;&atilde;o, leitura e diagn&oacute;stico preliminar de contratos e documentos imobili&aacute;rios. N&atilde;o substitui provid&ecirc;ncias espec&iacute;ficas que exijam profissional habilitado, quando aplic&aacute;vel.
       </p>
@@ -776,7 +857,7 @@
     <div class="sticky-conversion-bar" aria-label="Atalho para iniciar analise">
       <span>Triagem curta. Sem pagamento nesta etapa.</span>
       <a class="button button-whatsapp js-whatsapp-link" href="https://wa.me/5511964492988">WhatsApp</a>
-      <a class="button button-primary js-triage-link" href="https://imovel-explicado-contratos.onrender.com/triagem">Enviar caso</a>
+      <a class="button button-primary js-triage-link" href="/triagem">Enviar caso</a>
     </div>
 
     <script>
@@ -901,7 +982,7 @@
               }, { preferBeacon: true }),
             ]);
             if (window.fbq) {
-              fbq("trackCustom", "StartTriageClick", { destination: "render_triagem" });
+              fbq("trackCustom", "StartTriageClick", { destination: "site_triagem" });
             }
             Promise.race([
               tracking,

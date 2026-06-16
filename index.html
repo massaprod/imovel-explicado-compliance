@@ -3,15 +3,13 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Imovel Explicado | Contratos e documentos imobiliarios</title>
     <meta
       name="description"
-      content="Imovel Explicado: conteudo, analise contratual e orientacao documental para quem vai comprar, vender, alugar ou negociar um imovel."
+      content="Imovel Explicado: contrato de aluguel direto, analise documental e orientacao pratica para negociar imovel com mais clareza."
     />
     <meta name="theme-color" content="#101820" />
-    <title>Imovel Explicado</title>
     <link rel="canonical" href="https://imovelexplicado.com.br/" />
-    <link rel="preconnect" href="https://imovel-explicado-contratos.onrender.com" />
-    <link rel="dns-prefetch" href="https://imovel-explicado-contratos.onrender.com" />
     <script>
       if (location.hostname.startsWith("contratos.") && location.pathname === "/") {
         location.replace(`/contratos.html${location.search}${location.hash}`);
@@ -41,77 +39,55 @@
       :root {
         color-scheme: light;
         --ink: #101820;
-        --muted: #5e6874;
-        --line: #d8d1c3;
-        --paper: #fbf7ef;
+        --muted: #5f6974;
+        --paper: #fbf8f2;
         --surface: #ffffff;
-        --gold: #c89438;
-        --gold-soft: #fff2d7;
-        --green: #246a55;
+        --line: #ddd5c8;
+        --gold: #c79a43;
+        --gold-soft: #fff0cf;
+        --green: #1f8f61;
         --red: #943733;
       }
 
-      * {
-        box-sizing: border-box;
-      }
+      * { box-sizing: border-box; }
 
-      html {
-        scroll-behavior: smooth;
-      }
+      html { scroll-behavior: smooth; }
 
       body {
         margin: 0;
-        background:
-          radial-gradient(circle at 72% 12%, rgba(200, 148, 56, 0.12), transparent 34%),
-          linear-gradient(180deg, #fcf9f3 0%, var(--paper) 48%, #f4efe6 100%);
+        background: var(--paper);
         color: var(--ink);
-        font-family:
-          Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
-          sans-serif;
+        font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       }
 
-      a {
-        color: inherit;
-      }
+      a { color: inherit; }
 
       .topbar {
         position: sticky;
         top: 0;
-        z-index: 20;
+        z-index: 30;
         display: flex;
         align-items: center;
         justify-content: space-between;
-        gap: 18px;
-        padding: 16px clamp(18px, 5vw, 56px);
-        border-bottom: 1px solid rgba(16, 24, 32, 0.08);
-        background: rgba(251, 247, 239, 0.94);
+        gap: 16px;
+        padding: 14px clamp(18px, 5vw, 58px);
+        border-bottom: 1px solid rgba(16, 24, 32, 0.1);
+        background: rgba(251, 248, 242, 0.96);
         backdrop-filter: blur(14px);
       }
 
       .brand {
-        display: flex;
+        display: inline-flex;
         align-items: center;
         gap: 10px;
         font-weight: 900;
         text-decoration: none;
       }
 
-      .brand-mark {
-        display: grid;
+      .brand img {
         width: 36px;
         height: 36px;
-        place-items: center;
-        border-radius: 9px;
-        background: var(--ink);
-        color: var(--gold);
-        font-weight: 950;
-        overflow: hidden;
-      }
-
-      .brand-mark img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
+        border-radius: 8px;
       }
 
       .nav-links {
@@ -122,146 +98,102 @@
         font-size: 14px;
       }
 
-      .nav-links a {
-        text-decoration: none;
-      }
+      .nav-links a { text-decoration: none; }
 
       .button {
         display: inline-flex;
-        min-height: 46px;
+        min-height: 48px;
         align-items: center;
         justify-content: center;
+        border: 0;
         border-radius: 8px;
         padding: 0 18px;
-        font-weight: 850;
-        line-height: 1;
-        text-decoration: none;
-        white-space: nowrap;
-      }
-
-      .button.primary {
         background: var(--ink);
         color: #ffffff;
+        font: inherit;
+        font-weight: 900;
+        line-height: 1;
+        text-decoration: none;
+        cursor: pointer;
       }
 
-      .button.secondary {
-        border: 1px solid var(--line);
-        background: rgba(255, 255, 255, 0.88);
-        color: var(--ink);
-      }
-
-      .button.whatsapp {
-        background: #1f8f61;
-        color: #ffffff;
-      }
+      .button.whatsapp { background: var(--green); }
+      .button.light { border: 1px solid var(--line); background: #ffffff; color: var(--ink); }
 
       .hero {
-        position: relative;
-        isolation: isolate;
         display: grid;
-        grid-template-columns: minmax(0, 1fr) minmax(340px, 0.82fr);
-        gap: clamp(34px, 6vw, 76px);
+        grid-template-columns: minmax(0, 1fr) minmax(320px, 0.82fr);
+        gap: clamp(30px, 5vw, 74px);
         align-items: center;
-        min-height: calc(100svh - 72px);
-        padding: clamp(42px, 7vw, 88px) clamp(18px, 5vw, 56px);
-        overflow: hidden;
+        min-height: calc(100svh - 65px);
+        padding: clamp(42px, 7vw, 86px) clamp(18px, 5vw, 58px);
         background:
-          linear-gradient(90deg, rgba(16, 24, 32, 0.92) 0%, rgba(16, 24, 32, 0.78) 45%, rgba(16, 24, 32, 0.42) 100%),
+          linear-gradient(90deg, rgba(16, 24, 32, 0.93), rgba(16, 24, 32, 0.78) 46%, rgba(16, 24, 32, 0.42)),
           url("/assets/hero-real-estate-keys.jpg") center / cover no-repeat;
         color: #ffffff;
       }
 
-      .hero::after {
-        position: absolute;
-        inset: auto 0 0;
-        z-index: -1;
-        height: 34%;
-        background: linear-gradient(0deg, rgba(16, 24, 32, 0.62), rgba(16, 24, 32, 0));
-        content: "";
-      }
-
-      .hero > * {
-        position: relative;
-        z-index: 1;
-      }
-
-      h1,
-      h2,
-      h3,
-      p {
-        margin-top: 0;
-      }
+      h1, h2, h3, p { margin-top: 0; }
 
       h1 {
-        max-width: 900px;
-        margin-bottom: 24px;
-        font-size: clamp(44px, 7.2vw, 86px);
-        line-height: 0.94;
+        max-width: 880px;
+        margin-bottom: 20px;
+        font-size: clamp(40px, 7vw, 82px);
+        line-height: 0.96;
         letter-spacing: 0;
       }
 
       .lead {
-        max-width: 720px;
-        color: rgba(255, 255, 255, 0.86);
-        font-size: clamp(19px, 2vw, 23px);
-        line-height: 1.5;
+        max-width: 760px;
+        color: rgba(255, 255, 255, 0.88);
+        font-size: clamp(18px, 2vw, 23px);
+        line-height: 1.48;
       }
 
       .hero-actions {
         display: flex;
         flex-wrap: wrap;
         gap: 12px;
-        margin-top: 30px;
+        margin-top: 28px;
+      }
+
+      .hero .button.light {
+        border-color: rgba(255, 255, 255, 0.36);
+        background: rgba(255, 255, 255, 0.1);
+        color: #ffffff;
       }
 
       .trust-strip {
         display: grid;
         grid-template-columns: repeat(3, minmax(0, 1fr));
         gap: 12px;
-        max-width: 720px;
-        margin-top: 30px;
+        margin-top: 28px;
       }
 
       .trust-strip span {
         border-top: 1px solid rgba(255, 255, 255, 0.24);
         padding-top: 12px;
-        color: rgba(255, 255, 255, 0.78);
+        color: rgba(255, 255, 255, 0.82);
         font-size: 14px;
-        line-height: 1.4;
-      }
-
-      .hero .button.primary {
-        background: #ffffff;
-        color: var(--ink);
-      }
-
-      .hero .button.secondary {
-        border-color: rgba(255, 255, 255, 0.34);
-        background: rgba(255, 255, 255, 0.12);
-        color: #ffffff;
-      }
-
-      .hero-visual {
-        display: grid;
-        gap: 18px;
+        font-weight: 760;
       }
 
       .advisor-card {
         display: grid;
-        grid-template-columns: 112px minmax(0, 1fr);
-        gap: 18px;
+        grid-template-columns: 116px minmax(0, 1fr);
+        gap: 16px;
         align-items: center;
-        border: 1px solid var(--line);
+        border: 1px solid rgba(255, 255, 255, 0.22);
         border-radius: 12px;
-        padding: 16px;
-        background: rgba(255, 255, 255, 0.9);
-        box-shadow: 0 24px 58px rgba(16, 24, 32, 0.14);
+        background: rgba(255, 255, 255, 0.94);
         color: var(--ink);
+        padding: 16px;
+        box-shadow: 0 24px 70px rgba(0, 0, 0, 0.22);
       }
 
       .advisor-card img {
-        width: 112px;
-        height: 112px;
+        width: 116px;
+        height: 132px;
         border-radius: 10px;
         object-fit: cover;
         object-position: 50% 18%;
@@ -269,134 +201,45 @@
 
       .advisor-card strong {
         display: block;
-        margin-bottom: 6px;
-        font-size: 19px;
+        margin-bottom: 5px;
+        font-size: 20px;
       }
 
       .advisor-role {
         display: block;
-        margin: -2px 0 8px;
+        margin-bottom: 8px;
         color: #7c5316;
         font-size: 12px;
-        font-weight: 900;
+        font-weight: 950;
         text-transform: uppercase;
       }
 
       .advisor-card p {
-        margin: 0;
         color: var(--muted);
-        line-height: 1.45;
+        line-height: 1.46;
       }
 
-      .document-scene {
-        position: relative;
-        min-height: 470px;
-        border: 1px solid var(--line);
-        border-radius: 14px;
-        overflow: hidden;
-        background:
-          linear-gradient(135deg, rgba(16, 24, 32, 0.82), rgba(16, 24, 32, 0.55)),
-          linear-gradient(135deg, #b98b43, #efe2c8);
-        box-shadow: 0 34px 80px rgba(16, 24, 32, 0.2);
+      .quick-card {
+        margin-top: 16px;
+        border: 1px solid rgba(255, 255, 255, 0.24);
+        border-radius: 12px;
+        background: rgba(16, 24, 32, 0.72);
+        padding: 24px;
       }
 
-      .document-scene::before {
-        position: absolute;
-        inset: 0;
-        content: "";
-        background:
-          linear-gradient(90deg, rgba(255, 255, 255, 0.08) 1px, transparent 1px),
-          linear-gradient(0deg, rgba(255, 255, 255, 0.08) 1px, transparent 1px);
-        background-size: 42px 42px;
-        opacity: 0.38;
+      .quick-card h2 {
+        margin-bottom: 10px;
+        font-size: clamp(26px, 3vw, 36px);
+        line-height: 1.04;
       }
 
-      .paper-stack {
-        position: absolute;
-        right: clamp(18px, 4vw, 42px);
-        bottom: 34px;
-        width: min(78%, 420px);
-        border-radius: 10px;
-        background: #fffdf8;
-        box-shadow: -18px 24px 60px rgba(0, 0, 0, 0.22);
-        transform: rotate(-2deg);
-      }
-
-      .paper-stack::before {
-        position: absolute;
-        inset: -18px 22px auto -18px;
-        height: 100%;
-        border-radius: 10px;
-        background: rgba(255, 255, 255, 0.76);
-        content: "";
-        transform: rotate(6deg);
-        z-index: -1;
-      }
-
-      .paper-head {
-        display: flex;
-        justify-content: space-between;
-        gap: 18px;
-        padding: 18px 20px 14px;
-        border-bottom: 1px solid #e4ddcf;
-      }
-
-      .paper-head strong {
-        font-size: 15px;
-      }
-
-      .paper-head span {
-        color: var(--green);
-        font-size: 12px;
-        font-weight: 900;
-        text-transform: uppercase;
-      }
-
-      .risk-list {
-        display: grid;
-        gap: 14px;
-        padding: 18px 20px 22px;
-      }
-
-      .risk-line {
-        display: grid;
-        grid-template-columns: 20px minmax(0, 1fr);
-        gap: 10px;
-        color: #314150;
-        line-height: 1.35;
-      }
-
-      .risk-line b {
-        display: grid;
-        height: 20px;
-        place-items: center;
-        border-radius: 50%;
-        background: var(--red);
-        color: #ffffff;
-        font-size: 12px;
-      }
-
-      .scene-label {
-        position: absolute;
-        top: 22px;
-        left: 22px;
-        max-width: 310px;
-        color: #ffffff;
-      }
-
-      .scene-label strong {
-        display: block;
-        margin-bottom: 8px;
-        font-size: 22px;
-      }
-
-      .scene-label span {
+      .quick-card p {
         color: rgba(255, 255, 255, 0.78);
-        line-height: 1.45;
+        line-height: 1.5;
       }
 
       .section {
-        padding: clamp(58px, 7vw, 88px) clamp(18px, 5vw, 56px);
+        padding: clamp(58px, 7vw, 92px) clamp(18px, 5vw, 58px);
         border-top: 1px solid rgba(16, 24, 32, 0.08);
       }
 
@@ -406,88 +249,65 @@
       }
 
       .section h2 {
-        max-width: 760px;
+        max-width: 790px;
         margin-bottom: 16px;
-        font-size: clamp(32px, 4.5vw, 54px);
+        font-size: clamp(32px, 4.4vw, 54px);
         line-height: 1.02;
+        letter-spacing: 0;
       }
 
       .section-lead {
-        max-width: 760px;
+        max-width: 770px;
         color: var(--muted);
         font-size: 18px;
-        line-height: 1.58;
+        line-height: 1.55;
       }
 
-      .product-grid,
-      .channel-grid {
+      .product-grid, .content-grid {
         display: grid;
-        gap: 18px;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 16px;
         margin-top: 30px;
       }
 
-      .product-grid {
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-      }
-
-      .channel-grid {
-        grid-template-columns: repeat(4, minmax(0, 1fr));
-      }
-
-      .product-card,
-      .channel-card,
-      .wide-panel {
-        border: 1px solid var(--line);
-        border-radius: 12px;
-        background: rgba(255, 255, 255, 0.88);
-        box-shadow: 0 16px 42px rgba(16, 24, 32, 0.08);
-      }
-
-      .product-card,
-      .channel-card {
+      .card-link, .article-link {
         display: flex;
-        min-height: 278px;
+        min-height: 260px;
         flex-direction: column;
         justify-content: space-between;
+        border: 1px solid var(--line);
+        border-radius: 12px;
+        background: var(--surface);
         padding: 24px;
+        box-shadow: 0 16px 42px rgba(16, 24, 32, 0.08);
         text-decoration: none;
       }
 
-      .card-kicker {
+      .card-link.primary {
+        background: var(--ink);
+        color: #ffffff;
+      }
+
+      .card-link.primary p {
+        color: rgba(255, 255, 255, 0.76);
+      }
+
+      .label {
         color: var(--gold);
         font-size: 12px;
         font-weight: 950;
         text-transform: uppercase;
       }
 
-      .product-card h3,
-      .channel-card h3 {
+      .card-link h3, .article-link h3 {
         margin: 14px 0 12px;
         font-size: 27px;
         line-height: 1.08;
       }
 
-      .product-card p,
-      .channel-card p {
+      .card-link p, .article-link p {
         color: var(--muted);
         line-height: 1.55;
-      }
-
-      .product-card.compact {
-        min-height: 238px;
-      }
-
-      .product-card.primary {
-        background: var(--ink);
-        color: #ffffff;
-      }
-
-      .product-card.primary p {
-        color: rgba(255, 255, 255, 0.76);
-      }
-
-      .product-card.primary .card-kicker {
-        color: #f5c46a;
       }
 
       .inline-link {
@@ -495,149 +315,91 @@
         font-weight: 900;
       }
 
-      .wide-panel {
+      .band {
+        background: #101820;
+        color: #ffffff;
+      }
+
+      .band .section-lead {
+        color: rgba(255, 255, 255, 0.76);
+      }
+
+      .split {
         display: grid;
-        grid-template-columns: minmax(0, 0.92fr) minmax(300px, 1fr);
-        gap: 24px;
+        grid-template-columns: minmax(0, 0.9fr) minmax(0, 1fr);
+        gap: clamp(24px, 5vw, 58px);
         align-items: center;
-        margin-top: 30px;
-        padding: clamp(22px, 4vw, 34px);
       }
 
-      .visual-list {
+      .bullet-list {
         display: grid;
         gap: 12px;
+        margin: 0;
+        padding: 0;
+        list-style: none;
       }
 
-      .visual-list div {
-        display: grid;
-        grid-template-columns: 34px minmax(0, 1fr);
-        gap: 12px;
-        align-items: start;
-        border: 1px solid var(--line);
-        border-radius: 10px;
-        padding: 14px;
-        background: #fff;
-      }
-
-      .visual-list b {
-        display: grid;
-        width: 34px;
-        height: 34px;
-        place-items: center;
-        border-radius: 9px;
-        background: var(--gold-soft);
-        color: #7c5316;
-      }
-
-      .visual-list span {
-        color: var(--muted);
-        line-height: 1.45;
+      .bullet-list li {
+        border-left: 4px solid var(--gold);
+        background: rgba(255, 255, 255, 0.08);
+        padding: 13px 14px;
+        font-weight: 780;
       }
 
       .footer {
-        padding: 36px clamp(18px, 5vw, 56px) 120px;
+        padding: 28px clamp(18px, 5vw, 58px) 110px;
         color: var(--muted);
-      }
-
-      .footer strong {
-        color: var(--ink);
+        font-size: 14px;
       }
 
       .sticky-contact {
         position: fixed;
-        right: 18px;
-        bottom: 18px;
-        z-index: 30;
-        display: flex;
-        gap: 10px;
-        align-items: center;
-        border: 1px solid rgba(16, 24, 32, 0.12);
-        border-radius: 12px;
-        padding: 10px;
-        background: rgba(255, 255, 255, 0.94);
-        box-shadow: 0 18px 44px rgba(16, 24, 32, 0.16);
-        backdrop-filter: blur(12px);
+        right: 14px;
+        bottom: 14px;
+        left: 14px;
+        z-index: 40;
+        display: none;
       }
 
-      .sticky-contact span {
-        color: var(--muted);
-        font-size: 13px;
+      .sticky-contact .button {
+        width: 100%;
+        min-height: 54px;
+        box-shadow: 0 18px 42px rgba(16, 24, 32, 0.24);
       }
 
-      @media (max-width: 920px) {
+      @media (max-width: 900px) {
+        body { padding-bottom: 76px; }
+
+        .nav-links a:not(.button) {
+          display: none;
+        }
+
         .hero,
-        .wide-panel {
+        .split,
+        .product-grid,
+        .content-grid,
+        .trust-strip {
           grid-template-columns: 1fr;
         }
 
         .hero {
           min-height: auto;
-        }
-
-        .product-grid,
-        .channel-grid,
-        .trust-strip {
-          grid-template-columns: 1fr;
-        }
-      }
-
-      @media (max-width: 680px) {
-        .topbar {
-          align-items: flex-start;
-          flex-direction: column;
-        }
-
-        .nav-links {
-          width: 100%;
-          flex-wrap: wrap;
-          gap: 10px;
-        }
-
-        .nav-links .button {
-          flex: 1;
-        }
-
-        .hero {
-          padding-top: 34px;
-        }
-
-        h1 {
-          font-size: 42px;
-          line-height: 0.98;
+          background:
+            linear-gradient(180deg, rgba(16, 24, 32, 0.93), rgba(16, 24, 32, 0.76)),
+            url("/assets/hero-real-estate-keys.jpg") center / cover no-repeat;
         }
 
         .advisor-card {
-          grid-template-columns: 86px minmax(0, 1fr);
+          grid-template-columns: 90px minmax(0, 1fr);
         }
 
         .advisor-card img {
-          width: 86px;
-          height: 86px;
-        }
-
-        .document-scene {
-          min-height: 430px;
-        }
-
-        .paper-stack {
-          width: calc(100% - 38px);
-          right: 19px;
+          width: 90px;
+          height: 104px;
         }
 
         .sticky-contact {
-          right: 10px;
-          left: 10px;
-          justify-content: space-between;
-        }
-
-        .sticky-contact span {
-          display: none;
-        }
-
-        .sticky-contact .button {
-          flex: 1;
-          padding-inline: 10px;
+          display: block;
         }
       }
     </style>
@@ -653,328 +415,191 @@
       />
     </noscript>
 
-    <nav class="topbar" aria-label="Navegacao principal">
+    <header class="topbar">
       <a class="brand" href="/" aria-label="Imovel Explicado">
-        <span class="brand-mark"><img src="/assets/logo-mark.png" alt="" /></span>
+        <img src="/assets/logo-mark.png" alt="" />
         <span>Im&oacute;vel Explicado</span>
       </a>
-      <div class="nav-links">
+      <nav class="nav-links" aria-label="Navegacao principal">
+        <a href="/aluguel-direto">Aluguel direto</a>
+        <a href="/contratos">Contratos</a>
         <a href="/blog/">Blog</a>
-        <a href="/contratos.html">Contratos</a>
-        <a href="#canais">Canais</a>
         <a href="https://www.instagram.com/imovelexplicado/">Instagram</a>
-        <a class="button whatsapp js-whatsapp-link" href="https://wa.me/5511964492988">WhatsApp</a>
-      </div>
-    </nav>
+        <a class="button whatsapp js-whatsapp-link" href="https://wa.me/5511964492988" data-event="click_whatsapp_header">WhatsApp</a>
+      </nav>
+    </header>
 
-    <main class="hero">
-      <section>
-        <h1>Decida melhor antes de assinar, pagar sinal ou negociar um im&oacute;vel.</h1>
-        <p class="lead">
-          O Im&oacute;vel Explicado une conte&uacute;do, triagem e atendimento humano para ajudar voc&ecirc; a entender contratos, documentos, cobran&ccedil;as, cau&ccedil;&atilde;o, propostas e riscos pr&aacute;ticos antes de assumir compromisso.
-        </p>
-        <div class="hero-actions">
-          <a class="button primary js-triage-link" href="https://imovel-explicado-contratos.onrender.com/triagem">Analisar contrato agora</a>
-          <a class="button whatsapp js-whatsapp-link" href="https://wa.me/5511964492988">Falar no WhatsApp</a>
-          <a class="button secondary" href="/blog/">Ler conte&uacute;dos</a>
+    <main>
+      <section class="hero">
+        <div>
+          <h1>Negocie im&oacute;vel com contrato, documentos e riscos mais claros.</h1>
+          <p class="lead">
+            O Im&oacute;vel Explicado ajuda propriet&aacute;rios, inquilinos, compradores e vendedores a organizar documentos, entender pontos de aten&ccedil;&atilde;o e decidir antes de assinar, pagar sinal, receber cau&ccedil;&atilde;o ou entregar chaves.
+          </p>
+          <div class="hero-actions">
+            <a class="button whatsapp" href="/aluguel-direto">Conhecer o Kit Aluguel Direto</a>
+            <a class="button light" href="/triagem">Fazer triagem</a>
+            <a class="button light js-whatsapp-link" href="https://wa.me/5511964492988" data-event="click_whatsapp_hero">Falar no WhatsApp</a>
+          </div>
+          <div class="trust-strip">
+            <span>Atendimento humano por Luis Carlos</span>
+            <span>Triagem antes do pagamento</span>
+            <span>Entrega em at&eacute; 24h ap&oacute;s informa&ccedil;&otilde;es completas</span>
+          </div>
         </div>
-        <div class="trust-strip" aria-label="Pontos de confianca">
-          <span>Atendimento humano por Luis Carlos</span>
-          <span>Triagem curta antes de pagamento</span>
-          <span>Conte&uacute;do e produtos em uma marca s&oacute;</span>
+
+        <aside>
+          <div class="advisor-card">
+            <img src="/assets/luis-avatar.jpg" alt="Luis Carlos, responsavel pelo Imovel Explicado" />
+            <div>
+              <strong>Luis Carlos</strong>
+              <span class="advisor-role">Consultor juridico e imobiliario</span>
+              <p>Organiza&ccedil;&atilde;o documental, leitura de riscos pr&aacute;ticos e comunica&ccedil;&atilde;o simples para decis&otilde;es imobili&aacute;rias.</p>
+            </div>
+          </div>
+          <div class="quick-card">
+            <h2>Antes do Pix, da assinatura ou da chave.</h2>
+            <p>Se o contrato, recibo, cau&ccedil;&atilde;o, vistoria ou combinado n&atilde;o est&aacute; claro, comece pela triagem.</p>
+          </div>
+        </aside>
+      </section>
+
+      <section class="section">
+        <div class="section-inner">
+          <h2>Escolha o caminho mais adequado para seu momento.</h2>
+          <p class="section-lead">A primeira oferta para tr&aacute;fego pago &eacute; aluguel direto, porque resolve uma situa&ccedil;&atilde;o concreta: contrato, cau&ccedil;&atilde;o, vistoria e entrega das chaves.</p>
+          <div class="product-grid">
+            <a class="card-link primary" href="/aluguel-direto">
+              <div>
+                <span class="label">Produto principal</span>
+                <h3>Kit Aluguel Direto Seguro</h3>
+                <p>Para propriet&aacute;rio que vai alugar residencial direto e quer contrato, recibo, checklist e fechamento mais organizado.</p>
+              </div>
+              <strong>Ver planos a partir de R$297</strong>
+            </a>
+            <a class="card-link" href="/contratos">
+              <div>
+                <span class="label">Produto secund&aacute;rio</span>
+                <h3>Contratos e sinal/Pix</h3>
+                <p>Para quem recebeu contrato, proposta ou pedido de pagamento e quer entender riscos antes de avan&ccedil;ar.</p>
+              </div>
+              <strong class="inline-link">Ver verifica&ccedil;&atilde;o a partir de R$197</strong>
+            </a>
+            <a class="card-link" href="/blog/">
+              <div>
+                <span class="label">Conte&uacute;do</span>
+                <h3>Guias pr&aacute;ticos</h3>
+                <p>Artigos para entender cau&ccedil;&atilde;o, multa, contrato de aluguel, Pix de sinal e documentos antes da negocia&ccedil;&atilde;o.</p>
+              </div>
+              <strong class="inline-link">Ler o blog</strong>
+            </a>
+          </div>
         </div>
       </section>
 
-      <aside class="hero-visual" aria-label="Resumo visual do Imovel Explicado">
-        <div class="advisor-card">
-          <img src="/assets/luis-avatar.jpg" alt="Luis Carlos, responsavel pelo Imovel Explicado" />
+      <section class="section band">
+        <div class="section-inner split">
           <div>
-            <strong>Luis Carlos</strong>
-            <span class="advisor-role">Consultor juridico e imobiliario</span>
-            <p>Leitura organizada de documentos imobili&aacute;rios, com comunica&ccedil;&atilde;o direta e linguagem simples.</p>
+            <h2>Quando chamar o Im&oacute;vel Explicado?</h2>
+            <p class="section-lead">O melhor momento &eacute; antes de pagar, assinar, entregar as chaves ou aceitar uma condi&ccedil;&atilde;o que ainda n&atilde;o ficou clara.</p>
           </div>
+          <ul class="bullet-list">
+            <li>Vai alugar sem imobili&aacute;ria e precisa formalizar o combinado.</li>
+            <li>Vai pagar sinal, entrada ou cau&ccedil;&atilde;o e quer conferir o risco.</li>
+            <li>Recebeu contrato pronto pelo WhatsApp e n&atilde;o entendeu multa, prazo ou cobran&ccedil;as.</li>
+            <li>Precisa organizar documentos, checklist ou mensagem para a outra parte.</li>
+          </ul>
         </div>
+      </section>
 
-        <div class="document-scene">
-          <div class="scene-label">
-            <strong>Contrato na mesa. Decis&atilde;o na sua m&atilde;o.</strong>
-            <span>O foco &eacute; entender o risco antes de assinar, transferir Pix ou responder sob press&atilde;o.</span>
-          </div>
-          <div class="paper-stack" aria-hidden="true">
-            <div class="paper-head">
-              <strong>Leitura do documento</strong>
-              <span>Pontos de aten&ccedil;&atilde;o</span>
-            </div>
-            <div class="risk-list">
-              <div class="risk-line"><b>!</b><span>Multa, cau&ccedil;&atilde;o, prazo e responsabilidade de entrega.</span></div>
-              <div class="risk-line"><b>?</b><span>Documentos que n&atilde;o conversam entre si.</span></div>
-              <div class="risk-line"><b>R$</b><span>Pagamento de sinal ou Pix antes de seguran&ccedil;a m&iacute;nima.</span></div>
-            </div>
+      <section class="section">
+        <div class="section-inner">
+          <h2>Conte&uacute;dos para atrair e educar antes da triagem.</h2>
+          <p class="section-lead">O blog ajuda quem ainda est&aacute; pesquisando. Quando a d&uacute;vida vira risco pr&aacute;tico, o pr&oacute;ximo passo &eacute; triagem ou WhatsApp.</p>
+          <div class="content-grid">
+            <a class="article-link" href="/blog/contrato-aluguel-antes-de-assinar.html">
+              <div>
+                <span class="label">Aluguel</span>
+                <h3>Contrato de aluguel: o que olhar antes de assinar</h3>
+                <p>Pontos que costumam gerar conflito depois da entrada no im&oacute;vel.</p>
+              </div>
+              <strong class="inline-link">Ler artigo</strong>
+            </a>
+            <a class="article-link" href="/blog/pix-sinal-imovel.html">
+              <div>
+                <span class="label">Sinal e Pix</span>
+                <h3>Vai pagar sinal de im&oacute;vel?</h3>
+                <p>O que conferir antes de transferir valor para outra pessoa.</p>
+              </div>
+              <strong class="inline-link">Conferir riscos</strong>
+            </a>
+            <a class="article-link" href="/blog/caucao-multa-aluguel.html">
+              <div>
+                <span class="label">Cau&ccedil;&atilde;o</span>
+                <h3>Cau&ccedil;&atilde;o e multa no aluguel</h3>
+                <p>Como documentar melhor valores, prazo, devolu&ccedil;&atilde;o e responsabilidades.</p>
+              </div>
+              <strong class="inline-link">Entender melhor</strong>
+            </a>
           </div>
         </div>
-      </aside>
+      </section>
     </main>
 
-    <section id="produtos" class="section">
-      <div class="section-inner">
-        <h2>Um hub para conte&uacute;do, atendimento e produtos imobili&aacute;rios.</h2>
-        <p class="section-lead">
-          A marca principal &eacute; Im&oacute;vel Explicado. O primeiro produto de caixa &eacute; Contratos, mas o ecossistema pode crescer para regulariza&ccedil;&atilde;o, compra segura, conte&uacute;do, parcerias e servi&ccedil;os B2B.
-        </p>
-
-        <div class="product-grid">
-          <a class="product-card primary" href="/contratos.html">
-            <div>
-              <span class="card-kicker">Produto ativo</span>
-              <h3>Im&oacute;vel Explicado Contratos</h3>
-              <p>An&aacute;lise objetiva de contrato, proposta, cobran&ccedil;a, cau&ccedil;&atilde;o, sinal ou documento antes de voc&ecirc; avan&ccedil;ar.</p>
-            </div>
-            <strong>Ver an&aacute;lise contratual</strong>
-          </a>
-
-          <a class="product-card" href="/blog/">
-            <div>
-              <span class="card-kicker">Conte&uacute;do</span>
-              <h3>Blog Im&oacute;vel Explicado</h3>
-              <p>Artigos pr&aacute;ticos para quem vai alugar, comprar, vender, negociar ou responder uma imobili&aacute;ria.</p>
-            </div>
-            <strong class="inline-link">Ler artigos</strong>
-          </a>
-
-          <div class="product-card">
-            <div>
-              <span class="card-kicker">Pr&oacute;ximos produtos</span>
-              <h3>Compra Segura, Regulariza&ccedil;&atilde;o e Corretor Digital</h3>
-              <p>Espa&ccedil;o preparado para novos produtos, sem misturar tudo na mesma oferta.</p>
-            </div>
-            <strong>Em estrutura&ccedil;&atilde;o</strong>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section">
-      <div class="section-inner">
-        <h2>Conte&uacute;dos recentes para transformar d&uacute;vida em a&ccedil;&atilde;o.</h2>
-        <p class="section-lead">
-          O blog deve atrair quem ainda n&atilde;o est&aacute; pronto para pagar, mas j&aacute; sente risco. Cada post termina com triagem e WhatsApp para converter a leitura em lead.
-        </p>
-
-        <div class="product-grid">
-          <a class="product-card compact" href="/blog/whatsapp-contrato-imovel.html">
-            <div>
-              <span class="card-kicker">WhatsApp e contrato</span>
-              <h3>Recebi contrato pelo WhatsApp. O que olhar?</h3>
-              <p>Quando conversa vira press&atilde;o para assinar, pagar ou enviar documentos, o cliente precisa organizar o risco.</p>
-            </div>
-            <strong class="inline-link">Ler e analisar</strong>
-          </a>
-
-          <a class="product-card compact" href="/blog/proposta-recibo-contrato-nao-batem.html">
-            <div>
-              <span class="card-kicker">Incoer&ecirc;ncia documental</span>
-              <h3>Proposta, recibo e contrato n&atilde;o batem.</h3>
-              <p>O risco pode estar no desalinhamento entre documentos, prints, valores, prazos e condi&ccedil;&otilde;es.</p>
-            </div>
-            <strong class="inline-link">Conferir sinais</strong>
-          </a>
-
-          <a class="product-card compact" href="/blog/checklist-antes-de-assinar-imovel.html">
-            <div>
-              <span class="card-kicker">Checklist</span>
-              <h3>Antes de assinar, pagar sinal ou responder.</h3>
-              <p>Um roteiro simples para perceber se ainda falta clareza antes de assumir compromisso.</p>
-            </div>
-            <strong class="inline-link">Ver checklist</strong>
-          </a>
-        </div>
-      </div>
-    </section>
-
-    <section class="section">
-      <div class="section-inner">
-        <h2>O que precisa ficar consistente em todos os canais.</h2>
-        <p class="section-lead">
-          An&uacute;ncio, Instagram, blog, WhatsApp e p&aacute;gina de venda precisam comunicar a mesma cena: algu&eacute;m recebeu um documento, est&aacute; com pressa, n&atilde;o quer errar e precisa de uma leitura clara antes de seguir.
-        </p>
-
-        <div class="wide-panel">
-          <div>
-            <h3>Dire&ccedil;&atilde;o de comunica&ccedil;&atilde;o</h3>
-            <p class="section-lead">
-              Menos discurso institucional. Mais situa&ccedil;&atilde;o real: contrato na m&atilde;o, chave, proposta, Pix, prazo curto, d&uacute;vida sobre multa e medo de assumir preju&iacute;zo.
-            </p>
-          </div>
-          <div class="visual-list">
-            <div><b>1</b><span>Imagem de contrato, chave, im&oacute;vel ou negocia&ccedil;&atilde;o precisa aparecer nos criativos e na landing.</span></div>
-            <div><b>2</b><span>CTA principal: triagem para quem quer comprar. CTA secund&aacute;rio: WhatsApp para d&uacute;vida e aprendizado comercial.</span></div>
-            <div><b>3</b><span>O blog educa e captura demanda. A p&aacute;gina de contratos converte. O WhatsApp fecha ou qualifica.</span></div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="canais" class="section">
-      <div class="section-inner">
-        <h2>Canais oficiais do Im&oacute;vel Explicado.</h2>
-        <p class="section-lead">
-          Use o canal que fizer mais sentido para seu momento: conte&uacute;do para aprender, triagem para pedir an&aacute;lise ou WhatsApp para falar diretamente.
-        </p>
-
-        <div class="channel-grid">
-          <a class="channel-card js-triage-link" href="https://imovel-explicado-contratos.onrender.com/triagem">
-            <div>
-              <span class="card-kicker">Atendimento</span>
-              <h3>Triagem de contrato</h3>
-              <p>Melhor caminho quando voc&ecirc; j&aacute; tem documento, proposta, cobran&ccedil;a ou print para enviar.</p>
-            </div>
-            <strong class="inline-link">Come&ccedil;ar triagem</strong>
-          </a>
-
-          <a class="channel-card js-whatsapp-link" href="https://wa.me/5511964492988">
-            <div>
-              <span class="card-kicker">Contato direto</span>
-              <h3>WhatsApp</h3>
-              <p>Canal humano para d&uacute;vidas r&aacute;pidas, casos urgentes e leads que ainda n&atilde;o sabem por onde come&ccedil;ar.</p>
-            </div>
-            <strong class="inline-link">Falar com Luis</strong>
-          </a>
-
-          <a class="channel-card" href="https://www.instagram.com/imovelexplicado/">
-            <div>
-              <span class="card-kicker">Rede social</span>
-              <h3>Instagram</h3>
-              <p>Conte&uacute;dos curtos e explicativos para gerar confian&ccedil;a antes do cliente pedir an&aacute;lise.</p>
-            </div>
-            <strong class="inline-link">Ver Instagram</strong>
-          </a>
-
-          <div class="channel-card">
-            <div>
-              <span class="card-kicker">V&iacute;deo</span>
-              <h3>YouTube</h3>
-              <p>Canal reservado para explica&ccedil;&otilde;es mais completas, cortes de casos comuns e chamadas para a triagem.</p>
-            </div>
-            <strong>Em organiza&ccedil;&atilde;o</strong>
-          </div>
-        </div>
-      </div>
-    </section>
-
     <footer class="footer">
-      <strong>Im&oacute;vel Explicado</strong> - conte&uacute;do educativo, organiza&ccedil;&atilde;o documental e diagn&oacute;stico preliminar. N&atilde;o substitui provid&ecirc;ncias espec&iacute;ficas que exijam profissional habilitado, quando aplic&aacute;vel.
+      <strong>Im&oacute;vel Explicado</strong> - organiza&ccedil;&atilde;o documental, leitura de riscos pr&aacute;ticos e orienta&ccedil;&atilde;o para contratos e documentos imobili&aacute;rios. N&atilde;o substitui provid&ecirc;ncias espec&iacute;ficas que exijam profissional habilitado.
     </footer>
 
-    <div class="sticky-contact" aria-label="Atalhos de contato">
-      <span>Fale agora ou inicie a triagem.</span>
-      <a class="button whatsapp js-whatsapp-link" href="https://wa.me/5511964492988">WhatsApp</a>
-      <a class="button primary js-triage-link" href="https://imovel-explicado-contratos.onrender.com/triagem">Triagem</a>
+    <div class="sticky-contact">
+      <a class="button whatsapp js-whatsapp-link" href="https://wa.me/5511964492988" data-event="click_whatsapp_header">Falar no WhatsApp</a>
     </div>
 
     <script>
       (() => {
-        const renderBase = "https://imovel-explicado-contratos.onrender.com";
-        const analyticsEndpoint = `${renderBase}/api/analytics/event`;
+        const analyticsEndpoint = "https://imovel-explicado-contratos.onrender.com/api/analytics/event";
         const params = new URLSearchParams(window.location.search);
-        const defaults = {
-          utm_source: "site",
-          utm_medium: "organic",
-          utm_campaign: "hub_imovel_explicado",
-        };
-        const getId = (key) => {
-          const storage = key === "visitorSessionId" ? window.sessionStorage : window.localStorage;
-          const existing = storage.getItem(key);
-          if (existing) return existing;
-          const generated = window.crypto && window.crypto.randomUUID
-            ? window.crypto.randomUUID()
-            : `${Date.now()}-${Math.random().toString(36).slice(2)}`;
-          storage.setItem(key, generated);
-          return generated;
-        };
-        const visitorId = getId("visitorId");
-        const sessionId = getId("visitorSessionId");
-        const startedAt = Date.now();
-        let maxScrollPercent = 0;
+        const visitorId = localStorage.getItem("visitorId") || (crypto.randomUUID ? crypto.randomUUID() : `${Date.now()}-${Math.random().toString(36).slice(2)}`);
+        const sessionId = sessionStorage.getItem("visitorSessionId") || (crypto.randomUUID ? crypto.randomUUID() : `${Date.now()}-${Math.random().toString(36).slice(2)}`);
+        localStorage.setItem("visitorId", visitorId);
+        sessionStorage.setItem("visitorSessionId", sessionId);
         const attribution = {
-          utmSource: params.get("utm_source") || defaults.utm_source,
-          utmMedium: params.get("utm_medium") || defaults.utm_medium,
-          utmCampaign: params.get("utm_campaign") || defaults.utm_campaign,
-          utmContent: params.get("utm_content") || "hub_home",
+          utmSource: params.get("utm_source") || "site",
+          utmMedium: params.get("utm_medium") || "organic",
+          utmCampaign: params.get("utm_campaign") || "home_imovel_explicado",
+          utmContent: params.get("utm_content") || "home",
           utmTerm: params.get("utm_term") || undefined,
         };
-        fetch(`${renderBase}/api/health`, { mode: "no-cors", cache: "no-store", keepalive: true }).catch(() => {});
-        const updateScroll = () => {
-          const scrollTop = window.scrollY || document.documentElement.scrollTop || 0;
-          const viewportHeight = window.innerHeight || document.documentElement.clientHeight || 0;
-          const documentHeight = Math.max(document.body.scrollHeight, document.documentElement.scrollHeight);
-          const percent = documentHeight <= viewportHeight
-            ? 100
-            : Math.round(((scrollTop + viewportHeight) / documentHeight) * 100);
-          maxScrollPercent = Math.max(maxScrollPercent, Math.min(percent, 100));
-        };
-        const track = (eventName, metadata = {}, preferBeacon = true) => {
+        const pushEvent = (name, metadata = {}) => {
+          window.dataLayer = window.dataLayer || [];
+          window.dataLayer.push({ event: name, ...metadata });
+          if (window.gtag) window.gtag("event", name, metadata);
+          if (window.fbq) window.fbq("trackCustom", name, metadata);
           const body = JSON.stringify({
             visitorId,
             sessionId,
-            eventName,
+            eventName: name,
             path: window.location.pathname || "/",
             referrer: document.referrer,
             ...attribution,
-            metadata: {
-              ...metadata,
-              trackingVersion: "cloudflare_hub_20260609",
-            },
+            metadata: { ...metadata, trackingVersion: "home_20260615" },
           });
-          if (preferBeacon && navigator.sendBeacon) {
-            const queued = navigator.sendBeacon(analyticsEndpoint, new Blob([body], { type: "application/json" }));
-            if (queued) return Promise.resolve();
+          if (navigator.sendBeacon) {
+            const ok = navigator.sendBeacon(analyticsEndpoint, new Blob([body], { type: "application/json" }));
+            if (ok) return;
           }
-          return fetch(analyticsEndpoint, {
-            method: "POST",
-            mode: "cors",
-            headers: { "Content-Type": "application/json" },
-            body,
-            keepalive: true,
-          }).catch(() => {});
+          fetch(analyticsEndpoint, { method: "POST", mode: "cors", headers: { "Content-Type": "application/json" }, body, keepalive: true }).catch(() => {});
         };
-        const flushTime = () => {
-          updateScroll();
-          track("page_time", {
-            durationMs: Date.now() - startedAt,
-            maxScrollPercent,
-          });
-        };
-        document.querySelectorAll(".js-triage-link").forEach((link) => {
-          const url = new URL(link.href);
-          url.searchParams.set("vxid", visitorId);
-          url.searchParams.set("sxid", sessionId);
-          url.searchParams.set("utm_source", attribution.utmSource);
-          url.searchParams.set("utm_medium", attribution.utmMedium);
-          url.searchParams.set("utm_campaign", attribution.utmCampaign);
-          url.searchParams.set("utm_content", attribution.utmContent);
-          link.href = url.toString();
-          link.addEventListener("click", () => {
-            track("start_triage_click", { source: "hub_cta", maxScrollPercent }, false);
-            if (window.fbq) fbq("trackCustom", "StartTriageClick", { source: "hub" });
-          });
-        });
-        document.querySelectorAll(".js-whatsapp-link").forEach((link) => {
-          const message = "Ola, Luis. Vim pelo Imovel Explicado e queria tirar uma duvida sobre contrato ou documento imobiliario.";
-          const url = new URL(link.href);
+        const waUrl = (message) => {
+          const url = new URL("https://wa.me/5511964492988");
           url.searchParams.set("text", message);
-          link.href = url.toString();
-          link.addEventListener("click", () => {
-            track("whatsapp_click", { source: "hub", maxScrollPercent }, false);
-            if (window.fbq) fbq("trackCustom", "WhatsAppClick", { source: "hub" });
-          });
+          return url.toString();
+        };
+        document.querySelectorAll(".js-whatsapp-link").forEach((link) => {
+          const message = "Ola, Luis. Vim pelo Imovel Explicado e quero tirar uma duvida sobre contrato ou documento imobiliario.";
+          link.href = waUrl(message);
+          link.addEventListener("click", () => pushEvent(link.dataset.event || "click_whatsapp_header", { source: "home" }));
         });
-        updateScroll();
-        track("page_view", { source: "hub_home" });
-        window.addEventListener("scroll", updateScroll, { passive: true });
-        window.addEventListener("pagehide", flushTime);
-        document.addEventListener("visibilitychange", () => {
-          if (document.visibilityState === "hidden") flushTime();
-        });
+        pushEvent("page_view", { source: "home" });
       })();
     </script>
   </body>

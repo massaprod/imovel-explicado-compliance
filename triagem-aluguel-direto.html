@@ -1,0 +1,510 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Triagem | Imovel Explicado</title>
+    <meta
+      name="description"
+      content="Triagem inicial do Imovel Explicado para contrato de aluguel direto, documentos imobiliarios, sinal, caucao e negociacao."
+    />
+    <meta name="theme-color" content="#101820" />
+    <link rel="canonical" href="https://imovelexplicado.com.br/triagem/aluguel-direto" />
+    <script>
+      !(function (f, b, e, v, n, t, s) {
+        if (f.fbq) return;
+        n = f.fbq = function () {
+          n.callMethod ? n.callMethod.apply(n, arguments) : n.queue.push(arguments);
+        };
+        if (!f._fbq) f._fbq = n;
+        n.push = n;
+        n.loaded = true;
+        n.version = "2.0";
+        n.queue = [];
+        t = b.createElement(e);
+        t.async = true;
+        t.src = v;
+        s = b.getElementsByTagName(e)[0];
+        s.parentNode.insertBefore(t, s);
+      })(window, document, "script", "https://connect.facebook.net/en_US/fbevents.js");
+      fbq("init", "1277173217718163");
+      fbq("track", "PageView");
+    </script>
+    <style>
+      :root {
+        color-scheme: light;
+        --ink: #101820;
+        --muted: #5f6974;
+        --paper: #fbf8f2;
+        --surface: #ffffff;
+        --line: #ddd5c8;
+        --gold: #c79a43;
+        --green: #1f8f61;
+        --red: #943733;
+      }
+
+      * { box-sizing: border-box; }
+
+      body {
+        margin: 0;
+        background:
+          linear-gradient(90deg, rgba(251, 248, 242, 0.96), rgba(251, 248, 242, 0.9)),
+          url("/assets/hero-real-estate-keys.jpg") center / cover fixed no-repeat;
+        color: var(--ink);
+        font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      }
+
+      a { color: inherit; }
+
+      .topbar {
+        position: sticky;
+        top: 0;
+        z-index: 20;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+        padding: 14px clamp(18px, 5vw, 58px);
+        border-bottom: 1px solid rgba(16, 24, 32, 0.1);
+        background: rgba(251, 248, 242, 0.96);
+        backdrop-filter: blur(14px);
+      }
+
+      .brand {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        font-weight: 900;
+        text-decoration: none;
+      }
+
+      .brand img {
+        width: 36px;
+        height: 36px;
+        border-radius: 8px;
+      }
+
+      .button {
+        display: inline-flex;
+        min-height: 48px;
+        align-items: center;
+        justify-content: center;
+        border: 0;
+        border-radius: 8px;
+        padding: 0 18px;
+        background: var(--ink);
+        color: #ffffff;
+        font: inherit;
+        font-weight: 900;
+        line-height: 1;
+        text-decoration: none;
+        cursor: pointer;
+      }
+
+      .button.whatsapp { background: var(--green); }
+      .button.light { border: 1px solid var(--line); background: #ffffff; color: var(--ink); }
+
+      .shell {
+        display: grid;
+        grid-template-columns: minmax(0, 0.86fr) minmax(360px, 1fr);
+        gap: clamp(24px, 5vw, 58px);
+        align-items: start;
+        max-width: 1180px;
+        margin: 0 auto;
+        padding: clamp(34px, 6vw, 76px) clamp(18px, 5vw, 58px) 96px;
+      }
+
+      .intro {
+        position: sticky;
+        top: 92px;
+      }
+
+      h1, h2, p { margin-top: 0; }
+
+      h1 {
+        margin-bottom: 18px;
+        font-size: clamp(38px, 5.7vw, 68px);
+        line-height: 0.98;
+        letter-spacing: 0;
+      }
+
+      .lead {
+        color: var(--muted);
+        font-size: clamp(18px, 2vw, 22px);
+        line-height: 1.5;
+      }
+
+      .trust {
+        display: grid;
+        gap: 12px;
+        margin-top: 28px;
+      }
+
+      .trust span {
+        border-left: 4px solid var(--gold);
+        background: rgba(255, 255, 255, 0.8);
+        padding: 12px 14px;
+        font-weight: 780;
+      }
+
+      .form-card, .confirmation {
+        border: 1px solid var(--line);
+        border-radius: 12px;
+        background: rgba(255, 255, 255, 0.95);
+        box-shadow: 0 24px 70px rgba(16, 24, 32, 0.12);
+        padding: clamp(22px, 4vw, 34px);
+      }
+
+      .form-card h2 {
+        margin-bottom: 8px;
+        font-size: clamp(28px, 3.4vw, 40px);
+        line-height: 1.05;
+      }
+
+      .form-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 16px;
+        margin-top: 24px;
+      }
+
+      .field {
+        display: grid;
+        gap: 7px;
+      }
+
+      .field.full { grid-column: 1 / -1; }
+
+      label {
+        color: var(--ink);
+        font-size: 14px;
+        font-weight: 850;
+      }
+
+      input, select, textarea {
+        width: 100%;
+        min-height: 48px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: #fffdf8;
+        color: var(--ink);
+        font: inherit;
+        padding: 11px 12px;
+      }
+
+      textarea {
+        min-height: 128px;
+        resize: vertical;
+      }
+
+      .accept {
+        display: grid;
+        grid-template-columns: 22px minmax(0, 1fr);
+        gap: 10px;
+        align-items: start;
+        margin: 20px 0;
+        color: var(--muted);
+        line-height: 1.45;
+      }
+
+      .accept input {
+        width: 18px;
+        min-height: 18px;
+        margin-top: 2px;
+      }
+
+      .form-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        align-items: center;
+      }
+
+      .small {
+        color: var(--muted);
+        font-size: 13px;
+        line-height: 1.45;
+      }
+
+      .error {
+        display: none;
+        margin-top: 16px;
+        border-left: 4px solid var(--red);
+        background: #fff5f3;
+        padding: 12px;
+        color: var(--red);
+        font-weight: 800;
+      }
+
+      .confirmation {
+        display: none;
+        margin-top: 18px;
+      }
+
+      .confirmation.visible,
+      .error.visible {
+        display: block;
+      }
+
+      .summary {
+        white-space: pre-wrap;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: #fffdf8;
+        padding: 14px;
+        color: var(--muted);
+        line-height: 1.45;
+      }
+
+      .footer {
+        padding: 26px clamp(18px, 5vw, 58px);
+        border-top: 1px solid rgba(16, 24, 32, 0.1);
+        background: rgba(251, 248, 242, 0.95);
+        color: var(--muted);
+        font-size: 14px;
+      }
+
+      @media (max-width: 860px) {
+        .shell {
+          grid-template-columns: 1fr;
+          padding-top: 30px;
+        }
+
+        .intro {
+          position: static;
+        }
+
+        .form-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .topbar .button {
+          min-height: 42px;
+          padding: 0 12px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <noscript>
+      <img
+        height="1"
+        width="1"
+        style="display: none"
+        src="https://www.facebook.com/tr?id=1277173217718163&ev=PageView&noscript=1"
+        alt=""
+      />
+    </noscript>
+
+    <header class="topbar">
+      <a class="brand" href="/" aria-label="Imovel Explicado">
+        <img src="/assets/logo-mark.png" alt="" />
+        <span>Im&oacute;vel Explicado</span>
+      </a>
+      <a class="button whatsapp js-whatsapp-link" href="https://wa.me/5511964492988">WhatsApp</a>
+    </header>
+
+    <main class="shell">
+      <section class="intro">
+        <h1>Comece pela triagem.</h1>
+        <p class="lead">
+          Em poucos campos eu entendo se voc&ecirc; precisa organizar um aluguel direto, conferir contrato, avaliar sinal ou tratar outro documento imobili&aacute;rio.
+        </p>
+        <div class="trust">
+          <span>Sem pagamento nesta etapa.</span>
+          <span>Mensagem final pronta para WhatsApp.</span>
+          <span>Triagem n&atilde;o substitui provid&ecirc;ncia espec&iacute;fica de profissional habilitado.</span>
+        </div>
+      </section>
+
+      <section>
+        <form class="form-card" id="triagem-form">
+          <h2>Dados iniciais do caso</h2>
+          <p class="small">Preencha o suficiente para eu entender a situa&ccedil;&atilde;o. Dados sens&iacute;veis e documentos podem ser enviados depois, se fizer sentido seguir.</p>
+
+          <div class="form-grid">
+            <div class="field">
+              <label for="nome">Nome</label>
+              <input id="nome" name="nome" autocomplete="name" required />
+            </div>
+            <div class="field">
+              <label for="whatsapp">WhatsApp</label>
+              <input id="whatsapp" name="whatsapp" autocomplete="tel" inputmode="tel" required />
+            </div>
+            <div class="field">
+              <label for="perfil">Perfil</label>
+              <select id="perfil" name="perfil" required>
+                <option value="">Selecione</option>
+                <option>propriet&aacute;rio</option>
+                <option>inquilino</option>
+                <option>comprador</option>
+                <option>vendedor</option>
+                <option>corretor</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="situacao">Situa&ccedil;&atilde;o</label>
+              <select id="situacao" name="situacao" required>
+                <option value="">Selecione</option>
+                <option>preciso criar contrato</option>
+                <option>vou pagar sinal ou cau&ccedil;&atilde;o</option>
+                <option>j&aacute; tenho contrato</option>
+                <option>quero vender</option>
+                <option>outro</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="tipo">Tipo de im&oacute;vel</label>
+              <select id="tipo" name="tipo" required>
+                <option value="">Selecione</option>
+                <option>casa</option>
+                <option>apartamento</option>
+                <option>comercial</option>
+                <option>terreno</option>
+                <option>outro</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="urgencia">Urg&ecirc;ncia</label>
+              <select id="urgencia" name="urgencia" required>
+                <option value="">Selecione</option>
+                <option>hoje</option>
+                <option>24h</option>
+                <option>esta semana</option>
+                <option>sem urg&ecirc;ncia</option>
+              </select>
+            </div>
+            <div class="field full">
+              <label for="mensagem">Mensagem livre</label>
+              <textarea id="mensagem" name="mensagem" placeholder="Conte rapidamente o que est&aacute; acontecendo. Ex.: vou alugar direto, j&aacute; combinei cau&ccedil;&atilde;o, preciso entregar chaves no s&aacute;bado."></textarea>
+            </div>
+          </div>
+
+          <label class="accept">
+            <input id="aceite" name="aceite" type="checkbox" required />
+            <span>Entendo que a triagem n&atilde;o substitui provid&ecirc;ncias espec&iacute;ficas que exijam profissional habilitado.</span>
+          </label>
+
+          <div class="form-actions">
+            <button class="button" type="submit">Gerar resumo da triagem</button>
+            <a class="button light" href="/aluguel-direto">Ver Kit Aluguel Direto</a>
+          </div>
+          <div class="error" id="form-error">Revise os campos obrigat&oacute;rios e marque o aceite para continuar.</div>
+        </form>
+
+        <section class="confirmation" id="confirmation" aria-live="polite">
+          <h2>Resumo pronto</h2>
+          <p class="small">Agora envie pelo WhatsApp para iniciar a conversa com contexto.</p>
+          <div class="summary" id="summary"></div>
+          <div class="form-actions" style="margin-top: 16px">
+            <a class="button whatsapp" id="send-whatsapp" href="https://wa.me/5511964492988">Enviar resumo pelo WhatsApp</a>
+          </div>
+        </section>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <strong>Im&oacute;vel Explicado</strong> - triagem, organiza&ccedil;&atilde;o documental e orienta&ccedil;&atilde;o pr&aacute;tica para contratos e documentos imobili&aacute;rios.
+    </footer>
+
+    <script>
+      (() => {
+        const analyticsEndpoint = "https://imovel-explicado-contratos.onrender.com/api/analytics/event";
+        const params = new URLSearchParams(window.location.search);
+        const visitorId = localStorage.getItem("visitorId") || (crypto.randomUUID ? crypto.randomUUID() : `${Date.now()}-${Math.random().toString(36).slice(2)}`);
+        const sessionId = sessionStorage.getItem("visitorSessionId") || (crypto.randomUUID ? crypto.randomUUID() : `${Date.now()}-${Math.random().toString(36).slice(2)}`);
+        localStorage.setItem("visitorId", visitorId);
+        sessionStorage.setItem("visitorSessionId", sessionId);
+        const attribution = {
+          utmSource: params.get("utm_source") || "site",
+          utmMedium: params.get("utm_medium") || "organic",
+          utmCampaign: params.get("utm_campaign") || "triagem_aluguel_direto",
+          utmContent: params.get("utm_content") || "triagem",
+          utmTerm: params.get("utm_term") || undefined,
+        };
+        const pushEvent = (name, metadata = {}) => {
+          window.dataLayer = window.dataLayer || [];
+          window.dataLayer.push({ event: name, ...metadata });
+          if (window.gtag) window.gtag("event", name, metadata);
+          if (window.fbq) window.fbq("trackCustom", name, metadata);
+          const body = JSON.stringify({
+            visitorId,
+            sessionId,
+            eventName: name,
+            path: window.location.pathname || "/triagem/aluguel-direto",
+            referrer: document.referrer,
+            ...attribution,
+            metadata: { ...metadata, trackingVersion: "triagem_site_20260615" },
+          });
+          if (navigator.sendBeacon) {
+            const ok = navigator.sendBeacon(analyticsEndpoint, new Blob([body], { type: "application/json" }));
+            if (ok) return;
+          }
+          fetch(analyticsEndpoint, { method: "POST", mode: "cors", headers: { "Content-Type": "application/json" }, body, keepalive: true }).catch(() => {});
+        };
+        const waUrl = (message) => {
+          const url = new URL("https://wa.me/5511964492988");
+          url.searchParams.set("text", message);
+          return url.toString();
+        };
+        document.querySelectorAll(".js-whatsapp-link").forEach((link) => {
+          const message = "Ola, Luis. Vim pela triagem do Imovel Explicado e quero tirar uma duvida.";
+          link.href = waUrl(message);
+          link.addEventListener("click", () => pushEvent("click_whatsapp_header", { source: "triagem_header" }));
+        });
+        const form = document.getElementById("triagem-form");
+        const error = document.getElementById("form-error");
+        const confirmation = document.getElementById("confirmation");
+        const summaryEl = document.getElementById("summary");
+        const send = document.getElementById("send-whatsapp");
+        form.addEventListener("submit", (event) => {
+          event.preventDefault();
+          error.classList.remove("visible");
+          if (!form.checkValidity()) {
+            error.classList.add("visible");
+            form.reportValidity();
+            return;
+          }
+          const data = Object.fromEntries(new FormData(form).entries());
+          /*
+          const summary = [
+            "Ol&aacute;, Luis. Fiz a triagem do Im&oacute;vel Explicado.",
+            `Nome: ${data.nome}`,
+            `WhatsApp: ${data.whatsapp}`,
+            `Perfil: ${data.perfil}`,
+            `Situa&ccedil;&atilde;o: ${data.situacao}`,
+            `Tipo de im&oacute;vel: ${data.tipo}`,
+            `Urg&ecirc;ncia: ${data.urgencia}`,
+            `Mensagem: ${data.mensagem || "n&atilde;o informada"}`,
+            "Entendo que a triagem n&atilde;o substitui provid&ecirc;ncias espec&iacute;ficas que exijam profissional habilitado.",
+          ].join("\n");
+          summaryEl.innerHTML = summary.replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;");
+          send.href = waUrl(summary.replace(/&ccedil;/g, "ç").replace(/&atilde;/g, "ã").replace(/&eacute;/g, "é").replace(/&oacute;/g, "ó").replace(/&ecirc;/g, "ê").replace(/&iacute;/g, "í").replace(/&uacute;/g, "ú").replace(/&aacute;/g, "á"));
+          */
+          const cleanSummary = [
+            "Ola, Luis. Fiz a triagem do Imovel Explicado.",
+            `Nome: ${data.nome}`,
+            `WhatsApp: ${data.whatsapp}`,
+            `Perfil: ${data.perfil}`,
+            `Situacao: ${data.situacao}`,
+            `Tipo de imovel: ${data.tipo}`,
+            `Urgencia: ${data.urgencia}`,
+            `Mensagem: ${data.mensagem || "nao informada"}`,
+            "Entendo que a triagem nao substitui providencias especificas que exijam profissional habilitado.",
+          ].join("\n");
+          summaryEl.textContent = cleanSummary;
+          send.href = waUrl(cleanSummary);
+          confirmation.classList.add("visible");
+          pushEvent("submit_triagem", {
+            perfil: data.perfil,
+            situacao: data.situacao,
+            urgencia: data.urgencia,
+          });
+          confirmation.scrollIntoView({ behavior: "smooth", block: "start" });
+        });
+        send.addEventListener("click", () => pushEvent("click_whatsapp_hero", { source: "triagem_summary" }));
+        pushEvent("page_view", { source: "triagem" });
+      })();
+    </script>
+  </body>
+</html>
