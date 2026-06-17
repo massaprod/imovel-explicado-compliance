@@ -221,11 +221,18 @@ Sinais ruins:
 
 ## Decisao recomendada agora
 
+Status tecnico em 2026-06-16:
+
+- Google tag direta publicada na landing `/contrato-compra-venda-imovel`.
+- Conversao `submit_triagem_google_contract` criada na conta Google Ads nova `493-444-4413`.
+- Teste local confirmou disparo para `AW-18245604135/-G1_CNjvvsAcEKeml_xD`.
+- Pendente: conferir diagnostico do Google Ads em navegador sem bloqueador de anuncios.
+
 Antes de adicionar verba:
 
-1. Validar GTM/Google tag.
+1. Conferir diagnostico da Google tag no Google Ads.
 2. Testar `click_whatsapp_qualificado`.
-3. Testar `submit_triagem_google_contract`.
+3. Confirmar `submit_triagem_google_contract` no painel do Google Ads apos reconhecimento da tag.
 4. Criar campanha Search com palavras de frase/exata.
 5. Carregar negativas.
 6. Rodar com limite pequeno.

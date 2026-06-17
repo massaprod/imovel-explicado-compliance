@@ -224,7 +224,7 @@ Com verba baixa, nao otimizar de inicio para compra se ainda nao ha volume. Medi
 
 So ligar verba quando:
 
-- Google tag/conversoes estiverem configurados ou, no minimo, UTMs e analytics interno estiverem conferidos.
+- Google tag/conversoes estiverem configurados. Status em 2026-06-16: `submit_triagem_google_contract` esta criado e publicado na landing de compra/venda; falta apenas o diagnostico do Google Ads reconhecer a tag em navegador sem bloqueador.
 - Anuncios apontarem para `/aluguel-direto`.
 - Palavras negativas carregadas.
 - Pelo menos 2 anuncios responsivos ativos por grupo.

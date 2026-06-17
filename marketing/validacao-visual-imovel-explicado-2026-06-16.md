@@ -37,7 +37,7 @@ Converter visitante de Google Search em contato qualificado pelo WhatsApp ou tri
 2. A pagina `contratos.html` usa uma direcao visual mais escura e agressiva; pode funcionar para dor/urgencia, mas nao deve ser a pagina principal de Google Search para compra e venda.
 3. Materiais antigos ainda usavam "consultor juridico e imobiliario"; isso foi removido das paginas publicas inspecionadas.
 4. A home e boa como hub, mas e ampla demais para campanha de busca com intencao especifica.
-5. Antes de aumentar verba no Google, falta confirmar/instalar tag de conversao do Google Ads ou Google Tag Manager. Hoje a pagina registra eventos internos e Meta Pixel atrasado, mas isso nao substitui a conversao do Google Ads para otimizacao.
+5. Resolvido em 2026-06-16: a conversao direta do Google Ads foi instalada e validada para `submit_triagem_google_contract`. O ponto pendente agora e o diagnostico do Google Ads reconhecer a tag no painel, que pode depender de tempo de propagacao e de acessar a conta sem bloqueador de anuncios.
 
 ## Melhorias aplicadas
 
@@ -109,10 +109,11 @@ Para Google Search, o criativo principal e o texto do anuncio. A arte visual ent
 
 ## Ajustes prioritarios antes de colocar mais verba
 
-1. Configurar conversao do Google Ads:
-   - clique no WhatsApp;
-   - envio da triagem;
-   - opcionalmente rolagem 50% como microconversao, mas nao como conversao principal.
+1. Conferir no Google Ads se a conversao `submit_triagem_google_contract` ja foi reconhecida no diagnostico da conta nova.
+   - ID: `18245604135`.
+   - Rotulo: `-G1_CNjvvsAcEKeml_xD`.
+   - Status tecnico do site: publicado e validado localmente.
+   - Pendente: diagnostico visual do Google Ads, bloqueado no navegador por aviso de ad blocker.
 2. Criar campanha de Search com correspondencia exata/frase, usando `keywords-compra-venda-contrato.csv`.
 3. Usar a lista negativa especifica `negative-keywords-compra-venda-contrato.csv`, nao a lista antiga global sem revisao.
 4. Rodar primeiro campanha pequena e focada, separando ad groups por intencao:
@@ -138,6 +139,6 @@ Para Google Search, o criativo principal e o texto do anuncio. A arte visual ent
 
 ## Proxima acao objetiva
 
-Antes de escalar campanha: configurar conversao do Google Ads na landing nova e testar um clique/submit real com o Tag Assistant ou painel de diagnostico do Google Ads.
+Antes de escalar campanha: conferir o diagnostico da conversao no Google Ads em navegador sem bloqueador e testar um clique/submit real com o Tag Assistant ou painel de diagnostico do Google Ads.
 
 Depois disso, iniciar Search com verba pequena e foco em termos de compra, nao Meta como canal principal para esta oferta.
