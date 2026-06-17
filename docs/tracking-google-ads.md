@@ -53,6 +53,11 @@ Status em 2026-06-16:
   - disparo de conversao `send_to: AW-18245604135/-G1_CNjvvsAcEKeml_xD`;
   - preservacao de `gclid`, UTMs e evento `submit_triagem_google_contract`;
   - formulario da landing abrindo WhatsApp com mensagem estruturada para `+55 11 96449-2988`.
+- Producao conferida em 2026-06-16 no dominio canonico `https://imovelexplicado.com.br/contrato-compra-venda-imovel`:
+  - HTML contem `googleAdsConversionId: 18245604135`;
+  - HTML contem rotulo `-G1_CNjvvsAcEKeml_xD`;
+  - HTML carrega `/assets/imovel-tracking.js?v=gads18245604135`;
+  - helper em producao contem `googleAdsConversionId` e `initGoogleAds`.
 - Antes de colocar verba, publicar o site, validar a presenca da Google tag em producao e testar o envio de triagem no diagnostico do Google Ads.
 
 O helper cria:
@@ -250,7 +255,7 @@ No Google Ads:
 - [x] Google tag direta validada localmente com ID `18245604135`.
 - [x] Conversao `submit_triagem_google_contract` validada localmente com rotulo `-G1_CNjvvsAcEKeml_xD`.
 - [x] Formulario local da landing abre WhatsApp com mensagem preenchida.
-- [ ] Google tag direta publicada em producao com ID `18245604135`.
+- [x] Google tag direta publicada em producao com ID `18245604135`.
 - [ ] Diagnostico do Google Ads reconhece a tag do dominio.
 - [ ] Preview do Tag Manager conectado ao dominio real, se o GTM voltar a ser usado.
 - [ ] `click_whatsapp_qualificado` aparece no `dataLayer`.
