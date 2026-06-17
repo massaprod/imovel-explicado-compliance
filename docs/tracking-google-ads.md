@@ -4,7 +4,7 @@ Data: 2026-06-16
 
 ## Objetivo
 
-Preparar o site para trafego pago com medicacao minimamente confiavel antes de aumentar verba. O foco inicial e entender se a pessoa:
+Preparar o site para trafego pago com medicao minimamente confiavel antes de aumentar verba. O foco inicial e entender se a pessoa:
 
 1. chegou pela campanha certa;
 2. leu a pagina;
@@ -39,11 +39,21 @@ Status em 2026-06-16:
 - GTM criado em conta separada `Imovel Explicado` / container `imovelexplicado.com.br`.
 - GTM publicado no HTML das paginas `/contrato-compra-venda-imovel`, `/triagem` e `/obrigado-triagem`.
 - Producao confirmada servindo `GTM-TX2GTPFL` nas tres paginas.
-- Google Ads impediu a criacao/edicao de conversoes com o aviso: `Sua conta foi suspensa. Por isso, nao e possivel realizar determinadas acoes.`
-- A pagina Politica > Conta tambem exibiu `O saldo se esgotou` e tarefas de verificacao/transparencia pendentes.
-- O Google Ads mostra a declaracao de transparencia como `Anuncios financiados por LUIS CARLOS GONCALVES DOS SANTOS`.
-- A tela passou a pedir informacoes de `agencia` / `cliente`; antes de responder, confirmar se a conta deve operar como anunciante direto ou agencia gerenciando cliente.
-- Antes de colocar verba, resolver a suspensao/verificacao da conta Google Ads e entao criar as conversoes abaixo.
+- Conta Google Ads antiga descartada operacionalmente por suspensao/bloqueio. Historico: conta `797-338-9619` no e-mail `massaproducoes1@gmail.com`, com aviso `Sua conta foi suspensa. Por isso, nao e possivel realizar determinadas acoes.`
+- Nova conta Google Ads em onboarding no e-mail `imovelexplicado@gmail.com`, customer ID `493-444-4413`.
+- Nova conta deve operar como anunciante direto do Imovel Explicado/Luis Carlos, nao como agencia gerenciando cliente.
+- No onboarding da nova conta, foi escolhido `Configure apenas a conta` para evitar uma campanha automatica simplificada antes de conversoes, palavras-chave e orcamento estarem sob controle.
+- Configuracoes permanentes da nova conta confirmadas: `Brasil`, `(GMT-03:00) Horario Sao Paulo`, `Real brasileiro (BRL R$)`.
+- Conversao criada na nova conta Google Ads: `submit_triagem_google_contract`, ID `18245604135`, rotulo `-G1_CNjvvsAcEKeml_xD`.
+- Conversoes otimizadas foram deixadas desativadas por enquanto para evitar tratamento adicional de dados pessoais antes da revisao de politica/implementacao.
+- Tentativa de configurar via GTM foi descartada porque o import automatico so encontrou containers no usuario errado e a tag manual `Conversion Linker` apareceu pausada/sinalizada pelo GTM. O container foi limpo sem publicacao.
+- Caminho atual: Google tag direta carregada pelo helper `/assets/imovel-tracking.js` nas paginas criticas e conversao disparada diretamente no evento `submit_triagem_google_contract`.
+- Teste local em 2026-06-16 confirmou:
+  - carregamento de `https://www.googletagmanager.com/gtag/js?id=AW-18245604135`;
+  - disparo de conversao `send_to: AW-18245604135/-G1_CNjvvsAcEKeml_xD`;
+  - preservacao de `gclid`, UTMs e evento `submit_triagem_google_contract`;
+  - formulario da landing abrindo WhatsApp com mensagem estruturada para `+55 11 96449-2988`.
+- Antes de colocar verba, publicar o site, validar a presenca da Google tag em producao e testar o envio de triagem no diagnostico do Google Ads.
 
 O helper cria:
 
@@ -51,6 +61,8 @@ O helper cria:
 - `window.ImovelExplicado.trackEvent(eventName, params, options)`
 - envio para `dataLayer`
 - envio para `gtag`, se existir
+- carregamento opcional da Google tag do Google Ads
+- disparo opcional de conversao Google Ads por evento configurado
 - envio para `fbq`, se existir
 - envio para analytics interno, sem bloquear a pagina
 - deduplicacao opcional por evento
@@ -134,6 +146,23 @@ O helper aceita um `gtmId` opcional na configuracao da pagina:
 
 Enquanto `gtmId` estiver vazio, nada e carregado. Isso evita erro antes de existir um container definitivo.
 
+O helper tambem aceita Google Ads direto:
+
+```html
+<script>
+  window.ImovelExplicadoConfig = {
+    googleAdsConversionId: "18245604135",
+    googleAdsConversions: {
+      submit_triagem_google_contract: {
+        label: "-G1_CNjvvsAcEKeml_xD",
+        value: 1,
+        currency: "BRL"
+      }
+    }
+  };
+</script>
+```
+
 Recomendacao operacional:
 
 1. Criar container Web no Google Tag Manager.
@@ -184,43 +213,52 @@ No Google Ads:
 6. Se usar Google tag direta, configure eventos equivalentes pelo `gtag`.
 7. Marque como primaria apenas as conversoes que devem orientar lance.
 
-## Retomada quando a conta Google Ads for liberada
+## Retomada na nova conta Google Ads
 
-1. Resolver a suspensao/verificacao no Google Ads antes de qualquer campanha.
-   - Caminho oficial: revisar o motivo na propria conta e enviar recurso se a suspensao parecer incorreta ou ja tiver sido corrigida.
-   - Referencia: https://support.google.com/google-ads/answer/9841640
-   - Confirmar se a conta deve representar anunciante direto ou agencia. Para o MVP atual, a recomendacao e operar como anunciante direto do Imovel Explicado/Luis Carlos, evitando complexidade de agencia/cliente se nao houver necessidade.
-   - Concluir as tarefas de transparencia/verificacao antes de criar conversoes ou campanhas.
-   - Repor saldo apenas depois que a conta estiver sem bloqueios.
+1. Concluir o onboarding da nova conta `493-444-4413`.
+   - Configuracoes permanentes confirmadas: pais `Brasil`, fuso `(GMT-03:00) Horario Sao Paulo`, moeda `Real brasileiro (BRL R$)`.
+   - Manter a escolha operacional `Configure apenas a conta`.
+   - Nao publicar campanha automatica simplificada no onboarding.
+   - Nao adicionar verba antes das conversoes estarem criadas e testadas.
 2. Criar conversao de site para `submit_triagem_google_contract`.
+   - Criada em 2026-06-16.
+   - ID: `18245604135`.
+   - Rotulo: `-G1_CNjvvsAcEKeml_xD`.
    - Tipo sugerido: lead/envio de formulario.
    - Uso: primaria.
    - Contagem: uma.
-   - Valor inicial: sem valor ou valor fixo conservador.
+   - Valor inicial: `R$ 1,00`, conservador para nao distorcer lances antes de dados reais.
 3. Criar conversao de site para `click_whatsapp_qualificado`.
    - Tipo sugerido: contato.
    - Uso: primaria apenas no primeiro teste de baixo volume; depois pode virar secundaria se houver muito clique sem conversa real.
    - Contagem: uma.
 4. Criar conversao de site para `submit_triagem`.
    - Uso: primaria ou secundaria conforme volume.
-5. No GTM, criar acionadores de Evento Personalizado com os mesmos nomes:
+5. Se voltar ao GTM, criar acionadores de Evento Personalizado com os mesmos nomes:
    - `submit_triagem_google_contract`
    - `submit_triagem`
    - `click_whatsapp_qualificado`
-6. No GTM, criar tag `Vinculador de conversoes` em todas as paginas.
-7. No GTM, criar tags de conversao Google Ads usando os IDs/labels gerados nas conversoes acima.
-8. Publicar o container GTM.
-9. Testar no Preview do GTM e no Diagnostico de conversoes do Google Ads.
+6. No GTM, criar tag `Vinculador de conversoes` em todas as paginas somente se o alerta de tag pausada/sinalizada nao se repetir.
+7. No GTM, criar tags de conversao Google Ads usando os IDs/labels gerados nas conversoes acima somente depois de validar o container.
+8. Publicar o container GTM apenas se nao houver alerta de malware/tag pausada.
+9. No caminho atual, validar a Google tag direta em producao e testar no Diagnostico de conversoes do Google Ads.
 
 ## Checklist antes de aumentar verba
 
 - [x] GTM/Google tag instalado em producao.
-- [ ] Preview do Tag Manager conectado ao dominio real.
+- [x] Conversao `submit_triagem_google_contract` criada no Google Ads.
+- [x] Google tag direta validada localmente com ID `18245604135`.
+- [x] Conversao `submit_triagem_google_contract` validada localmente com rotulo `-G1_CNjvvsAcEKeml_xD`.
+- [x] Formulario local da landing abre WhatsApp com mensagem preenchida.
+- [ ] Google tag direta publicada em producao com ID `18245604135`.
+- [ ] Diagnostico do Google Ads reconhece a tag do dominio.
+- [ ] Preview do Tag Manager conectado ao dominio real, se o GTM voltar a ser usado.
 - [ ] `click_whatsapp_qualificado` aparece no `dataLayer`.
 - [ ] `submit_triagem_google_contract` aparece ao enviar formulario da landing.
 - [ ] `submit_triagem` aparece ao enviar `/triagem`.
 - [ ] Conta Google Ads sem suspensao/bloqueio operacional.
-- [ ] Conversoes Google Ads criadas e vinculadas ao GTM.
+- [x] Nova conta Google Ads `493-444-4413` com onboarding concluido.
+- [ ] Conversoes Google Ads publicadas no site e testadas.
 - [ ] O link do WhatsApp abre com mensagem preenchida.
 - [ ] Nenhum CTA principal usa `onrender.com`.
 - [ ] Campanhas usam UTMs consistentes.

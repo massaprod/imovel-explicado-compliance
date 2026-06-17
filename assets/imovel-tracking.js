@@ -13,6 +13,8 @@
     gtmId: "",
     metaPixelId: "",
     metaPixelDelay: 6500,
+    googleAdsConversionId: "",
+    googleAdsConversions: {},
     includeAttributionInWhatsApp: false,
     sendLocalAnalytics: false,
     debug: ["localhost", "127.0.0.1"].includes(window.location.hostname),
@@ -48,6 +50,29 @@
   const cleanObject = (input) => Object.fromEntries(
     Object.entries(input || {}).filter(([, value]) => clean(value) !== undefined)
   );
+
+  const getGoogleAdsId = () => String(config.googleAdsConversionId || "").replace(/^AW-/i, "");
+
+  const sendGoogleAdsConversion = (eventName, attribution, eventMetadata) => {
+    const googleAdsId = getGoogleAdsId();
+    const conversion = config.googleAdsConversions?.[eventName];
+    if (!googleAdsId || !conversion || !conversion.label || typeof window.gtag !== "function") return;
+
+    const dedupeKey = `google_ads:${conversion.dedupeKey || eventName}`;
+    if (conversion.once !== false && fired.has(dedupeKey)) return;
+    if (conversion.once !== false) fired.add(dedupeKey);
+
+    try {
+      window.gtag("event", "conversion", cleanObject({
+        send_to: conversion.sendTo || `AW-${googleAdsId}/${conversion.label}`,
+        value: conversion.value ?? eventMetadata.value,
+        currency: conversion.currency || eventMetadata.currency || "BRL",
+        transaction_id: conversion.transactionId || `${sessionId}:${eventName}`,
+        page_path: attribution.path,
+        event_source: eventName,
+      }));
+    } catch (_error) {}
+  };
 
   const getAttribution = () => cleanObject({
     visitorId,
@@ -125,6 +150,8 @@
         window.gtag("event", eventName, cleanObject({ ...attribution, ...eventMetadata }));
       }
     } catch (_error) {}
+
+    sendGoogleAdsConversion(eventName, attribution, eventMetadata);
 
     try {
       if (typeof window.fbq === "function") {
@@ -234,6 +261,21 @@
     firstScript.parentNode.insertBefore(script, firstScript);
   };
 
+  const initGoogleAds = (conversionId = config.googleAdsConversionId) => {
+    const googleAdsId = String(conversionId || "").replace(/^AW-/i, "");
+    if (!/^\d+$/.test(googleAdsId) || window.__imovelGoogleAdsLoaded) return;
+    window.__imovelGoogleAdsLoaded = true;
+    window.dataLayer = window.dataLayer || [];
+    window.gtag = window.gtag || function () { window.dataLayer.push(arguments); };
+    window.gtag("js", new Date());
+    window.gtag("config", `AW-${googleAdsId}`);
+    const firstScript = document.getElementsByTagName("script")[0];
+    const script = document.createElement("script");
+    script.async = true;
+    script.src = `https://www.googletagmanager.com/gtag/js?id=AW-${encodeURIComponent(googleAdsId)}`;
+    firstScript.parentNode.insertBefore(script, firstScript);
+  };
+
   const initMetaPixel = (pixelId = config.metaPixelId) => {
     if (!pixelId || window.fbq || window.__imovelMetaPixelLoaded) return;
     window.__imovelMetaPixelLoaded = true;
@@ -257,6 +299,7 @@
 
   const init = () => {
     initGTM();
+    initGoogleAds();
     bindWhatsAppLinks();
     bindTrackedElements();
     bindFaq();
@@ -280,6 +323,7 @@
     bindWhatsAppLinks,
     bindTrackedElements,
     initGTM,
+    initGoogleAds,
     initMetaPixel,
     init,
   };
