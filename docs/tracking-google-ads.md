@@ -58,6 +58,12 @@ Status em 2026-06-16:
   - HTML contem rotulo `-G1_CNjvvsAcEKeml_xD`;
   - HTML carrega `/assets/imovel-tracking.js?v=gads18245604135`;
   - helper em producao contem `googleAdsConversionId` e `initGoogleAds`.
+- Google Ads conferido em 2026-06-16 apos troca de DNS:
+  - conta correta carregada: `493-444-4413` / `imovelexplicado@gmail.com`;
+  - meta `Enviar formulario de lead` aparece ativa e com status `Concluido sem erros`;
+  - acao `submit_triagem_google_contract` aparece em `Ver todas as acoes de conversao`;
+  - linha da acao: `Site`, `Nao ha conversoes recentes`, `Principal`, contagem `Uma`, janela `90 dias`;
+  - ainda aparece modal `Turn off ad blockers`, provavelmente por cache/ambiente do navegador, mas a interface ja carregou os dados principais.
 - Antes de colocar verba, publicar o site, validar a presenca da Google tag em producao e testar o envio de triagem no diagnostico do Google Ads.
 
 O helper cria:
@@ -256,7 +262,8 @@ No Google Ads:
 - [x] Conversao `submit_triagem_google_contract` validada localmente com rotulo `-G1_CNjvvsAcEKeml_xD`.
 - [x] Formulario local da landing abre WhatsApp com mensagem preenchida.
 - [x] Google tag direta publicada em producao com ID `18245604135`.
-- [ ] Diagnostico do Google Ads reconhece a tag do dominio.
+- [x] Acao `submit_triagem_google_contract` visivel na conta Google Ads.
+- [ ] Diagnostico do Google Ads registra conversao recente real/teste.
 - [ ] Preview do Tag Manager conectado ao dominio real, se o GTM voltar a ser usado.
 - [ ] `click_whatsapp_qualificado` aparece no `dataLayer`.
 - [ ] `submit_triagem_google_contract` aparece ao enviar formulario da landing.
