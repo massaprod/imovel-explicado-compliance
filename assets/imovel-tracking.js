@@ -89,6 +89,9 @@
     gclid: params.get("gclid") || undefined,
     gbraid: params.get("gbraid") || undefined,
     wbraid: params.get("wbraid") || undefined,
+    fbclid: params.get("fbclid") || undefined,
+    msclkid: params.get("msclkid") || undefined,
+    ttclid: params.get("ttclid") || undefined,
   });
 
   const sendInternalAnalytics = (eventName, metadata, preferBeacon) => {
