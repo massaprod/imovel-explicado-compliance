@@ -148,12 +148,15 @@
         pageViewEvent: "view_sinal_landing",
         gtmId: "GTM-TX2GTPFL",
         googleAdsConversionId: "18245604135",
-        googleAdsConversions: { submit_triagem_google_contract: { label: "-G1_CNjvvsAcEKeml_xD", value: 1, currency: "BRL" } },
+        googleAdsConversions: {
+          submit_triagem_google_contract: { label: "-G1_CNjvvsAcEKeml_xD", value: 1, currency: "BRL", dedupeKey: "qualified_lead" },
+          click_whatsapp_qualificado: { label: "-G1_CNjvvsAcEKeml_xD", value: 1, currency: "BRL", dedupeKey: "qualified_lead" }
+        },
         metaPixelId: "998092116298334",
         metaPixelDelay: 6500
       };
     </script>
-    <script src="/assets/imovel-tracking.js?v=gads18245604135"></script>
+    <script src="/assets/imovel-tracking.js?v=gads18245604135-wa20260618"></script>
     <script>
       (() => {
         const form = document.getElementById("leadForm");

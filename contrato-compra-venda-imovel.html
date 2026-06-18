@@ -79,7 +79,8 @@
           linear-gradient(180deg, rgba(247, 244, 237, 0.9), rgba(255, 255, 255, 0.95) 38%, #fff 100%),
           var(--paper);
         font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-        overflow-x: clip;
+        max-width: 100%;
+        overflow-x: hidden;
         text-rendering: optimizeLegibility;
       }
 
@@ -968,6 +969,16 @@
       @media (max-width: 760px) {
         body { padding-bottom: 78px; }
 
+        h1,
+        h2,
+        h3,
+        p,
+        li,
+        .button,
+        .brand span {
+          overflow-wrap: anywhere;
+        }
+
         .container {
           width: min(100% - 28px, var(--container));
         }
@@ -986,9 +997,12 @@
         }
 
         .nav-links .button {
+          max-width: 132px;
           min-height: 40px;
           padding: 0 12px;
           font-size: 13px;
+          white-space: normal;
+          text-align: center;
         }
 
         .hero::before {
@@ -1303,7 +1317,7 @@
         </div>
       </section>
 
-      <section class="for-who" aria-labelledby="perfil-title">
+      <section id="perfil-negociacao" class="for-who" aria-labelledby="perfil-title">
         <div class="container">
           <div class="section-head">
             <h2 id="perfil-title">Esta p&aacute;gina &eacute; para quem est&aacute; perto de decidir</h2>
@@ -1490,14 +1504,21 @@
           submit_triagem_google_contract: {
             label: "-G1_CNjvvsAcEKeml_xD",
             value: 1,
-            currency: "BRL"
+            currency: "BRL",
+            dedupeKey: "qualified_lead"
+          },
+          click_whatsapp_qualificado: {
+            label: "-G1_CNjvvsAcEKeml_xD",
+            value: 1,
+            currency: "BRL",
+            dedupeKey: "qualified_lead"
           }
         },
         metaPixelId: "998092116298334",
         metaPixelDelay: 6500
       };
     </script>
-    <script src="/assets/imovel-tracking.js?v=gads18245604135"></script>
+    <script src="/assets/imovel-tracking.js?v=gads18245604135-wa20260618"></script>
     <script>
       (() => {
         const form = document.getElementById("triagemForm");

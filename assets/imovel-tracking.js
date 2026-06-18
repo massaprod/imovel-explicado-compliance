@@ -15,6 +15,12 @@
     metaPixelDelay: 6500,
     googleAdsConversionId: "",
     googleAdsConversions: {},
+    metaStandardEvents: {
+      click_whatsapp_qualificado: "Contact",
+      click_whatsapp_triagem_summary: "Contact",
+      submit_triagem: "Lead",
+      submit_triagem_google_contract: "Lead",
+    },
     includeAttributionInWhatsApp: false,
     sendLocalAnalytics: false,
     debug: ["localhost", "127.0.0.1"].includes(window.location.hostname),
@@ -157,8 +163,20 @@
     sendGoogleAdsConversion(eventName, attribution, eventMetadata);
 
     try {
+      if (
+        config.metaPixelId
+        && typeof window.fbq !== "function"
+        && /^(click_whatsapp_qualificado|click_whatsapp_triagem_summary|submit_triagem|submit_triagem_google_contract)$/.test(eventName)
+      ) {
+        initMetaPixel();
+      }
       if (typeof window.fbq === "function") {
-        window.fbq("trackCustom", eventName, cleanObject({ ...eventMetadata, page: attribution.page }));
+        const metaPayload = cleanObject({ ...eventMetadata, page: attribution.page });
+        window.fbq("trackCustom", eventName, metaPayload);
+        const standardEvent = config.metaStandardEvents?.[eventName];
+        if (standardEvent) {
+          window.fbq("track", standardEvent, metaPayload);
+        }
       }
     } catch (_error) {}
 
