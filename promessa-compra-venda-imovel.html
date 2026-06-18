@@ -156,7 +156,7 @@
         metaPixelDelay: 6500
       };
     </script>
-    <script src="/assets/imovel-tracking.js?v=gads18245604135-wa20260618"></script>
+    <script src="/assets/imovel-tracking.js?v=gads18245604135-track20260618"></script>
     <script>
       (() => {
         const form = document.getElementById("leadForm");
@@ -165,8 +165,10 @@
         form?.addEventListener("submit", (event) => {
           event.preventDefault();
           const data = new FormData(form);
+          const leadId = window.ImovelExplicado.createLeadId();
           const message = [
             "Ola, Luis. Quero organizar uma promessa de compra e venda.",
+            `Codigo: ${leadId}`,
             "",
             `Perfil: ${data.get("perfil")}`,
             `Fase: ${data.get("fase")}`,
@@ -175,9 +177,9 @@
             "",
             `Resumo: ${data.get("mensagem")}`
           ].join("\n");
-          window.ImovelExplicado.trackEvent("submit_triagem_google_contract", { service: "promessa_compra_venda", fase: data.get("fase"), documentos: data.get("documentos") }, { preferBeacon: false });
+          window.ImovelExplicado.trackEvent("submit_triagem_google_contract", { service: "promessa_compra_venda", fase: data.get("fase"), documentos: data.get("documentos"), lead_id: leadId }, { preferBeacon: false });
           success?.classList.add("is-visible");
-          const url = window.ImovelExplicado.createWhatsAppLink(message, "google", "gs_compra_venda_contrato_202606", "promessa_compra_venda");
+          const url = window.ImovelExplicado.createWhatsAppLink(message, "google", "gs_compra_venda_contrato_202606", "promessa_compra_venda", leadId);
           if (fallback) fallback.href = url;
           window.open(url, "_blank", "noopener,noreferrer");
         });

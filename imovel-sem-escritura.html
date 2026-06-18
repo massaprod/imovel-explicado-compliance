@@ -156,7 +156,7 @@
         metaPixelDelay: 6500
       };
     </script>
-    <script src="/assets/imovel-tracking.js?v=gads18245604135-wa20260618"></script>
+    <script src="/assets/imovel-tracking.js?v=gads18245604135-track20260618"></script>
     <script>
       (() => {
         const form = document.getElementById("leadForm");
@@ -165,8 +165,10 @@
         form?.addEventListener("submit", (event) => {
           event.preventDefault();
           const data = new FormData(form);
+          const leadId = window.ImovelExplicado.createLeadId();
           const message = [
             "Ola, Luis. Quero triagem documental de imovel sem escritura clara.",
+            `Codigo: ${leadId}`,
             "",
             `Perfil: ${data.get("perfil")}`,
             `Documento principal: ${data.get("documento")}`,
@@ -175,9 +177,9 @@
             "",
             `Resumo: ${data.get("mensagem")}`
           ].join("\n");
-          window.ImovelExplicado.trackEvent("submit_triagem_google_contract", { service: "imovel_sem_escritura", documento: data.get("documento"), pagamento: data.get("pagamento") }, { preferBeacon: false });
+          window.ImovelExplicado.trackEvent("submit_triagem_google_contract", { service: "imovel_sem_escritura", documento: data.get("documento"), pagamento: data.get("pagamento"), lead_id: leadId }, { preferBeacon: false });
           success?.classList.add("is-visible");
-          const url = window.ImovelExplicado.createWhatsAppLink(message, "google", "gs_compra_venda_contrato_202606", "imovel_sem_escritura");
+          const url = window.ImovelExplicado.createWhatsAppLink(message, "google", "gs_compra_venda_contrato_202606", "imovel_sem_escritura", leadId);
           if (fallback) fallback.href = url;
           window.open(url, "_blank", "noopener,noreferrer");
         });

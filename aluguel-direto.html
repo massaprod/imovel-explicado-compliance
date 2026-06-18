@@ -27,7 +27,7 @@
         s = b.getElementsByTagName(e)[0];
         s.parentNode.insertBefore(t, s);
       })(window, document, "script", "https://connect.facebook.net/en_US/fbevents.js");
-      fbq("init", "1277173217718163");
+      fbq("init", "998092116298334");
       fbq("track", "PageView");
     </script>
     <style>
@@ -53,6 +53,8 @@
         background: var(--paper);
         color: var(--ink);
         font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        max-width: 100%;
+        overflow-x: hidden;
       }
 
       a { color: inherit; }
@@ -485,6 +487,30 @@
       @media (max-width: 900px) {
         body { padding-bottom: 76px; }
         .topbar { padding: 12px 16px; }
+
+        h1,
+        h2,
+        h3,
+        p,
+        li,
+        .button,
+        .brand span,
+        .hero-meta span {
+          overflow-wrap: anywhere;
+        }
+
+        .topbar {
+          gap: 10px;
+        }
+
+        .brand {
+          min-width: 0;
+        }
+
+        .brand span {
+          line-height: 1.1;
+        }
+
         .hero {
           grid-template-columns: 1fr;
           min-height: auto;
@@ -511,7 +537,13 @@
           width: 140px;
           height: 170px;
         }
-        .topbar .button { min-height: 42px; padding: 0 12px; }
+        .topbar .button {
+          max-width: 132px;
+          min-height: 42px;
+          padding: 0 12px;
+          white-space: normal;
+          text-align: center;
+        }
         .sticky-mobile { display: block; }
       }
     </style>
@@ -762,6 +794,15 @@
           utmCampaign: params.get("utm_campaign") || "aluguel_direto",
           utmContent: params.get("utm_content") || "landing_aluguel_direto",
           utmTerm: params.get("utm_term") || undefined,
+          gclid: params.get("gclid") || undefined,
+          gbraid: params.get("gbraid") || undefined,
+          wbraid: params.get("wbraid") || undefined,
+          fbclid: params.get("fbclid") || undefined,
+        };
+        const randomToken = () => Math.random().toString(36).replace(/[^a-z0-9]/gi, "").slice(2, 6).toUpperCase();
+        const createLeadId = () => {
+          const now = new Date();
+          return `IE-${now.getFullYear()}${String(now.getMonth() + 1).padStart(2, "0")}${String(now.getDate()).padStart(2, "0")}-${randomToken()}`;
         };
         const pushEvent = (name, metadata = {}) => {
           window.dataLayer = window.dataLayer || [];
@@ -779,15 +820,24 @@
           });
           fetch(analyticsEndpoint, { method: "POST", mode: "cors", headers: { "Content-Type": "application/json" }, body, keepalive: true }).catch(() => {});
         };
-        const buildWa = (message) => {
+        const buildWa = (message, leadId) => {
           const url = new URL("https://wa.me/5511964492988");
-          url.searchParams.set("text", message);
+          const text = leadId && !/Codigo:/i.test(message) ? `${message}\n\nCodigo: ${leadId}` : message;
+          url.searchParams.set("text", text);
           return url.toString();
         };
         document.querySelectorAll(".js-whatsapp-link").forEach((link) => {
           const message = link.dataset.message || "Ola, Luis. Vim pelo Imovel Explicado e quero fazer uma triagem.";
-          link.href = buildWa(message);
-          link.addEventListener("click", () => pushEvent(link.dataset.event || "click_whatsapp_hero", { label: link.textContent.trim() }));
+          const leadId = createLeadId();
+          link.dataset.leadId = leadId;
+          link.href = buildWa(message, leadId);
+          link.addEventListener("click", () => {
+            const currentLeadId = link.dataset.leadId || createLeadId();
+            link.href = buildWa(message, currentLeadId);
+            const metadata = { label: link.textContent.trim(), lead_id: currentLeadId, service: "aluguel_direto" };
+            pushEvent(link.dataset.event || "click_whatsapp_hero", metadata);
+            pushEvent("click_whatsapp_qualificado", metadata);
+          });
         });
         document.querySelectorAll(".js-video-play").forEach((button) => {
           button.addEventListener("click", () => {

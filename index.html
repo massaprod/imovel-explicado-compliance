@@ -1032,7 +1032,7 @@
         height="1"
         width="1"
         style="display: none"
-        src="https://www.facebook.com/tr?id=1277173217718163&ev=PageView&noscript=1"
+        src="https://www.facebook.com/tr?id=998092116298334&ev=PageView&noscript=1"
         alt=""
       />
     </noscript>
@@ -1613,7 +1613,7 @@
           <p>Conte&uacute;do e atendimento de organiza&ccedil;&atilde;o documental e orienta&ccedil;&atilde;o pr&aacute;tica. N&atilde;o substitui provid&ecirc;ncias espec&iacute;ficas que exijam profissional habilitado.</p>
         </div>
         <nav aria-label="Links do rodape">
-          <a href="https://wa.me/5511964492988">WhatsApp</a>
+          <a class="js-whatsapp" href="https://wa.me/5511964492988" data-event="click_whatsapp_footer" data-message="Ola, Luis. Vim pelo site Imovel Explicado e quero fazer uma triagem imobiliaria.">WhatsApp</a>
           <a href="https://www.instagram.com/imovelexplicado/">Instagram</a>
           <a href="/blog/">Blog</a>
           <a href="/exclusao-dados.html">Privacidade</a>
@@ -1647,6 +1647,15 @@
           utmCampaign: params.get("utm_campaign") || "home_comercial_20260616",
           utmContent: params.get("utm_content") || "home",
           utmTerm: params.get("utm_term") || undefined,
+          gclid: params.get("gclid") || undefined,
+          gbraid: params.get("gbraid") || undefined,
+          wbraid: params.get("wbraid") || undefined,
+          fbclid: params.get("fbclid") || undefined,
+        };
+        const randomToken = () => Math.random().toString(36).replace(/[^a-z0-9]/gi, "").slice(2, 6).toUpperCase();
+        const createLeadId = () => {
+          const now = new Date();
+          return `IE-${now.getFullYear()}${String(now.getMonth() + 1).padStart(2, "0")}${String(now.getDate()).padStart(2, "0")}-${randomToken()}`;
         };
 
         const trackEvent = (eventName, metadata = {}, options = {}) => {
@@ -1696,13 +1705,19 @@
             s = b.getElementsByTagName(e)[0];
             s.parentNode.insertBefore(t, s);
           })(window, document, "script", "https://connect.facebook.net/en_US/fbevents.js");
-          fbq("init", "1277173217718163");
+          fbq("init", "998092116298334");
           fbq("track", "PageView");
         };
 
-        const whatsappUrl = (message) => {
+        const withLeadId = (message, leadId) => (
+          leadId && !/Codigo:/i.test(message)
+            ? `${message}\n\nCodigo: ${leadId}`
+            : message
+        );
+
+        const whatsappUrl = (message, leadId) => {
           const url = new URL(`https://wa.me/${phone}`);
-          url.searchParams.set("text", message);
+          url.searchParams.set("text", withLeadId(message, leadId));
           return url.toString();
         };
 
@@ -1714,11 +1729,21 @@
 
         document.querySelectorAll(".js-whatsapp").forEach((link) => {
           const message = decodeMessage(link.dataset.message);
-          link.href = whatsappUrl(message);
+          const leadId = createLeadId();
+          link.dataset.leadId = leadId;
+          link.href = whatsappUrl(message, leadId);
           link.addEventListener("click", () => {
+            const currentLeadId = link.dataset.leadId || createLeadId();
+            link.href = whatsappUrl(message, currentLeadId);
             trackEvent(link.dataset.event || "click_whatsapp", {
+              lead_id: currentLeadId,
               service: link.dataset.service || undefined,
               value: link.dataset.value ? Number(link.dataset.value) : undefined,
+              source: "home",
+            });
+            trackEvent("click_whatsapp_qualificado", {
+              lead_id: currentLeadId,
+              service: link.dataset.service || undefined,
               source: "home",
             });
           });
@@ -1740,8 +1765,10 @@
         leadForm?.addEventListener("submit", (event) => {
           event.preventDefault();
           const data = new FormData(leadForm);
+          const leadId = createLeadId();
           const resumo = [
             "Ola, Luis. Fiz a triagem no site.",
+            `Codigo: ${leadId}`,
             `Nome: ${data.get("nome") || ""}`,
             `WhatsApp: ${data.get("whatsapp") || ""}`,
             `Perfil: ${data.get("perfil") || ""}`,
@@ -1756,10 +1783,11 @@
             situacao: data.get("situacao"),
             tipo: data.get("tipo"),
             urgencia: data.get("urgencia"),
+            lead_id: leadId,
           });
           success?.classList.add("is-visible");
-          trackEvent("triagem_success", { source: "home_form" });
-          const triagemUrl = whatsappUrl(resumo);
+          trackEvent("triagem_success", { source: "home_form", lead_id: leadId });
+          const triagemUrl = whatsappUrl(resumo, leadId);
           if (fallbackWhatsApp) fallbackWhatsApp.href = triagemUrl;
           window.open(triagemUrl, "_blank", "noopener,noreferrer");
         });
@@ -1780,6 +1808,7 @@
           }
         }, { passive: true });
 
+        trackEvent("page_view", { source: "home" }, { once: true });
         trackEvent("view_home", { source: "home" }, { once: true });
         if ("requestIdleCallback" in window) {
           requestIdleCallback(loadMetaPixel, { timeout: 2200 });

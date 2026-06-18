@@ -29,7 +29,7 @@
         s = b.getElementsByTagName(e)[0];
         s.parentNode.insertBefore(t, s);
       })(window, document, "script", "https://connect.facebook.net/en_US/fbevents.js");
-      fbq("init", "1277173217718163");
+      fbq("init", "998092116298334");
       fbq("track", "PageView");
     </script>
     <style>
@@ -649,7 +649,7 @@
         height="1"
         width="1"
         style="display: none"
-        src="https://www.facebook.com/tr?id=1277173217718163&ev=PageView&noscript=1"
+        src="https://www.facebook.com/tr?id=998092116298334&ev=PageView&noscript=1"
         alt=""
       />
     </noscript>
@@ -811,7 +811,7 @@
         <div>
           <h2>Escolha uma verifica&ccedil;&atilde;o proporcional ao risco.</h2>
           <p>
-            Esta p&aacute;gina &eacute; secund&aacute;ria. A campanha principal deve levar para aluguel direto. Use Contratos quando o cliente j&aacute; recebeu documento, proposta ou pedido de pagamento e precisa decidir antes de avan&ccedil;ar.
+            Use esta verifica&ccedil;&atilde;o quando voc&ecirc; j&aacute; recebeu documento, proposta ou pedido de pagamento e precisa entender os pontos principais antes de avan&ccedil;ar.
           </p>
         </div>
         <div class="offer-grid">
@@ -892,6 +892,10 @@
           utmCampaign: landingParams.get("utm_campaign") || defaultParams.utm_campaign,
           utmContent: landingParams.get("utm_content") || undefined,
           utmTerm: landingParams.get("utm_term") || undefined,
+          gclid: landingParams.get("gclid") || undefined,
+          gbraid: landingParams.get("gbraid") || undefined,
+          wbraid: landingParams.get("wbraid") || undefined,
+          fbclid: landingParams.get("fbclid") || undefined,
         });
         const trackingVersion = "cloudflare_contratos_20260609";
         const renderWarmup = fetch(`${renderBase}/api/health`, {
@@ -900,13 +904,18 @@
           keepalive: true,
         }).catch(() => {});
         const trackInternal = (eventName, metadata = {}, options = {}) => {
+          const attribution = currentAttribution();
+          window.dataLayer = window.dataLayer || [];
+          window.dataLayer.push({ event: eventName, ...attribution, ...metadata });
+          if (window.gtag) window.gtag("event", eventName, { ...attribution, ...metadata });
+          if (window.fbq) window.fbq("trackCustom", eventName, { ...attribution, ...metadata });
           const body = JSON.stringify({
             visitorId,
             sessionId,
             eventName,
             path: window.location.pathname || "/",
             referrer: document.referrer,
-            ...currentAttribution(),
+            ...attribution,
             metadata: {
               ...metadata,
               trackingVersion,
@@ -989,18 +998,37 @@
           });
         });
 
+        const randomToken = () => Math.random().toString(36).replace(/[^a-z0-9]/gi, "").slice(2, 6).toUpperCase();
+        const createLeadId = () => {
+          const now = new Date();
+          return `IE-${now.getFullYear()}${String(now.getMonth() + 1).padStart(2, "0")}${String(now.getDate()).padStart(2, "0")}-${randomToken()}`;
+        };
+
         document.querySelectorAll(".js-whatsapp-link").forEach((link) => {
           const message = "Ola, Luis. Vim pelo Imovel Explicado Contratos e queria tirar uma duvida sobre contrato ou documento imobiliario.";
+          const leadId = createLeadId();
           const url = new URL(link.href);
-          url.searchParams.set("text", message);
+          url.searchParams.set("text", `${message}\n\nCodigo: ${leadId}`);
+          link.dataset.leadId = leadId;
           link.href = url.toString();
           link.addEventListener("click", () => {
+            const currentLeadId = link.dataset.leadId || createLeadId();
+            const clickUrl = new URL(link.href);
+            clickUrl.searchParams.set("text", `${message}\n\nCodigo: ${currentLeadId}`);
+            link.href = clickUrl.toString();
             trackInternal("whatsapp_click", {
               source: "cloudflare_contratos_whatsapp",
+              lead_id: currentLeadId,
+              maxScrollPercent,
+            });
+            trackInternal("click_whatsapp_qualificado", {
+              source: "cloudflare_contratos_whatsapp",
+              lead_id: currentLeadId,
               maxScrollPercent,
             });
             if (window.fbq) {
-              fbq("trackCustom", "WhatsAppClick", { source: "contratos_landing" });
+              fbq("trackCustom", "WhatsAppClick", { source: "contratos_landing", lead_id: currentLeadId });
+              fbq("track", "Contact", { source: "contratos_landing", lead_id: currentLeadId });
             }
           });
         });

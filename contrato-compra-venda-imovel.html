@@ -1518,7 +1518,7 @@
         metaPixelDelay: 6500
       };
     </script>
-    <script src="/assets/imovel-tracking.js?v=gads18245604135-wa20260618"></script>
+    <script src="/assets/imovel-tracking.js?v=gads18245604135-track20260618"></script>
     <script>
       (() => {
         const form = document.getElementById("triagemForm");
@@ -1527,8 +1527,10 @@
         form?.addEventListener("submit", (event) => {
           event.preventDefault();
           const data = new FormData(form);
+          const leadId = window.ImovelExplicado.createLeadId();
           const resumo = [
             "Ola, Luis. Quero uma triagem para compra/venda de imovel.",
+            `Codigo: ${leadId}`,
             "",
             `Perfil: ${data.get("perfil")}`,
             `Situacao: ${data.get("situacao")}`,
@@ -1543,10 +1545,11 @@
             situacao: data.get("situacao"),
             urgencia: data.get("urgencia"),
             documentos: data.get("documentos"),
-            source: "google_contract_landing"
+            source: "google_contract_landing",
+            lead_id: leadId
           }, { preferBeacon: false });
           success?.classList.add("is-visible");
-          const triagemUrl = window.ImovelExplicado.createWhatsAppLink(resumo, "google_contract_landing", "gs_compra_venda_contrato_202606", "triagem_compra_venda");
+          const triagemUrl = window.ImovelExplicado.createWhatsAppLink(resumo, "google_contract_landing", "gs_compra_venda_contrato_202606", "triagem_compra_venda", leadId);
           if (fallbackWhatsApp) fallbackWhatsApp.href = triagemUrl;
           window.open(triagemUrl, "_blank", "noopener,noreferrer");
         });

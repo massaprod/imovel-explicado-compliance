@@ -1,7 +1,7 @@
 (() => {
   const renderBase = "https://imovel-explicado-contratos.onrender.com";
   const analyticsEndpoint = `${renderBase}/api/analytics/event`;
-  const metaPixelId = "1277173217718163";
+  const metaPixelId = "998092116298334";
   const params = new URLSearchParams(window.location.search);
   const slug = document.body.dataset.slug || "blog";
 
@@ -47,6 +47,15 @@
     utmCampaign: params.get("utm_campaign") || "conteudo_imovel_explicado",
     utmContent: params.get("utm_content") || slug,
     utmTerm: params.get("utm_term") || undefined,
+    gclid: params.get("gclid") || undefined,
+    gbraid: params.get("gbraid") || undefined,
+    wbraid: params.get("wbraid") || undefined,
+    fbclid: params.get("fbclid") || undefined,
+  };
+  const randomToken = () => Math.random().toString(36).replace(/[^a-z0-9]/gi, "").slice(2, 6).toUpperCase();
+  const createLeadId = () => {
+    const now = new Date();
+    return `IE-${now.getFullYear()}${String(now.getMonth() + 1).padStart(2, "0")}${String(now.getDate()).padStart(2, "0")}-${randomToken()}`;
   };
 
   const updateScroll = () => {
@@ -117,17 +126,28 @@
   });
 
   document.querySelectorAll(".js-whatsapp-link").forEach((link) => {
+    const leadId = createLeadId();
     const url = new URL(link.href);
     url.searchParams.set(
       "text",
-      "Ola, Luis. Vim pelo Imovel Explicado e queria tirar uma duvida sobre contrato ou documento imobiliario."
+      `Ola, Luis. Vim pelo Imovel Explicado e queria tirar uma duvida sobre contrato ou documento imobiliario.\n\nCodigo: ${leadId}`
     );
+    link.dataset.leadId = leadId;
     link.href = url.toString();
     link.addEventListener("click", () => {
       updateScroll();
-      track("blog_whatsapp_click", { slug, maxScrollPercent }, false);
+      const currentLeadId = link.dataset.leadId || createLeadId();
+      const clickUrl = new URL(link.href);
+      clickUrl.searchParams.set(
+        "text",
+        `Ola, Luis. Vim pelo Imovel Explicado e queria tirar uma duvida sobre contrato ou documento imobiliario.\n\nCodigo: ${currentLeadId}`
+      );
+      link.href = clickUrl.toString();
+      track("blog_whatsapp_click", { slug, maxScrollPercent, lead_id: currentLeadId }, false);
+      track("click_whatsapp_qualificado", { slug, maxScrollPercent, lead_id: currentLeadId }, false);
       if (window.fbq) {
-        window.fbq("trackCustom", "WhatsAppClick", { source: "blog", slug });
+        window.fbq("trackCustom", "WhatsAppClick", { source: "blog", slug, lead_id: currentLeadId });
+        window.fbq("track", "Contact", { source: "blog", slug, lead_id: currentLeadId });
       }
       flushPageTime();
     });
