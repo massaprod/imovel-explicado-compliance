@@ -363,7 +363,8 @@
     const campaign = link?.dataset.campaign || options.campaign || attribution.utmCampaign || config.defaultCampaign;
     const service = link?.dataset.service || options.service || undefined;
     const location = inferLocation(eventName, link || { dataset: {}, className: "" });
-    const leadId = options.leadId || createLeadId();
+    const leadId = link?.dataset.leadId || options.leadId || createLeadId();
+    if (link) link.dataset.leadId = leadId;
     const value = link?.dataset.value ? Number(link.dataset.value) : options.value;
     const message = link?.dataset.message || link?.dataset.whatsappMessage || options.message || "Ola, Luis. Vim pelo site Imovel Explicado e quero fazer uma triagem imobiliaria.";
     const metadata = cleanObject({
@@ -387,8 +388,8 @@
     if (link) link.href = createWhatsAppLink(message, source, campaign, service, leadId);
     trackEvent(eventName, metadata, { preferBeacon: false, dedupeKey: `whatsapp:${leadId}:${eventName}` });
     trackEvent(`click_cta_${location}`, metadata, { preferBeacon: false, dedupeKey: `cta:${leadId}:${location}` });
-    trackEvent("click_whatsapp_qualificado", metadata, { preferBeacon: false, dedupeKey: `whatsapp:${leadId}:qualified` });
-    trackEvent("lead_whatsapp", metadata, { preferBeacon: false, dedupeKey: `lead_whatsapp:${leadId}` });
+    trackEvent("click_whatsapp_intent", metadata, { preferBeacon: false, dedupeKey: `whatsapp:${leadId}:intent` });
+    trackEvent("lead_whatsapp_unqualified", metadata, { preferBeacon: false, dedupeKey: `lead_whatsapp_unqualified:${leadId}` });
     return { leadId, href: link?.href };
   };
 
@@ -401,7 +402,9 @@
       const source = link.dataset.source || attribution.utmSource || config.defaultSource;
       const campaign = link.dataset.campaign || attribution.utmCampaign || config.defaultCampaign;
       const service = link.dataset.service || undefined;
-      link.href = createWhatsAppLink(message, source, campaign, service);
+      const leadId = link.dataset.leadId || createLeadId();
+      link.dataset.leadId = leadId;
+      link.href = createWhatsAppLink(message, source, campaign, service, leadId);
       link.addEventListener("click", () => handleWhatsAppClick(link));
     });
   };

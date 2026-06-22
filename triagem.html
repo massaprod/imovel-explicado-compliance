@@ -3,10 +3,10 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Triagem | Imovel Explicado</title>
+    <title>Triagem de contrato imobiliario | Imovel Explicado</title>
     <meta
       name="description"
-      content="Triagem inicial do Imovel Explicado para contrato de aluguel direto, documentos imobiliarios, sinal, caucao e negociacao."
+      content="Triagem inicial do Imovel Explicado para compra, venda, contrato recebido, promessa, sinal, documentos imobiliarios e negociacao."
     />
     <meta name="theme-color" content="#101820" />
     <link rel="canonical" href="https://imovelexplicado.com.br/triagem" />
@@ -333,21 +333,21 @@
 
     <main class="shell">
       <section class="intro">
-        <h1>Comece pela triagem.</h1>
+        <h1 id="page-title">Comece pela triagem do contrato.</h1>
         <p class="lead">
-          Em poucos campos eu entendo se voc&ecirc; precisa organizar um aluguel direto, conferir contrato, avaliar sinal ou tratar outro documento imobili&aacute;rio.
+          Em poucos campos eu entendo se voc&ecirc; precisa organizar compra e venda, contrato recebido, promessa, sinal, documentos ou outro ponto da negocia&ccedil;&atilde;o.
         </p>
         <div class="trust">
           <span>Sem pagamento nesta etapa.</span>
-          <span>Mensagem final pronta para WhatsApp.</span>
+          <span>Mensagem final pronta para WhatsApp com contexto.</span>
           <span>Triagem n&atilde;o substitui provid&ecirc;ncia espec&iacute;fica de profissional habilitado.</span>
         </div>
       </section>
 
       <section>
         <form class="form-card" id="triagem-form">
-          <h2>Dados iniciais do caso</h2>
-          <p class="small">Preencha o suficiente para eu entender a situa&ccedil;&atilde;o. Dados sens&iacute;veis e documentos podem ser enviados depois, se fizer sentido seguir.</p>
+          <h2 id="form-title">Dados iniciais do caso</h2>
+          <p class="small" id="form-intro">Preencha o suficiente para eu entender a situa&ccedil;&atilde;o. Dados sens&iacute;veis e documentos podem ser enviados depois, se fizer sentido seguir.</p>
 
           <div class="form-grid">
             <div class="field">
@@ -362,21 +362,23 @@
               <label for="perfil">Perfil</label>
               <select id="perfil" name="perfil" required>
                 <option value="">Selecione</option>
-                <option>propriet&aacute;rio</option>
-                <option>inquilino</option>
                 <option>comprador</option>
                 <option>vendedor</option>
+                <option>propriet&aacute;rio</option>
                 <option>corretor</option>
+                <option>familiar ajudando na negocia&ccedil;&atilde;o</option>
+                <option>inquilino</option>
               </select>
             </div>
             <div class="field">
               <label for="situacao">Situa&ccedil;&atilde;o</label>
               <select id="situacao" name="situacao" required>
                 <option value="">Selecione</option>
-                <option>preciso criar contrato</option>
-                <option>vou pagar sinal ou cau&ccedil;&atilde;o</option>
-                <option>j&aacute; tenho contrato</option>
-                <option>quero vender</option>
+                <option>vou pagar sinal/Pix em compra ou venda</option>
+                <option>preciso elaborar contrato de compra e venda</option>
+                <option>recebi contrato/promessa para assinar</option>
+                <option>quero verificar documentos antes de fechar</option>
+                <option>aluguel direto ou outro contrato</option>
                 <option>outro</option>
               </select>
             </div>
@@ -403,7 +405,7 @@
             </div>
             <div class="field full">
               <label for="mensagem">Mensagem livre</label>
-              <textarea id="mensagem" name="mensagem" placeholder="Conte rapidamente o que est&aacute; acontecendo. Ex.: vou alugar direto, j&aacute; combinei cau&ccedil;&atilde;o, preciso entregar chaves no s&aacute;bado."></textarea>
+              <textarea id="mensagem" name="mensagem" placeholder="Conte rapidamente o que est&aacute; acontecendo. Ex.: vou pagar sinal amanh&atilde;, recebi uma promessa por WhatsApp, preciso conferir documentos antes de assinar."></textarea>
             </div>
           </div>
 
@@ -413,8 +415,8 @@
           </label>
 
           <div class="form-actions">
-            <button class="button" type="submit">Gerar resumo da triagem</button>
-            <a class="button light" href="/aluguel-direto">Ver Kit Aluguel Direto</a>
+            <button class="button" type="submit">Enviar resumo pelo WhatsApp</button>
+            <a class="button light" href="/contrato-compra-venda-imovel#servicos">Ver servi&ccedil;os</a>
           </div>
           <div class="error" id="form-error">Revise os campos obrigat&oacute;rios e marque o aceite para continuar.</div>
         </form>
@@ -435,27 +437,40 @@
     </footer>
 
     <script>
+      const triagemFluxo = window.location.pathname.includes("/triagem/compra-venda") ? "compra_venda" : "geral";
       window.ImovelExplicadoConfig = {
-        page: "triagem",
-        defaultSource: "site",
-        defaultMedium: "organic",
-        defaultCampaign: "triagem_imovel_explicado",
-        defaultContent: "triagem",
+        page: triagemFluxo === "compra_venda" ? "triagem-compra-venda" : "triagem",
+        triagemFluxo,
+        defaultSource: triagemFluxo === "compra_venda" ? "google" : "site",
+        defaultMedium: triagemFluxo === "compra_venda" ? "cpc" : "organic",
+        defaultCampaign: triagemFluxo === "compra_venda" ? "gs_compra_venda_contrato_202606" : "triagem_imovel_explicado",
+        defaultContent: triagemFluxo === "compra_venda" ? "triagem_compra_venda" : "triagem",
         gtmId: "GTM-TX2GTPFL",
         googleAdsConversionId: "18245604135",
         googleAdsConversions: {
           submit_triagem: { label: "-G1_CNjvvsAcEKeml_xD", value: 1, currency: "BRL", dedupeKey: "qualified_lead" },
+          submit_triagem_google_contract: { label: "-G1_CNjvvsAcEKeml_xD", value: 1, currency: "BRL", dedupeKey: "qualified_lead" },
           click_whatsapp_triagem_summary: { label: "-G1_CNjvvsAcEKeml_xD", value: 1, currency: "BRL", dedupeKey: "qualified_lead" },
           click_whatsapp_qualificado: { label: "-G1_CNjvvsAcEKeml_xD", value: 1, currency: "BRL", dedupeKey: "qualified_lead" }
         },
         metaPixelId: "998092116298334",
         metaPixelDelay: 6500,
-        pageViewEvent: "view_triagem"
+        pageViewEvent: triagemFluxo === "compra_venda" ? "view_triagem_compra_venda" : "view_triagem"
       };
     </script>
     <script src="/assets/imovel-tracking.js?v=gads18245604135-track20260618"></script>
     <script>
       (() => {
+        const isCompraVenda = window.ImovelExplicadoConfig?.triagemFluxo === "compra_venda";
+        if (isCompraVenda) {
+          document.title = "Triagem para compra e venda de imovel | Imovel Explicado";
+          document.getElementById("page-title").textContent = "Triagem para compra e venda de imovel";
+          document.querySelector(".lead").textContent = "Organize contrato, promessa, sinal, documentos, prazos e pagamento antes de assinar ou transferir dinheiro.";
+          document.getElementById("form-title").textContent = "Resumo da compra ou venda";
+          document.getElementById("form-intro").textContent = "Responda o essencial para eu entender o momento da negociacao e indicar o servico correto antes de contrato, assinatura ou sinal.";
+          document.querySelector(".trust span:nth-child(2)").textContent = "Resumo pronto para iniciar o WhatsApp com contexto de compra/venda.";
+        }
+
         const form = document.getElementById("triagem-form");
         const error = document.getElementById("form-error");
         const confirmation = document.getElementById("confirmation");
@@ -473,7 +488,9 @@
           const data = Object.fromEntries(new FormData(form).entries());
           const leadId = window.ImovelExplicado.createLeadId();
           const cleanSummary = [
-            "Ola, Luis. Fiz a triagem do Imovel Explicado.",
+            isCompraVenda
+              ? "Ola, Luis. Fiz a triagem de compra/venda do Imovel Explicado."
+              : "Ola, Luis. Fiz a triagem do Imovel Explicado.",
             `Codigo: ${leadId}`,
             `Nome: ${data.nome}`,
             `WhatsApp: ${data.whatsapp}`,
@@ -487,13 +504,20 @@
           summaryEl.textContent = cleanSummary;
           send.dataset.leadId = leadId;
           send.dataset.service = data.situacao || "triagem";
-          send.href = window.ImovelExplicado.createWhatsAppLink(cleanSummary, "triagem_form", "triagem_imovel_explicado", data.situacao, leadId);
+          send.href = window.ImovelExplicado.createWhatsAppLink(
+            cleanSummary,
+            isCompraVenda ? "triagem_compra_venda" : "triagem_form",
+            isCompraVenda ? "gs_compra_venda_contrato_202606" : "triagem_imovel_explicado",
+            isCompraVenda ? "triagem_compra_venda" : data.situacao,
+            leadId
+          );
           confirmation.classList.add("visible");
-          window.ImovelExplicado.trackEvent("submit_triagem", {
+          window.ImovelExplicado.trackEvent(isCompraVenda ? "submit_triagem_google_contract" : "submit_triagem", {
             perfil: data.perfil,
             situacao: data.situacao,
             urgencia: data.urgencia,
             tipo: data.tipo,
+            source: isCompraVenda ? "triagem_compra_venda" : "triagem_form",
             lead_id: leadId,
           }, { preferBeacon: false });
           confirmation.scrollIntoView({ behavior: "smooth", block: "start" });

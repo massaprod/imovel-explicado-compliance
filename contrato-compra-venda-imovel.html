@@ -1101,10 +1101,21 @@
           right: 0;
           bottom: 0;
           display: block;
+          opacity: 0;
+          pointer-events: none;
           padding: 12px 14px;
           background: rgba(255, 255, 255, 0.94);
           border-top: 1px solid rgba(17, 24, 32, 0.1);
           backdrop-filter: blur(18px);
+          transform: translateY(110%);
+          transition: opacity 0.18s ease, transform 0.18s ease;
+        }
+
+        body.sticky-cta-visible .sticky-mobile,
+        .sticky-mobile.is-visible {
+          opacity: 1;
+          pointer-events: auto;
+          transform: translateY(0);
         }
 
         .sticky-mobile .button {
@@ -1521,6 +1532,18 @@
     <script src="/assets/imovel-tracking.js?v=gads18245604135-track20260618"></script>
     <script>
       (() => {
+        const hero = document.querySelector(".hero");
+        const stickyCta = document.querySelector(".sticky-mobile");
+        const syncStickyCta = () => {
+          if (!hero) return;
+          const shouldShowStickyCta = hero.getBoundingClientRect().bottom < 96;
+          document.body.classList.toggle("sticky-cta-visible", shouldShowStickyCta);
+          stickyCta?.classList.toggle("is-visible", shouldShowStickyCta);
+        };
+        syncStickyCta();
+        window.addEventListener("scroll", syncStickyCta, { passive: true });
+        window.addEventListener("resize", syncStickyCta);
+
         const form = document.getElementById("triagemForm");
         const success = document.getElementById("formSuccess");
         const fallbackWhatsApp = document.getElementById("fallbackWhatsApp");
